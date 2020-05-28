@@ -1,4 +1,6 @@
-﻿namespace SpaceFlight
+﻿using System.Windows.Forms;
+
+namespace SpaceFlight
 {
     partial class SimulationScreen
     {
@@ -28,24 +30,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.SimulationPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // SimulationPanel
+            // 
+            this.SimulationPanel.Name = "SimulationPanel";
+            this.SimulationPanel.TabIndex = 0;
+            this.SimulationPanel.Dock = DockStyle.Fill;
             // 
             // SimulationScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 651);
+            this.Controls.Add(this.SimulationPanel);
             this.Icon = global::SpaceFlight.Properties.Resources.Rocket_symbol;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SimulationScreen";
             this.Text = "SpaceFlight";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.SimulationScreen_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel SimulationPanel;
     }
 }
 

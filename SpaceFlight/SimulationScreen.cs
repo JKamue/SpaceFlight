@@ -16,5 +16,10 @@ namespace SpaceFlight
         {
             InitializeComponent();
         }
+
+        private void SimulationScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
