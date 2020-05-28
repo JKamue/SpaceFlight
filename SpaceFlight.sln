@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceFlight", "SpaceFlight\SpaceFlight.csproj", "{DB9FBB22-3CB7-4826-B24A-63213AE24807}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB9FBB22-3CB7-4826-B24A-63213AE24807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB9FBB22-3CB7-4826-B24A-63213AE24807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB9FBB22-3CB7-4826-B24A-63213AE24807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB9FBB22-3CB7-4826-B24A-63213AE24807}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A1C3E9F-7628-480D-AE71-1D80346FD18F}
+	EndGlobalSection
+EndGlobal
