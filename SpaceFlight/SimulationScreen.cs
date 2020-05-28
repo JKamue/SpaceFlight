@@ -17,9 +17,9 @@ namespace SpaceFlight
             InitializeComponent();
         }
 
-        private void SimulationScreen_Load(object sender, EventArgs e)
+        private void SimulationPanel_Paint(object sender, PaintEventArgs e)
         {
-
+            new PanelController(SimulationPanel);
         }
     }
 }

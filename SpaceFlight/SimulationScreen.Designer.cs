@@ -35,15 +35,18 @@ namespace SpaceFlight
             // 
             // SimulationPanel
             // 
+            this.SimulationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SimulationPanel.Location = new System.Drawing.Point(0, 0);
             this.SimulationPanel.Name = "SimulationPanel";
+            this.SimulationPanel.Size = new System.Drawing.Size(984, 961);
             this.SimulationPanel.TabIndex = 0;
-            this.SimulationPanel.Dock = DockStyle.Fill;
+            this.SimulationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationPanel_Paint);
             // 
             // SimulationScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 651);
+            this.ClientSize = new System.Drawing.Size(984, 961);
             this.Controls.Add(this.SimulationPanel);
             this.Icon = global::SpaceFlight.Properties.Resources.Rocket_symbol;
             this.MaximizeBox = false;
@@ -51,14 +54,14 @@ namespace SpaceFlight
             this.Name = "SimulationScreen";
             this.Text = "SpaceFlight";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.SimulationScreen_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel SimulationPanel;
+        private Panel SimulationPanel;
+        private Button button1;
     }
 }
 
