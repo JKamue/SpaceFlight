@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PanelController.cs" />
+    <Compile Include="Panel\IPanelObject.cs" />
+    <Compile Include="Panel\PanelController.cs" />
     <Compile Include="SimulationScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,8 +91,6 @@
   <ItemGroup>
     <None Include="Resources\Rocket_symbol.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
