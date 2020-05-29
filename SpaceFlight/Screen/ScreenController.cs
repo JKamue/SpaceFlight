@@ -46,6 +46,8 @@ namespace SpaceFlight.Screen
             _drawTimer.Interval = 10;
             _drawTimer.Tick += Redraw;
             _drawTimer.Start();
+
+            _panel.MouseWheel += Scroll_Event;
         }
 
         private void Redraw(object sender, EventArgs e)
@@ -86,6 +88,19 @@ namespace SpaceFlight.Screen
                 return;
 
             o.Draw(_graphicsBuffer.Graphics, positionCalculator);
+        }
+
+        private void Scroll_Event(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Delta > 0 && zoom + 0.1 <= 3)
+            {
+                zoom += (float) 0.1;
+            } 
+            else if (e.Delta < 0 && zoom - 0.1 >= 0.2)
+            {
+                zoom -= (float) 0.1;
+            }
+
         }
 
         public void AddPanelObject(IScreenObject o) => _panelObjects.Add(o);
