@@ -33,13 +33,18 @@ namespace SpaceFlight.Screen.ScreenObjects
             p.Y += SpeedY;
         }
 
-        public void Draw(Graphics g)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;
-            g.DrawLine(pen, p.X, p.Y, p.X+200, p.Y+200);
+            g.DrawLine(pen, ppCalc.ProjectXCoordinate(p.X), ppCalc.ProjectYCoordinate(p.Y), ppCalc.ProjectXCoordinate(p.X+200), ppCalc.ProjectYCoordinate(p.Y+200));
         }
 
         public Rectangle GetBounds() => new Rectangle(p.X, p.Y, 200, 200);
+
+        public Point GetMiddle()
+        {
+            return new Point(p.X+100, p.Y+100);
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace SpaceFlight.Screen
     interface IScreenObject
     {
         Rectangle GetBounds();
-        void Draw(Graphics g);
-
+        void Draw(Graphics g, ProjectedPositionCalculator ppCalc);
+        Point GetMiddle();
     }
 }
