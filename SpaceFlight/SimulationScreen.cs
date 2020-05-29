@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceFlight.Objects;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,6 @@ namespace SpaceFlight
         public SimulationScreen()
         {
             InitializeComponent();
-        }
-
-        private void SimulationPanel_Paint(object sender, PaintEventArgs e)
-        {
             new PanelController(SimulationPanel);
         }
     }

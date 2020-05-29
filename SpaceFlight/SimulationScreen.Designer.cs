@@ -40,7 +40,6 @@ namespace SpaceFlight
             this.SimulationPanel.Name = "SimulationPanel";
             this.SimulationPanel.Size = new System.Drawing.Size(984, 961);
             this.SimulationPanel.TabIndex = 0;
-            this.SimulationPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationPanel_Paint);
             // 
             // SimulationScreen
             // 

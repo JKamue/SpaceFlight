@@ -6,19 +6,14 @@ using System.Threading.Tasks;
 
 namespace SpaceFlight.Objects
 {
-    class FrameRate
+    class FrameRateCounter
     {
-        public int Framerate { get; private set} = 0;
+        public int Framerate { get; private set;  } = 0;
 
         private long unixStamp = 0;
         private int lastFrames = 0;
 
-        public FrameRate(int fps)
-        {
-            Framerate = fps;
-        }
-
-        public FrameRate()
+        public FrameRateCounter()
         {
             unixStamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }
@@ -37,6 +32,6 @@ namespace SpaceFlight.Objects
 
         }
 
-        public int CalculateDelay() => (int) Math.Floor(1000 / (float) Framerate);
+        public int CalculateDelay() => (int) Math.Ceiling(1000 / (float) Framerate);
     }
 }
