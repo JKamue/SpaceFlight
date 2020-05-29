@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\FrameRateCounter.cs" />
+    <Compile Include="Screen\Calculator\EmptyProjectionCalculator.cs" />
+    <Compile Include="Screen\Calculator\IProjectionCalculator.cs" />
     <Compile Include="Screen\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Screen\ScreenObjects\TestObject.cs" />
-    <Compile Include="Screen\ProjectedPositionCalculator.cs" />
+    <Compile Include="Screen\Calculator\ProjectedPositionCalculator.cs" />
     <Compile Include="SimulationScreen.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,11 +1,12 @@
-﻿using System.Drawing;
+﻿using SpaceFlight.Screen.Calculator;
+using System.Drawing;
 
 namespace SpaceFlight.Screen
 {
     interface IScreenObject
     {
         Rectangle GetBounds();
-        void Draw(Graphics g, ProjectedPositionCalculator ppCalc);
+        void Draw(Graphics g, IProjectionCalculator ppCalc);
         Point GetMiddle();
     }
 }

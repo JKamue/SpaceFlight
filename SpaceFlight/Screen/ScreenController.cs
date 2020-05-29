@@ -1,4 +1,5 @@
 ﻿using SpaceFlight.Objects;
+using SpaceFlight.Screen.Calculator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,7 +22,7 @@ namespace SpaceFlight.Screen
         private Color color;
 
         private readonly List<IScreenObject> _panelObjects;
-        private IScreenObject mainObject;
+        private IScreenObject mainObject = null;
         private readonly Timer _drawTimer;
 
         public ScreenController(Panel panel, Color color)
@@ -47,11 +48,22 @@ namespace SpaceFlight.Screen
 
         private void Redraw(object sender, EventArgs e)
         {
-            var realCenter = mainObject.GetMiddle();
-            var projectedCenter = new Point((int)Math.Round((double)_panel.Width / 2), (int)Math.Round((double)_panel.Height / 2));
+            IProjectionCalculator positionCalculator;
+            Rectangle drawRectangle;
 
-            var drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter);
-            var positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter);
+            if (mainObject != null)
+            {
+                var realCenter = mainObject.GetMiddle();
+                var projectedCenter = new Point((int)Math.Round((double)_panel.Width / 2), (int)Math.Round((double)_panel.Height / 2));
+
+                drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter);
+                positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter);
+            } else
+            {
+                drawRectangle = _panel.Bounds;
+                positionCalculator = new EmptyProjectionCalculator();
+            }
+
 
             _graphicsBuffer.Graphics.Clear(color);
             _panelObjects.ForEach(x => DrawObject(x, drawRectangle, positionCalculator));
@@ -64,7 +76,7 @@ namespace SpaceFlight.Screen
             return new Rectangle(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y, _panel.Width, _panel.Height);
         }
 
-        private void DrawObject(IScreenObject o, Rectangle panelBounds, ProjectedPositionCalculator positionCalculator)
+        private void DrawObject(IScreenObject o, Rectangle panelBounds, IProjectionCalculator positionCalculator)
         {
             if (!panelBounds.IntersectsWith(o.GetBounds()))
                 return;

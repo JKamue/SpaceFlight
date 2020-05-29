@@ -1,13 +1,14 @@
-﻿using System;
+﻿using SpaceFlight.Screen.Calculator;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpaceFlight.Screen
+namespace SpaceFlight.Screen.Calculator
 {
-    class ProjectedPositionCalculator
+    class ProjectedPositionCalculator : IProjectionCalculator
     {
         private readonly Point _rMP;
         private readonly Point _pMP;

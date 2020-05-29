@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceFlight.Screen.Calculator;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace SpaceFlight.Screen.ScreenObjects
             p.Y += SpeedY;
         }
 
-        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc)
+        public void Draw(Graphics g, IProjectionCalculator ppCalc)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;
