@@ -18,7 +18,7 @@ namespace SpaceFlight
         public SimulationScreen()
         {
             InitializeComponent();
-            var s = new ScreenController(SimulationPanel, Color.White, 1);
+            var s = new ScreenController(SimulationPanel, Color.White, 1, lblDebug);
             s.AddPanelObject(new TestObject(new Point(-250, -250), 3, 1));
             s.AddPanelObject(new TestObject(new Point(1500, 1500), -1, -1));
             s.SetMainObject(new TestObject(new Point(1000, 1000), -2, -2));

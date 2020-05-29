@@ -31,15 +31,27 @@ namespace SpaceFlight
         private void InitializeComponent()
         {
             this.SimulationPanel = new System.Windows.Forms.Panel();
+            this.lblDebug = new System.Windows.Forms.Label();
+            this.SimulationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // SimulationPanel
             // 
+            this.SimulationPanel.Controls.Add(this.lblDebug);
             this.SimulationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SimulationPanel.Location = new System.Drawing.Point(0, 0);
             this.SimulationPanel.Name = "SimulationPanel";
             this.SimulationPanel.Size = new System.Drawing.Size(984, 961);
             this.SimulationPanel.TabIndex = 0;
+            // 
+            // lblDebug
+            // 
+            this.lblDebug.AutoSize = true;
+            this.lblDebug.Location = new System.Drawing.Point(781, 939);
+            this.lblDebug.Name = "lblDebug";
+            this.lblDebug.Size = new System.Drawing.Size(48, 13);
+            this.lblDebug.TabIndex = 0;
+            this.lblDebug.Text = "devInfos";
             // 
             // SimulationScreen
             // 
@@ -47,14 +59,16 @@ namespace SpaceFlight
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 961);
             this.Controls.Add(this.SimulationPanel);
+            this.DoubleBuffered = true;
             this.Icon = global::SpaceFlight.Properties.Resources.Rocket_symbol;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SimulationScreen";
             this.Text = "SpaceFlight";
             this.TopMost = true;
+            this.SimulationPanel.ResumeLayout(false);
+            this.SimulationPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.DoubleBuffered = true;
 
         }
 
@@ -62,6 +76,7 @@ namespace SpaceFlight
 
         private Panel SimulationPanel;
         private Button button1;
+        private Label lblDebug;
     }
 }
 

@@ -14,11 +14,15 @@ namespace SpaceFlight.Screen
     class ScreenController
     {
         private readonly Panel _panel;
+        private readonly Label _debugLabel;
+
         private readonly BufferedGraphicsContext _context;
         private readonly BufferedGraphics _graphicsBuffer;
         private readonly Graphics _panelGraphics;
 
         private FrameRateCounter actualFramerate;
+        private int objectCounter = 0;
+
         private Color color;
         private float zoom;
 
@@ -26,9 +30,10 @@ namespace SpaceFlight.Screen
         private IScreenObject mainObject = null;
         private readonly Timer _drawTimer;
 
-        public ScreenController(Panel panel, Color color, float zoom)
+        public ScreenController(Panel panel, Color color, float zoom, Label label = null)
         {
             _panel = panel;
+            _debugLabel = label;
             this.color = color;
             this.zoom = zoom;
 
@@ -52,6 +57,8 @@ namespace SpaceFlight.Screen
 
         private void Redraw(object sender, EventArgs e)
         {
+            objectCounter = 0;
+
             IProjectionCalculator positionCalculator;
             Rectangle drawRectangle;
 
@@ -75,6 +82,9 @@ namespace SpaceFlight.Screen
             _panelObjects.ForEach(x => DrawObject(x, drawRectangle, positionCalculator));
             actualFramerate.FrameDrawn();
             _graphicsBuffer.Render(_panelGraphics);
+
+            if (_debugLabel != null)
+                WriteDebugText();
         }
 
         private Rectangle CalculateDisplayRectangle(Point realCenter, Point projectedCenter, float percent)
@@ -88,6 +98,7 @@ namespace SpaceFlight.Screen
                 return;
 
             o.Draw(_graphicsBuffer.Graphics, positionCalculator);
+            objectCounter++;
         }
 
         private void Scroll_Event(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -100,7 +111,11 @@ namespace SpaceFlight.Screen
             {
                 zoom -= (float) 0.1;
             }
+        }
 
+        private void WriteDebugText()
+        {
+            _debugLabel.Text = $"{objectCounter} objects; {actualFramerate.Framerate} fps";
         }
 
         public void AddPanelObject(IScreenObject o) => _panelObjects.Add(o);
