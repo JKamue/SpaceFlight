@@ -12,7 +12,9 @@ namespace SpaceFlight.Screen
     class ScreenController
     {
         private readonly Panel _panel;
-        private readonly Graphics _graphics;
+        private readonly BufferedGraphicsContext _context;
+        private readonly BufferedGraphics _graphicsBuffer;
+        private readonly Graphics _panelGraphics;
 
         private FrameRateCounter actualFramerate;
         private Color color;
@@ -25,8 +27,14 @@ namespace SpaceFlight.Screen
             _panel = panel;
             this.color = color;
 
-            _graphics = panel.CreateGraphics();
+            // Setup graphics
+            _context = BufferedGraphicsManager.Current;
+            _panelGraphics = _panel.CreateGraphics();
+            _graphicsBuffer = _context.Allocate(_panelGraphics, panel.DisplayRectangle);
+
+
             _panelObjects = new List<IScreenObject>();
+            
             actualFramerate = new FrameRateCounter();
 
             _drawTimer = new Timer();
@@ -37,10 +45,10 @@ namespace SpaceFlight.Screen
 
         public void Redraw(object sender, EventArgs e)
         {
-            _graphics.
-            _graphics.Clear(color);
+            _graphicsBuffer.Graphics.Clear(color);
             _panelObjects.ForEach(x => DrawObject(x, _panel.Bounds));
             actualFramerate.FrameDrawn();
+            _graphicsBuffer.Render(_panelGraphics);
         }
 
         private void DrawObject(IScreenObject o, Rectangle panelBounds)
@@ -48,7 +56,7 @@ namespace SpaceFlight.Screen
             if (!panelBounds.IntersectsWith(o.GetBounds()))
                 return;
 
-            o.Draw(_graphics);
+            o.Draw(_graphicsBuffer.Graphics);
         }
 
         public void AddPanelObject(IScreenObject o) => _panelObjects.Add(o);

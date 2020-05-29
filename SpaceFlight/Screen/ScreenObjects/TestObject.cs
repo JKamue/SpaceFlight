@@ -28,7 +28,7 @@ namespace SpaceFlight.Screen.ScreenObjects
         public void Draw(Graphics g)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
-            pen.Width = 3;
+            pen.Width = 1;
             g.DrawLine(pen, x, 0, x+200, 200);
         }
 
