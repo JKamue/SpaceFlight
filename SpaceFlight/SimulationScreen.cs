@@ -1,4 +1,6 @@
 ﻿using SpaceFlight.Objects;
+using SpaceFlight.Screen;
+using SpaceFlight.Screen.ScreenObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +18,8 @@ namespace SpaceFlight
         public SimulationScreen()
         {
             InitializeComponent();
-            new PanelController(SimulationPanel);
+            var s = new ScreenController(SimulationPanel, Color.White);
+            s.AddPanelObject(new TestObject());
         }
     }
 }

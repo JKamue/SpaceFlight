@@ -54,6 +54,7 @@ namespace SpaceFlight
             this.Text = "SpaceFlight";
             this.TopMost = true;
             this.ResumeLayout(false);
+            this.DoubleBuffered = true;
 
         }
 
