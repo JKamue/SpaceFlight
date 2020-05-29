@@ -18,12 +18,12 @@ namespace SpaceFlight
         public SimulationScreen()
         {
             InitializeComponent();
-            var s = new ScreenController(SimulationPanel, Color.White);
+            var s = new ScreenController(SimulationPanel, Color.White, 1);
             s.AddPanelObject(new TestObject(new Point(-250, -250), 3, 1));
-            s.AddPanelObject(new TestObject(new Point(1000, 1000), -1, -1));
-            s.AddPanelObject(new TestObject(new Point(1000, 1000), -2, -2));
+            s.AddPanelObject(new TestObject(new Point(1500, 1500), -1, -1));
+            s.SetMainObject(new TestObject(new Point(1000, 1000), -2, -2));
             s.AddPanelObject(new TestObject(new Point(800, 1000), -2, -2));
-            s.SetMainObject(new TestObject(new Point(300, 300), 1, 0));
+            s.AddPanelObject(new TestObject(new Point(300, 300), 1, 0));
         }
     }
 }

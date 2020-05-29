@@ -20,15 +20,17 @@ namespace SpaceFlight.Screen
 
         private FrameRateCounter actualFramerate;
         private Color color;
+        private float zoom;
 
         private readonly List<IScreenObject> _panelObjects;
         private IScreenObject mainObject = null;
         private readonly Timer _drawTimer;
 
-        public ScreenController(Panel panel, Color color)
+        public ScreenController(Panel panel, Color color, float zoom)
         {
             _panel = panel;
             this.color = color;
+            this.zoom = zoom;
 
             // Setup graphics
             _context = BufferedGraphicsManager.Current;
@@ -53,11 +55,13 @@ namespace SpaceFlight.Screen
 
             if (mainObject != null)
             {
+                var percent = 1/zoom;
+                
                 var realCenter = mainObject.GetMiddle();
-                var projectedCenter = new Point((int)Math.Round((double)_panel.Width / 2), (int)Math.Round((double)_panel.Height / 2));
+                var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
 
-                drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter);
-                positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter);
+                drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter, percent);
+                positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter, zoom);
             } else
             {
                 drawRectangle = _panel.Bounds;
@@ -71,9 +75,9 @@ namespace SpaceFlight.Screen
             _graphicsBuffer.Render(_panelGraphics);
         }
 
-        private Rectangle CalculateDisplayRectangle(Point realCenter, Point projectedCenter)
+        private Rectangle CalculateDisplayRectangle(Point realCenter, Point projectedCenter, float percent)
         {
-            return new Rectangle(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y, _panel.Width, _panel.Height);
+            return new Rectangle(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y, (int) Math.Round(_panel.Width * percent), (int)Math.Round(_panel.Height * percent));
         }
 
         private void DrawObject(IScreenObject o, Rectangle panelBounds, IProjectionCalculator positionCalculator)
