@@ -11,9 +11,16 @@ namespace SpaceFlight.Screen.ScreenObjects
 {
     class TestObject : IScreenObject
     {
-        private int x = -230;
-        public TestObject()
+        private Point p;
+        private int SpeedX;
+        private int SpeedY;
+
+        public TestObject(Point start, int speedX, int speedY)
         {
+            p = start;
+            SpeedX = speedX;
+            SpeedY = speedY;
+
             var t = new Timer();
             t.Interval = 10;
             t.Tick += MoveRight;
@@ -22,16 +29,17 @@ namespace SpaceFlight.Screen.ScreenObjects
 
         private void MoveRight(object sender, EventArgs e)
         {
-            x+=1;
+            p.X += SpeedX;
+            p.Y += SpeedY;
         }
 
         public void Draw(Graphics g)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;
-            g.DrawLine(pen, x, 0, x+200, 200);
+            g.DrawLine(pen, p.X, p.Y, p.X+200, p.Y+200);
         }
 
-        public Rectangle GetBounds() => new Rectangle(x, 0, 200, 200);
+        public Rectangle GetBounds() => new Rectangle(p.X, p.Y, 200, 200);
     }
 }
