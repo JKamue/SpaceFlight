@@ -12,9 +12,8 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
 {
     class Terrain : IScreenObject
     {
-        private int height = 10;
+        private int height = 100;
         private Color color;
-        private Rectangle lastScreen = new Rectangle(-5000, 0, 10000, 10);
 
         public Terrain(int height, Color color)
         {
@@ -47,11 +46,9 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
 
             SolidBrush b = new SolidBrush(Color.SaddleBrown);
             g.FillPolygon(b, points.ToArray());
-
-            lastScreen = screen;
         }
 
-        public Rectangle GetBounds() => new Rectangle(lastScreen.X, 0, lastScreen.Width, height);
+        public Rectangle GetBounds() => new Rectangle(int.MaxValue / 2, 0, int.MaxValue, height);
 
         public Point GetMiddle()
         {

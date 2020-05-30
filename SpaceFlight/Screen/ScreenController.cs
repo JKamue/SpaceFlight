@@ -96,7 +96,9 @@ namespace SpaceFlight.Screen
 
         private void DrawObject(IScreenObject o, Rectangle panelBounds, IProjectionCalculator positionCalculator)
         {
-            if (!panelBounds.IntersectsWith(o.GetBounds()))
+            var objectBounds = o.GetBounds();
+
+            if (!panelBounds.IntersectsWith(objectBounds) && !panelBounds.Contains(objectBounds) && !objectBounds.Contains(panelBounds))
                 return;
 
             o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds);
