@@ -34,7 +34,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
             var points = new List<Point>();
 
 
-            for (int i = 0; i < 2 * Math.PI * radius; i++)
+            for (int i = 0; i < 2 * Math.PI * radius; i+=5)
             {
                 var y = (int)Math.Round(Noise.Generate(i * 0.0025f) * 128 + 128 / 2.5);
                 points.Add(ppCalc.ProjectPoint(ProjectOntoCircle(new Point(i, y))));
