@@ -19,11 +19,10 @@ namespace SpaceFlight
         {
             InitializeComponent();
             var s = new ScreenController(SimulationPanel, Color.White, 1, lblDebug);
-            s.AddPanelObject(new TestObject(new Point(-250, -250), 3, 1));
-            s.AddPanelObject(new TestObject(new Point(1500, 1500), -1, -1));
-            s.SetMainObject(new TestObject(new Point(1000, 1000), -2, -2));
-            s.AddPanelObject(new TestObject(new Point(800, 1000), -2, -2));
-            s.AddPanelObject(new TestObject(new Point(300, 300), 1, 0));
+            s.AddPanelObject(new TestObject(new Point(10, 10), new Point(1000,10), 0, 0));
+            s.SetMainObject(new TestObject(new Point(300, 10), new Point(300, 50), 0, 2));
+            s.AddPanelObject(new TestObject(new Point(500, 10), new Point(500, 60), 0, 1));
+            s.AddPanelObject(new TestObject(new Point(100, 10), new Point(100, 30), 0, 3));
         }
     }
 }

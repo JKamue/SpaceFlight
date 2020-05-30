@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -12,13 +13,15 @@ namespace SpaceFlight.Screen.ScreenObjects
 {
     class TestObject : IScreenObject
     {
-        private Point p;
+        private Point start;
+        private Point end;
         private int SpeedX;
         private int SpeedY;
 
-        public TestObject(Point start, int speedX, int speedY)
+        public TestObject(Point start, Point end, int speedX, int speedY)
         {
-            p = start;
+            this.start = start;
+            this.end = end;
             SpeedX = speedX;
             SpeedY = speedY;
 
@@ -30,22 +33,24 @@ namespace SpaceFlight.Screen.ScreenObjects
 
         private void MoveRight(object sender, EventArgs e)
         {
-            p.X += SpeedX;
-            p.Y += SpeedY;
+            start.X += SpeedX;
+            start.Y += SpeedY;
+            end.X += SpeedX;
+            end.Y += SpeedY;
         }
 
         public void Draw(Graphics g, IProjectionCalculator ppCalc)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;
-            g.DrawLine(pen, ppCalc.ProjectXCoordinate(p.X), ppCalc.ProjectYCoordinate(p.Y), ppCalc.ProjectXCoordinate(p.X+200), ppCalc.ProjectYCoordinate(p.Y+200));
+            g.DrawLine(pen, ppCalc.ProjectXCoordinate(start.X), ppCalc.ProjectYCoordinate(start.Y), ppCalc.ProjectXCoordinate(end.X), ppCalc.ProjectYCoordinate(end.Y));
         }
 
-        public Rectangle GetBounds() => new Rectangle(p.X, p.Y, 200, 200);
+        public Rectangle GetBounds() => new Rectangle(start.X, start.Y, end.X - start.X + 1, end.Y - start.Y + 1);
 
         public Point GetMiddle()
         {
-            return new Point(p.X+100, p.Y+100);
+            return new Point(start.X + (int) Math.Round((double) (end.X-start.X) / 2), start.Y + (int) Math.Round((double)(end.Y - start.Y) / 2));
         }
     }
 }

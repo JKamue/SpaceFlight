@@ -26,6 +26,6 @@ namespace SpaceFlight.Screen.Calculator
         private int RoundToInt(float f) => (int)Math.Round(f);
 
         public int ProjectXCoordinate(int x) => RoundToInt((_pMP.X + (x - _rMP.X)) * _factor);
-        public int ProjectYCoordinate(int y) => RoundToInt((_pMP.Y + (y - _rMP.Y)) * _factor);
+        public int ProjectYCoordinate(int y) => RoundToInt((_pMP.Y + (y - _rMP.Y) * -1) * _factor);
     }
 }
