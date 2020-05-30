@@ -111,9 +111,9 @@ namespace SpaceFlight.Screen
             {
                 zoom += (float) 0.1;
             } 
-            else if (e.Delta < 0 && zoom - 0.1 >= 0.2)
+            else if (e.Delta < 0 && zoom - 0.05 >= 0.02)
             {
-                zoom -= (float) 0.1;
+                zoom -= (float) 0.05;
             }
         }
 

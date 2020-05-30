@@ -19,9 +19,11 @@ namespace SpaceFlight
         public SimulationScreen()
         {
             InitializeComponent();
-            var s = new ScreenController(SimulationPanel, Color.White, 1, lblDebug);
-            s.AddPanelObject(new Terrain(20, Color.Green));
-            s.SetMainObject(new TestObject(new Point(300, 400), new Point(340, 400), 6, 0));
+            var s = new ScreenController(SimulationPanel, Color.White, 3, lblDebug);
+            s.AddPanelObject(new Terrain(new Point(750, -5000), 5000, Color.Green));
+            s.AddPanelObject(new Terrain(new Point(6000, 3000), 3000, Color.Blue));
+            s.AddPanelObject(new Terrain(new Point(25000, -8000), 13000, Color.Yellow));
+            s.SetMainObject(new TestObject(new Point(300, 400), new Point(340, 400), 20, 0));
         }
     }
 }
