@@ -97,7 +97,7 @@ namespace SpaceFlight.Screen
             if (!panelBounds.IntersectsWith(o.GetBounds()))
                 return;
 
-            o.Draw(_graphicsBuffer.Graphics, positionCalculator);
+            o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds);
             objectCounter++;
         }
 

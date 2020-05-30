@@ -39,7 +39,7 @@ namespace SpaceFlight.Screen.ScreenObjects
             end.Y += SpeedY;
         }
 
-        public void Draw(Graphics g, IProjectionCalculator ppCalc)
+        public void Draw(Graphics g, IProjectionCalculator ppCalc, Rectangle screen)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;

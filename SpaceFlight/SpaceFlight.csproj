@@ -51,6 +51,8 @@
     <Compile Include="Screen\Calculator\IProjectionCalculator.cs" />
     <Compile Include="Screen\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
+    <Compile Include="Screen\ScreenObjects\Terrain\Noise.cs" />
+    <Compile Include="Screen\ScreenObjects\Terrain\Terrain.cs" />
     <Compile Include="Screen\ScreenObjects\TestObject.cs" />
     <Compile Include="Screen\Calculator\ProjectedPositionCalculator.cs" />
     <Compile Include="SimulationScreen.cs">
