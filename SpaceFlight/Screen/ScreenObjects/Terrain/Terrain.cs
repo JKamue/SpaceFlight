@@ -35,7 +35,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
             for (int i = 0; i < screen.Width; i++)
             {
                 var x = screen.X + i;
-                var y = (int)Math.Round(Noise.Generate(x * 0.005f) * 128 + 128 / 2.5);
+                var y = (int)Math.Round(Noise.Generate(x * 0.0025f) * 128 + 128 / 2.5);
                 points.Add(ppCalc.ProjectPoint(new Point(x, y)));
 
                 if (y > height)
