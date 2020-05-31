@@ -1,5 +1,6 @@
 ﻿using SpaceFlight.Objects;
 using SpaceFlight.Screen.Calculator;
+using SpaceFlight.Screen.ScreenObjects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

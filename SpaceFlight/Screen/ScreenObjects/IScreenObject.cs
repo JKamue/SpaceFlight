@@ -1,7 +1,7 @@
 ﻿using SpaceFlight.Screen.Calculator;
 using System.Drawing;
 
-namespace SpaceFlight.Screen
+namespace SpaceFlight.Screen.ScreenObjects
 {
     interface IScreenObject
     {
