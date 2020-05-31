@@ -10,5 +10,7 @@ namespace SpaceFlight.Screen.Calculator
         int ProjectXCoordinate(float x);
         int ProjectYCoordinate(int y);
         int ProjectYCoordinate(float y);
+
+        int RoundToInt(float n);
     }
 }
