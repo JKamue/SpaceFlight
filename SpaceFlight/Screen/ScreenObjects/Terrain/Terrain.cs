@@ -15,9 +15,9 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
         private int height = 100;
         private Color color;
         private double radius;
-        private Point position;
+        private PointF position;
 
-        public Terrain(Point position, double radius, Color color)
+        public Terrain(PointF position, double radius, Color color)
         {
             this.color = color;
             this.radius = radius;
@@ -27,11 +27,11 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
             Noise.Seed = rnd.Next(0, 3000);
         }
 
-        public void Draw(Graphics g, IProjectionCalculator ppCalc, Rectangle screen)
+        public void Draw(Graphics g, IProjectionCalculator ppCalc, RectangleF screen)
         {
             height = 0;
 
-            var points = new List<Point>();
+            var points = new List<PointF>();
 
 
             for (int i = 0; i < 2 * Math.PI * radius; i+=5)
@@ -48,25 +48,25 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
             g.FillPolygon(b, points.ToArray());
         }
 
-        private Point ProjectOntoCircle(Point p)
+        private PointF ProjectOntoCircle(Point p)
         {
             var U = 2 * Math.PI * radius;
             var w = 360 * ((double) p.X / U);
-            var addX = (int) Math.Round((radius + p.Y) * Math.Sin(w * Math.PI / 180));
-            var addY = (int)Math.Round((radius + p.Y) * Math.Cos(w * Math.PI / 180));
+            var addX = (radius + p.Y) * Math.Sin(w * Math.PI / 180);
+            var addY = (radius + p.Y) * Math.Cos(w * Math.PI / 180);
 
-            return new Point(position.X + addX, position.Y + addY);
+            return new PointF( (float) (position.X + addX), (float) (position.Y + addY));
         }
 
-        public Rectangle GetBounds()
+        public RectangleF GetBounds()
         {
-            var x = (int)Math.Round(position.X - radius - 80);
-            var y = (int)Math.Round(position.Y - radius - 80);
-            var size = (int)Math.Round(radius * 2 + 160);
+            var x = position.X - radius - 80;
+            var y = position.Y - radius - 80;
+            var size = radius * 2 + 160;
 
-            return new Rectangle(x, y, size, size);
+            return new RectangleF((float) x, (float) y, (float) size, (float) size);
         }
 
-        public Point GetMiddle() => position;
+        public PointF GetMiddle() => position;
     }
 }

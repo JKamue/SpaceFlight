@@ -10,22 +10,27 @@ namespace SpaceFlight.Screen.Calculator
 {
     class ProjectedPositionCalculator : IProjectionCalculator
     {
-        private readonly Point _rMP;
+        private readonly PointF _rMP;
         private readonly Point _pMP;
         private readonly float _factor;
 
-        public ProjectedPositionCalculator(Point realMainPosition, Point projectedMainPosition, float scalingFactor)
+        public ProjectedPositionCalculator(PointF realMainPosition, Point projectedMainPosition, float scalingFactor)
         {
             _rMP = realMainPosition;
             _pMP = projectedMainPosition;
             _factor = scalingFactor;
         }
 
-        public Point ProjectPoint(Point p) => new Point( ProjectXCoordinate(p.X), ProjectYCoordinate(p.Y));
+        public Point ProjectPoint(Point p) => ProjectPoint(p);
+        public Point ProjectPoint(PointF p) => new Point(ProjectXCoordinate(p.X), ProjectYCoordinate(p.Y));
+
+        public int ProjectXCoordinate(float x) => RoundToInt((_pMP.X + (x - _rMP.X)) * _factor);
+        public int ProjectXCoordinate(int x) => ProjectXCoordinate((float)x);
+
+        public int ProjectYCoordinate(int y) => ProjectYCoordinate((float) y);
+        public int ProjectYCoordinate(float y) => RoundToInt((_pMP.Y + (y - _rMP.Y) * -1) * _factor);
+
 
         private int RoundToInt(float f) => (int)Math.Round(f);
-
-        public int ProjectXCoordinate(int x) => RoundToInt((_pMP.X + (x - _rMP.X)) * _factor);
-        public int ProjectYCoordinate(int y) => RoundToInt((_pMP.Y + (y - _rMP.Y) * -1) * _factor);
     }
 }

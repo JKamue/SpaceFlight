@@ -60,7 +60,7 @@ namespace SpaceFlight.Screen
             objectCounter = 0;
 
             IProjectionCalculator positionCalculator;
-            Rectangle drawRectangle;
+            RectangleF drawRectangle;
 
             if (mainObject != null)
             {
@@ -89,12 +89,12 @@ namespace SpaceFlight.Screen
                 WriteDebugText();
         }
 
-        private Rectangle CalculateDisplayRectangle(Point realCenter, Point projectedCenter, float percent)
+        private RectangleF CalculateDisplayRectangle(PointF realCenter, Point projectedCenter, float percent)
         {
-            return new Rectangle(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y, (int) Math.Round(_panel.Width * percent), (int)Math.Round(_panel.Height * percent));
+            return new RectangleF(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y, (int) Math.Round(_panel.Width * percent), (int)Math.Round(_panel.Height * percent));
         }
 
-        private void DrawObject(IScreenObject o, Rectangle panelBounds, IProjectionCalculator positionCalculator)
+        private void DrawObject(IScreenObject o, RectangleF panelBounds, IProjectionCalculator positionCalculator)
         {
             var objectBounds = o.GetBounds();
 

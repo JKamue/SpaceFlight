@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\FrameRateCounter.cs" />
-    <Compile Include="Screen\Calculator\EmptyProjectionCalculator.cs" />
     <Compile Include="Screen\Calculator\IProjectionCalculator.cs" />
     <Compile Include="Screen\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />

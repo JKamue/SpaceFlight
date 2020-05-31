@@ -13,12 +13,12 @@ namespace SpaceFlight.Screen.ScreenObjects
 {
     class TestObject : IScreenObject
     {
-        private Point start;
-        private Point end;
-        private int SpeedX;
-        private int SpeedY;
+        private PointF start;
+        private PointF end;
+        private float SpeedX;
+        private float SpeedY;
 
-        public TestObject(Point start, Point end, int speedX, int speedY)
+        public TestObject(PointF start, PointF end, float speedX, float speedY)
         {
             this.start = start;
             this.end = end;
@@ -39,18 +39,21 @@ namespace SpaceFlight.Screen.ScreenObjects
             end.Y += SpeedY;
         }
 
-        public void Draw(Graphics g, IProjectionCalculator ppCalc, Rectangle screen)
+        public void Draw(Graphics g, IProjectionCalculator ppCalc, RectangleF screen)
         {
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;
             g.DrawLine(pen, ppCalc.ProjectXCoordinate(start.X), ppCalc.ProjectYCoordinate(start.Y), ppCalc.ProjectXCoordinate(end.X), ppCalc.ProjectYCoordinate(end.Y));
         }
 
-        public Rectangle GetBounds() => new Rectangle(start.X, start.Y, end.X - start.X + 1, end.Y - start.Y + 1);
+        public RectangleF GetBounds() => new RectangleF(start.X, start.Y, end.X - start.X + 1, end.Y - start.Y + 1);
 
-        public Point GetMiddle()
+        public PointF GetMiddle()
         {
-            return new Point(start.X + (int) Math.Round((double) (end.X-start.X) / 2), start.Y + (int) Math.Round((double)(end.Y - start.Y) / 2));
+            return new PointF(
+                start.X + ((end.X-start.X) / 2),
+                start.Y + ((end.Y - start.Y) / 2)
+            );
         }
     }
 }
