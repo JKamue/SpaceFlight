@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpaceFlight.Screen.Calculator;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
 {
     interface IRocketSprite
     {
-        List<PointF> GetPointList(PointF position, int height);
+        List<RocketSpritePiece> GetPointList(PointF position, int height, IProjectionCalculator ppCalc);
 
         RectangleF GetBounds(PointF position, int height);
     }

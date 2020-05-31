@@ -45,17 +45,12 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             var upperPoint = new PointF(position.X, position.Y + height / 2);
             var lowerPoint = new PointF(position.X, position.Y - height / 2);
 
-            g.DrawPolygon(pen, ProjectPointList(sprite.GetPointList(position, height), ppCalc).ToArray());
-        }
+            var spritePieces = sprite.GetPointList(position, height, ppCalc);
 
-        private List<Point> ProjectPointList(List<PointF> points, IProjectionCalculator ppCalc)
-        {
-            var projected = new List<Point>();
-            foreach (PointF p in points)
+            foreach (RocketSpritePiece piece in spritePieces)
             {
-                projected.Add(ppCalc.ProjectPoint(p));
+                g.FillPolygon(piece.Brush, piece.Points.ToArray());
             }
-            return projected;
         }
 
         public RectangleF GetBounds() => sprite.GetBounds(position, height);
