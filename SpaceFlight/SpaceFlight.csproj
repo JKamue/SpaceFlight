@@ -51,6 +51,8 @@
     <Compile Include="Screen\ScreenObjects\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Rocket.cs" />
+    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\BasicRocketSprite.cs" />
+    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\IRocketSprite.cs" />
     <Compile Include="Screen\ScreenObjects\Terrain\Noise.cs" />
     <Compile Include="Screen\ScreenObjects\Terrain\Terrain.cs" />
     <Compile Include="Screen\ScreenObjects\TestObject.cs" />

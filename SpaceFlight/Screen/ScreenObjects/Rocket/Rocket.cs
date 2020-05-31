@@ -1,5 +1,7 @@
 ﻿using SpaceFlight.Screen.Calculator;
+using SpaceFlight.Screen.ScreenObjects.Rocket.Sprites;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Timer = System.Windows.Forms.Timer;
 
@@ -12,14 +14,16 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
         private float speedY;
         private float angle;
         private int height;
+        private IRocketSprite sprite;
 
-        public Rocket(PointF position, float speedX, float speedY, float angle, int height)
+        public Rocket(PointF position, float speedX, float speedY, float angle, int height, IRocketSprite sprite)
         {
             this.position = position;
             this.speedX = speedX;
             this.speedY = speedY;
             this.angle = angle;
             this.height = height;
+            this.sprite = sprite;
 
             var t = new Timer();
             t.Interval = 10;
@@ -41,10 +45,20 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             var upperPoint = new PointF(position.X, position.Y + height / 2);
             var lowerPoint = new PointF(position.X, position.Y - height / 2);
 
-            g.DrawLine(pen, ppCalc.ProjectPoint(upperPoint), ppCalc.ProjectPoint(lowerPoint));
+            g.DrawPolygon(pen, ProjectPointList(sprite.GetPointList(position, height), ppCalc).ToArray());
         }
 
-        public RectangleF GetBounds() => new RectangleF(position.X - 50, position.Y - height / 2, 100, height);
+        private List<Point> ProjectPointList(List<PointF> points, IProjectionCalculator ppCalc)
+        {
+            var projected = new List<Point>();
+            foreach (PointF p in points)
+            {
+                projected.Add(ppCalc.ProjectPoint(p));
+            }
+            return projected;
+        }
+
+        public RectangleF GetBounds() => sprite.GetBounds(position, height);
 
         public PointF GetMiddle() => position;
     }

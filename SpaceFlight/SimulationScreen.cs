@@ -1,6 +1,7 @@
 ﻿using SpaceFlight.Screen;
 using SpaceFlight.Screen.ScreenObjects;
 using SpaceFlight.Screen.ScreenObjects.Rocket;
+using SpaceFlight.Screen.ScreenObjects.Rocket.Sprites;
 using SpaceFlight.Screen.ScreenObjects.Terrain;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,12 +14,9 @@ namespace SpaceFlight
         {
             InitializeComponent();
             var s = new ScreenController(SimulationPanel, Color.White, 3, lblDebug);
-            s.AddPanelObject(new Terrain(new Point(750, -5000), 5000, Color.Green));
-            s.AddPanelObject(new Terrain(new Point(6000, 3000), 3000, Color.Blue));
-            s.AddPanelObject(new Terrain(new Point(25000, -8000), 13000, Color.Yellow));
-            s.AddPanelObject(new TestObject(new Point(300, 410), new Point(340, 410), 19, 0));
-            s.SetMainObject(new Rocket(new Point(300, 400), 20, 0, 0, 50));
-            s.AddPanelObject(new TestObject(new Point(300, 415), new Point(340, 415), 21, 0));
+            s.AddPanelObject(new Terrain(new Point(750, -4300), 5000, Color.Green));
+            s.AddPanelObject(new Terrain(new Point(3000, 5000), 3000, Color.Blue));
+            s.SetMainObject(new Rocket(new Point(300, 400), 0, 2, 0, 50, new BasicRocketSprite()));
         }
     }
 }
