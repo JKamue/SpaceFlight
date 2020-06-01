@@ -45,7 +45,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             var upperPoint = new PointF(position.X, position.Y + height / 2);
             var lowerPoint = new PointF(position.X, position.Y - height / 2);
 
-            var spritePieces = sprite.GetPointList(position, height, ppCalc);
+            var spritePieces = sprite.GetPointList(position, height, ppCalc, new AngularCalculator(angle, position));
 
             foreach (RocketSpritePiece piece in spritePieces)
             {

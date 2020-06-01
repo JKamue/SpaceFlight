@@ -10,7 +10,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
 {
     interface IRocketSprite
     {
-        List<RocketSpritePiece> GetPointList(PointF position, int height, IProjectionCalculator ppCalc);
+        List<RocketSpritePiece> GetPointList(PointF position, int height, IProjectionCalculator ppCalc, AngularCalculator aCalc);
 
         RectangleF GetBounds(PointF position, int height);
     }

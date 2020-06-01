@@ -47,11 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\FrameRateCounter.cs" />
+    <Compile Include="Screen\Calculator\AngularCalculator.cs" />
     <Compile Include="Screen\Calculator\IProjectionCalculator.cs" />
     <Compile Include="Screen\ScreenObjects\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Rocket.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Sprites\BasicRocketSprite.cs" />
+    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\FalconNine.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Sprites\IRocketSprite.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Sprites\RocketSpritePiece.cs" />
     <Compile Include="Screen\ScreenObjects\Terrain\Noise.cs" />

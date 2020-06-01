@@ -104,7 +104,7 @@ namespace SpaceFlight.Screen
 
         private void Scroll_Event(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (e.Delta > 0 && zoom + 0.1 <= 3)
+            if (e.Delta > 0 && zoom + 0.1 <= 15)
             {
                 zoom += (float) 0.1;
             } 
