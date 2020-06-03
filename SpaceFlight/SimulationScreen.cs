@@ -19,7 +19,7 @@ namespace SpaceFlight
             s.AddPanelObject(new Terrain(new Point(750, -4300), 5000, Color.Green));
             s.AddPanelObject(new Terrain(new Point(3000, 5000), 3000, Color.Blue));
 
-            var inf = RocketInformation.LoadFromName("");
+            var inf = RocketInformation.LoadFromName("falcon-9-1.2");
 
             s.SetMainObject(new Rocket(new Point(300, 400), 0, 1, 0, inf));
             s.AddPanelObject(new Rocket(new Point(330, 400), 0.1F, 1, -0.5F, inf));

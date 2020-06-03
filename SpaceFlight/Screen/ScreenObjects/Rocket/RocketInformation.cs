@@ -25,7 +25,11 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
 
         public static RocketInformation LoadFromName(string name)
         {
-            return JsonConvert.DeserializeObject<RocketInformation>(File.ReadAllText($@"{Directory.GetCurrentDirectory()}/Rockets/falcon-9-1.2.json"));
+            var path = $@"{Directory.GetCurrentDirectory()}/Rockets/{name}.json";
+            if (!File.Exists(path))
+                throw new FileNotFoundException("Configuration file for " + name + " could not be found!");
+
+            return JsonConvert.DeserializeObject<RocketInformation>(File.ReadAllText($@"{Directory.GetCurrentDirectory()}/Rockets/{name}.json"));
         }
 
         public RocketInformation(string model, string variant, string manufacturer, List<string> names, float height, float width,
