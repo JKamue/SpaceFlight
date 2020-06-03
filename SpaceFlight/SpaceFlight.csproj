@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,9 +55,8 @@
     <Compile Include="Screen\ScreenObjects\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Rocket.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\BasicRocketSprite.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\FalconNine.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\IRocketSprite.cs" />
+    <Compile Include="Screen\ScreenObjects\Rocket\RocketInformation.cs" />
+    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\RocketSprite.cs" />
     <Compile Include="Screen\ScreenObjects\Rocket\Sprites\RocketSpritePiece.cs" />
     <Compile Include="Screen\ScreenObjects\Terrain\Noise.cs" />
     <Compile Include="Screen\ScreenObjects\Terrain\Terrain.cs" />
@@ -81,6 +83,7 @@
     <EmbeddedResource Include="SimulationScreen.resx">
       <DependentUpon>SimulationScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,6 +106,10 @@
   <ItemGroup>
     <None Include="Resources\Rocket_symbol.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Rockets\falcon-9-1.2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

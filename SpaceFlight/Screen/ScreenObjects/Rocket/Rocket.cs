@@ -13,17 +13,16 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
         private float speedX;
         private float speedY;
         private float angle;
-        private int height;
-        private IRocketSprite sprite;
+        private RocketInformation rocketInf;
+        private RocketSprite sprite;
 
-        public Rocket(PointF position, float speedX, float speedY, float angle, int height, IRocketSprite sprite)
+        public Rocket(PointF position, float speedX, float speedY, float angle, RocketInformation rocketInf)
         {
             this.position = position;
             this.speedX = speedX;
             this.speedY = speedY;
             this.angle = angle;
-            this.height = height;
-            this.sprite = sprite;
+            sprite = rocketInf.GetRocketSprite();
 
             var t = new Timer();
             t.Interval = 10;
@@ -42,10 +41,8 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
             pen.Width = 1;
 
-            var upperPoint = new PointF(position.X, position.Y + height / 2);
-            var lowerPoint = new PointF(position.X, position.Y - height / 2);
-
-            var spritePieces = sprite.GetPointList(position, height, ppCalc, new AngularCalculator(angle, position));
+            var spritePieces =
+                sprite.CalculatePolygons(position, ppCalc, new AngularCalculator(angle, position));
 
             foreach (RocketSpritePiece piece in spritePieces)
             {
@@ -53,7 +50,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             }
         }
 
-        public RectangleF GetBounds() => sprite.GetBounds(position, height);
+        public RectangleF GetBounds() => sprite.GetBounds(position);
 
         public PointF GetMiddle() => position;
     }
