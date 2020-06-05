@@ -1,0 +1,449 @@
+﻿{
+  "Model": "Atlas V",
+  "Variant": "401",
+  "Manufacturer": "ULA",
+  "Names": [
+    "AV-078",
+    "AV-074",
+    "AV-070",
+    "AV-068",
+    "AV-066",
+    "AV-062",
+    "AV-061",
+    "AV-060"
+  ],
+  "Height": 56,
+  "Width": 4,
+  "Thrust": 10600,
+  "Weight": 330388,
+  "FuelWeight": 304919,
+  "Sprite": [
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.7,
+          "Y": 3.5
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 4.8
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 16.5
+        },
+        {
+          "IsEmpty": false,
+          "X": -2,
+          "Y": 17
+        },
+        {
+          "IsEmpty": false,
+          "X": -2,
+          "Y": 21.7
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.4,
+          "Y": 27.4
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.3,
+          "Y": 27.6
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.2,
+          "Y": 27.75
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.1,
+          "Y": 27.83
+        },
+        {
+          "IsEmpty": false,
+          "X": 0,
+          "Y": 27.85
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.1,
+          "Y": 27.83
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.2,
+          "Y": 27.75
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.3,
+          "Y": 27.6
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.4,
+          "Y": 27.4
+        },
+        {
+          "IsEmpty": false,
+          "X": 2,
+          "Y": 21.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 2,
+          "Y": 17
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 16.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 4.8
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": 3.5
+        }
+      ],
+      "Brush": {
+        "Color": "White"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.7,
+          "Y": 3.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.1,
+          "Y": 3.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.1,
+          "Y": -14
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.6,
+          "Y": -15.3
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.6,
+          "Y": -22.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": -22.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": -22.9
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.7,
+          "Y": -22.9
+        }
+      ],
+      "Brush": {
+        "Color": "Orange"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 1.1,
+          "Y": 3.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.1,
+          "Y": -14
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.6,
+          "Y": -15.3
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.6,
+          "Y": -22.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": -22.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": -22.9
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": 3.5
+        }
+      ],
+      "Brush": {
+        "Color": "212, 123, 72"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.7,
+          "Y": -22.9
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.6,
+          "Y": -23.2
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.6,
+          "Y": -24.2
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": -24.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": -24.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.6,
+          "Y": -24.2
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.6,
+          "Y": -23.2
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": -22.9
+        }
+      ],
+      "Brush": {
+        "Color": "186, 119, 81"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": -24.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": -24.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": -26.8
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": -26.8
+        }
+      ],
+      "Brush": {
+        "Color": "White"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 0.9,
+          "Y": -26.8
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.9,
+          "Y": -26.8
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.7,
+          "Y": -27.1
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.7,
+          "Y": -27.1
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -0.45,
+          "Y": -27.1
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.7,
+          "Y": -28
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.7,
+          "Y": -28
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.45,
+          "Y": -27.1
+        }
+      ],
+      "Brush": {
+        "Color": "Gray"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.7,
+          "Y": 3.45
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": 3.45
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.7,
+          "Y": 3.55
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.7,
+          "Y": 3.55
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 4.85
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 4.85
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 4.75
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 4.75
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -2,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 2,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 2,
+          "Y": 16.95
+        },
+        {
+          "IsEmpty": false,
+          "X": -2,
+          "Y": 16.95
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 8.85
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 8.85
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 8.75
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 8.75
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    }
+  ]
+}

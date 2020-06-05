@@ -107,6 +107,9 @@
     <None Include="Resources\Rocket_symbol.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Rockets\atlas-V-401.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Rockets\falcon-9-1.2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
