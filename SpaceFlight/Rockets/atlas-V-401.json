@@ -287,50 +287,50 @@
       "Points": [
         {
           "IsEmpty": false,
-          "X": 0.9,
+          "X": 0.35,
           "Y": -26.8
         },
         {
           "IsEmpty": false,
-          "X": -0.9,
+          "X": 0.1,
+          "Y": -28
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": -28
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.25,
           "Y": -26.8
-        },
-        {
-          "IsEmpty": false,
-          "X": -0.7,
-          "Y": -27.1
-        },
-        {
-          "IsEmpty": false,
-          "X": 0.7,
-          "Y": -27.1
         }
       ],
       "Brush": {
-        "Color": "Black"
+        "Color": "Gray"
       }
     },
     {
       "Points": [
         {
           "IsEmpty": false,
-          "X": -0.45,
-          "Y": -27.1
+          "X": -0.35,
+          "Y": -26.8
         },
         {
           "IsEmpty": false,
-          "X": -0.7,
+          "X": -0.1,
           "Y": -28
         },
         {
           "IsEmpty": false,
-          "X": 0.7,
+          "X": -1.5,
           "Y": -28
         },
         {
           "IsEmpty": false,
-          "X": 0.45,
-          "Y": -27.1
+          "X": -1.25,
+          "Y": -26.8
         }
       ],
       "Brush": {
@@ -423,6 +423,33 @@
         {
           "IsEmpty": false,
           "X": -1.5,
+          "Y": 16.35
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 16.35
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": 16.45
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": 16.45
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.5,
           "Y": 8.85
         },
         {
@@ -443,6 +470,276 @@
       ],
       "Brush": {
         "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -2,
+          "Y": 21.75
+        },
+        {
+          "IsEmpty": false,
+          "X": 2,
+          "Y": 21.75
+        },
+        {
+          "IsEmpty": false,
+          "X": 2,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": -2,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "Black"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 1.8,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.8,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.6,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.6,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 1.4,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.4,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.2,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.2,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 1.0,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.0,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.8,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.8,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 0.6,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.6,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.4,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.4,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 0.2,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.2,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 0,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": 0,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -0.2,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.2,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.4,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.4,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -0.6,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.6,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.8,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.8,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.0,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.0,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.2,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.2,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.4,
+          "Y": 21.65
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.4,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.6,
+          "Y": 17.05
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.6,
+          "Y": 21.65
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 232"
       }
     }
   ]
