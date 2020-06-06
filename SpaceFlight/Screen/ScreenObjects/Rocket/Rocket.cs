@@ -66,7 +66,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
                 var endPoint = new PointF(position.X + thrustArea.Stop.X, position.Y + thrustArea.Stop.Y);
                 points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + thrustArea.Start.X, position.Y + thrustArea.Stop.Y))));
                 points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + thrustArea.Stop.X, position.Y + thrustArea.Stop.Y))));
-                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + width / 2, position.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * thrustPercentage * (float) GetRandomNumber(3,5)))));
+                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + width / 2, position.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * thrustPercentage * (float) GetRandomNumber(4.5,5.5)))));
 
 
                 g.FillPolygon(new SolidBrush(Color.OrangeRed), points.ToArray());
