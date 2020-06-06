@@ -23,7 +23,7 @@ namespace SpaceFlight.Objects.Terrain
             Noise.Seed = rnd.Next(0, 3000);
         }
 
-        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool inf)
         {
             height = 0;
 

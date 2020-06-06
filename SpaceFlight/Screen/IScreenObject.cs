@@ -6,7 +6,7 @@ namespace SpaceFlight.Screen
     interface IScreenObject
     {
         RectangleF GetBounds();
-        void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen);
+        void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool information);
         PointF GetMiddle();
         int GetPriority();
     }

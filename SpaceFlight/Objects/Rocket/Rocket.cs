@@ -19,6 +19,7 @@ namespace SpaceFlight.Objects.Rocket
         private float restFuelWeight;
         private bool engineRunning;
 
+        private readonly string _name;
         private readonly RocketInformation _rocketInf;
         private readonly RocketSprite _sprite;
 
@@ -44,6 +45,10 @@ namespace SpaceFlight.Objects.Rocket
             _checkTimer.Tick += CalculateVelocity;
             _checkTimer.Tick += CalculateFuelUsage;
             _checkTimer.Enabled = true;
+
+            var rnd = new Random();
+            int r = rnd.Next(rocketInf.Names.Count);
+            this._name = rocketInf.Names[r];
         }
 
         private void CalculateFuelUsage(object sender, EventArgs e)
@@ -69,7 +74,7 @@ namespace SpaceFlight.Objects.Rocket
             position.Y += speedY;
         }
 
-        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool showStats)
         {
             var aCalc = new AngularCalculator(angle, position);
             var spritePieces =
@@ -80,8 +85,26 @@ namespace SpaceFlight.Objects.Rocket
                 g.FillPolygon(piece.Brush, piece.Points.ToArray());
             }
 
+            if (showStats)
+                DrawStats(g, ppCalc);
+            
             if (engineRunning)
                 DrawFlames(g, ppCalc, aCalc);
+        }
+
+        private void DrawStats(Graphics g, ProjectedPositionCalculator ppCalc)
+        {
+            var point = position;
+            point.Y += _rocketInf.Height / 2;
+            point.X += 5;
+            g.DrawString( _rocketInf.Model + " " + _rocketInf.Variant, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            point.Y -= 5;
+            g.DrawString(_name + " " + _rocketInf.Manufacturer, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            point.Y -= 5;
+            g.DrawString(Math.Round(restFuelWeight /_rocketInf.FuelWeight * 100).ToString() + "% Fuel", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            point.Y -= 5;
+            g.DrawString((restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight).ToString() + "kg", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            point.Y -= 5;
         }
 
         private void DrawFlames(Graphics g, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)

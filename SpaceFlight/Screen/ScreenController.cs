@@ -28,6 +28,8 @@ namespace SpaceFlight.Screen
 
         private Point staticCenter;
 
+        public bool ShowInfo;
+
         public ScreenController(Panel panel, Color color, float zoom, Label label = null)
         {
             _panel = panel;
@@ -52,6 +54,7 @@ namespace SpaceFlight.Screen
 
             _panel.MouseWheel += Scroll_Event;
             staticCenter = new Point(250,750);
+            ShowInfo = false;
         }
 
         private void Redraw(object sender, EventArgs e)
@@ -98,7 +101,7 @@ namespace SpaceFlight.Screen
             if (!panelBounds.IntersectsWith(objectBounds) && !panelBounds.Contains(objectBounds) && !objectBounds.Contains(panelBounds))
                 return;
 
-            o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds);
+            o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds, ShowInfo);
             objectCounter++;
         }
 
