@@ -13,10 +13,24 @@
     "B1062"
   ],
   "Height": 70,
-  "Width":  5,
+  "Width": 5,
   "Thrust": 7686,
   "Weight": 549054,
   "FuelWeight": 411000,
+  "ThrustAreas": [
+    {
+      "Start": {
+        "IsEmpty": false,
+        "X": -1.75,
+        "Y": -35.3
+      },
+      "Stop": {
+        "IsEmpty": false,
+        "X": 1.75,
+        "Y": -35.3
+      }
+    }
+  ],
   "Sprite": [
     {
       "Points": [

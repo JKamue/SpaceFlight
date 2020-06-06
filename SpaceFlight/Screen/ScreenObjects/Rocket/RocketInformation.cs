@@ -20,7 +20,9 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
         public float Thrust { get; }
         public float Weight { get; }
         public float FuelWeight { get; }
-        public List<RocketSpritePiece> Sprite { get;  }
+        public List<RocketSpritePiece> Sprite { get; }
+
+        public List<ThrustArea> ThrustAreas;
 
 
         public static RocketInformation LoadFromName(string name)
@@ -33,7 +35,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
         }
 
         public RocketInformation(string model, string variant, string manufacturer, List<string> names, float height, float width,
-            float thrust, float weight, float fuelWeight, List<RocketSpritePiece> sprite)
+            float thrust, float weight, float fuelWeight, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
         {
             Model = model;
             Variant = variant;
@@ -45,6 +47,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             Weight = weight;
             FuelWeight = fuelWeight;
             Sprite = sprite;
+            ThrustAreas = thrustAreas;
         }
 
         public RocketSprite GetRocketSprite() =>  new RocketSprite(Height, Width, Sprite);

@@ -17,6 +17,32 @@
   "Thrust": 10600,
   "Weight": 330388,
   "FuelWeight": 304919,
+  "ThrustAreas": [
+    {
+      "Start": {
+        "IsEmpty": false,
+        "X": 0.1,
+        "Y": -28
+      },
+      "Stop": {
+        "IsEmpty": false,
+        "X": 1.5,
+        "Y": -28
+      }
+    },
+    {
+      "Start": {
+        "IsEmpty": false,
+        "X": -0.1,
+        "Y": -28
+      },
+      "Stop": {
+        "IsEmpty": false,
+        "X": -1.5,
+        "Y": -28
+      }
+    }
+  ],
   "Sprite": [
     {
       "Points": [
