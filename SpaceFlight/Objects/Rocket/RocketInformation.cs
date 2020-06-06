@@ -16,6 +16,7 @@ namespace SpaceFlight.Objects.Rocket
         public float Thrust { get; }
         public float Weight { get; }
         public float FuelWeight { get; }
+        public float BurnTime { get; }
         public List<RocketSpritePiece> Sprite { get; }
 
         public List<ThrustArea> ThrustAreas;
@@ -31,7 +32,7 @@ namespace SpaceFlight.Objects.Rocket
         }
 
         public RocketInformation(string model, string variant, string manufacturer, List<string> names, float height, float width,
-            float thrust, float weight, float fuelWeight, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
+            float thrust, float weight, float fuelWeight, float burnTime, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
         {
             Model = model;
             Variant = variant;
@@ -44,6 +45,7 @@ namespace SpaceFlight.Objects.Rocket
             FuelWeight = fuelWeight;
             Sprite = sprite;
             ThrustAreas = thrustAreas;
+            BurnTime = burnTime;
         }
 
         public RocketSprite GetRocketSprite() =>  new RocketSprite(Height, Width, Sprite);

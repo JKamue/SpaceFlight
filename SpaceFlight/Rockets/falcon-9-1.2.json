@@ -17,6 +17,7 @@
   "Thrust": 7686,
   "Weight": 549054,
   "FuelWeight": 411000,
+  "BurnTime": 162,
   "ThrustAreas": [
     {
       "Start": {
