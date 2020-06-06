@@ -28,6 +28,8 @@ namespace SpaceFlight.Screen
         private IScreenObject mainObject = null;
         private readonly Timer _drawTimer;
 
+        private Point staticCenter;
+
         public ScreenController(Panel panel, Color color, float zoom, Label label = null)
         {
             _panel = panel;
@@ -51,6 +53,7 @@ namespace SpaceFlight.Screen
             _drawTimer.Start();
 
             _panel.MouseWheel += Scroll_Event;
+            staticCenter = new Point(250,750);
         }
 
         private void Redraw(object sender, EventArgs e)
@@ -73,8 +76,9 @@ namespace SpaceFlight.Screen
             else
             {
                 drawRectangle = _panel.Bounds;
-                var windowCenter = new Point( (int)Math.Round((decimal) _panel.Width / 2), (int)Math.Round((decimal)_panel.Height / 2) );
-                positionCalculator = new ProjectedPositionCalculator(windowCenter, windowCenter, zoom);
+                var percent = 1 / zoom;
+                var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
+                positionCalculator = new ProjectedPositionCalculator(staticCenter, projectedCenter, zoom);
             }
 
 
