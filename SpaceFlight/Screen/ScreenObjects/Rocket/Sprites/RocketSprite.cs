@@ -39,9 +39,18 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
             return spritePieces;
         }
 
-        public RectangleF GetBounds(PointF pos)
+        public RectangleF GetBounds(PointF pos, AngularCalculator aCalc)
         {
-            return new RectangleF(pos.X - _width / 2, pos.Y - _height / 2, _width, _height);
+            var hWidth = _width / 2;
+            var hHeight = _height / 2;
+
+            var points = new List<PointF>();
+            points.Add(aCalc.Turn(new PointF(pos.X - hWidth, pos.Y - hHeight)));
+            points.Add(aCalc.Turn(new PointF(pos.X + hWidth, pos.Y - hHeight)));
+            points.Add(aCalc.Turn(new PointF(pos.X + hWidth, pos.Y + hHeight)));
+            points.Add(aCalc.Turn(new PointF(pos.X - hWidth, pos.Y + hHeight)));
+
+            return BoundsCalculator.CalculateBounds(points);
         }
 
         private PointF TurnAndProject(float x, float y, IProjectionCalculator p, AngularCalculator aCalc)

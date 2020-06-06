@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Objects\FrameRateCounter.cs" />
     <Compile Include="Screen\Calculator\AngularCalculator.cs" />
+    <Compile Include="Screen\Calculator\BoundsCalculator.cs" />
     <Compile Include="Screen\Calculator\IProjectionCalculator.cs" />
     <Compile Include="Screen\ScreenObjects\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />

@@ -38,9 +38,6 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
 
         public void Draw(Graphics g, IProjectionCalculator ppCalc, RectangleF screen)
         {
-            Pen pen = new Pen(Color.FromArgb(255, 0, 0, 0));
-            pen.Width = 1;
-
             var spritePieces =
                 sprite.CalculatePolygons(position, ppCalc, new AngularCalculator(angle, position));
 
@@ -50,7 +47,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             }
         }
 
-        public RectangleF GetBounds() => sprite.GetBounds(position);
+        public RectangleF GetBounds() => sprite.GetBounds(position, new AngularCalculator(angle, position));
 
         public PointF GetMiddle() => position;
     }

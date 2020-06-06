@@ -16,7 +16,7 @@ namespace SpaceFlight.Screen.Calculator
             _factor = scalingFactor;
         }
 
-        public Point ProjectPoint(Point p) => ProjectPoint(p);
+        public Point ProjectPoint(Point p) => ProjectPoint((PointF) p);
         public Point ProjectPoint(PointF p) => new Point(ProjectXCoordinate(p.X), ProjectYCoordinate(p.Y));
 
         public int ProjectXCoordinate(float x) => RoundToInt((_pMP.X + (x - _rMP.X)) * _factor);

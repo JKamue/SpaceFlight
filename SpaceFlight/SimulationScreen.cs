@@ -23,7 +23,7 @@ namespace SpaceFlight
             var atl = RocketInformation.LoadFromName("atlas-V-401");
 
             s.SetMainObject(new Rocket(new Point(300, 400), 0, 1, 0, inf));
-            s.AddPanelObject(new Rocket(new Point(320, 400), 0, 1, 0, atl));
+            s.AddPanelObject(new Rocket(new Point(360, 400), 0, 1, -0.5F, atl));
         }
     }
 }
