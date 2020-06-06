@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
-namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
+namespace SpaceFlight.Objects.Rocket.Sprites
 {
     public class ThrustArea
     {

@@ -6,7 +6,7 @@
 // Simplex Noise implementation offering 1D, 2D, and 3D forms w/ values in the range of 0 to 255.
 // Based on work by Heikki Törmälä (2012) and Stefan Gustavson (2006).
 
-namespace SpaceFlight.Screen.ScreenObjects.Terrain
+namespace SpaceFlight.Objects.Terrain
 {
     /// <summary>
     /// Implementation of the Perlin simplex noise, an improved Perlin noise algorithm.

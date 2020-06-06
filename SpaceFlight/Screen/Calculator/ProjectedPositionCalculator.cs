@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace SpaceFlight.Screen.Calculator
 {
-    class ProjectedPositionCalculator : IProjectionCalculator
+    class ProjectedPositionCalculator
     {
         private readonly PointF _rMP;
         private readonly Point _pMP;

@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using SpaceFlight.Screen;
 
-namespace SpaceFlight.Screen.ScreenObjects.Terrain
+namespace SpaceFlight.Objects.Terrain
 {
     class Terrain : IScreenObject
     {
@@ -22,7 +23,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
             Noise.Seed = rnd.Next(0, 3000);
         }
 
-        public void Draw(Graphics g, IProjectionCalculator ppCalc, RectangleF screen)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
             height = 0;
 

@@ -49,20 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\FrameRateCounter.cs" />
+    <Compile Include="Screen\Calculator\FrameRateCounter.cs" />
     <Compile Include="Screen\Calculator\AngularCalculator.cs" />
     <Compile Include="Screen\Calculator\BoundsCalculator.cs" />
-    <Compile Include="Screen\Calculator\IProjectionCalculator.cs" />
-    <Compile Include="Screen\ScreenObjects\IScreenObject.cs" />
+    <Compile Include="Screen\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Rocket.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\RocketInformation.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\RocketSprite.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\RocketSpritePiece.cs" />
-    <Compile Include="Screen\ScreenObjects\Rocket\Sprites\ThrustArea.cs" />
-    <Compile Include="Screen\ScreenObjects\Terrain\Noise.cs" />
-    <Compile Include="Screen\ScreenObjects\Terrain\Terrain.cs" />
-    <Compile Include="Screen\ScreenObjects\TestObject.cs" />
+    <Compile Include="Objects\Rocket\Rocket.cs" />
+    <Compile Include="Objects\Rocket\RocketInformation.cs" />
+    <Compile Include="Objects\Rocket\Sprites\RocketSprite.cs" />
+    <Compile Include="Objects\Rocket\Sprites\RocketSpritePiece.cs" />
+    <Compile Include="Objects\Rocket\Sprites\ThrustArea.cs" />
+    <Compile Include="Objects\Terrain\Noise.cs" />
+    <Compile Include="Objects\Terrain\Terrain.cs" />
     <Compile Include="Screen\Calculator\ProjectedPositionCalculator.cs" />
     <Compile Include="SimulationScreen.cs">
       <SubType>Form</SubType>
@@ -116,5 +114,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

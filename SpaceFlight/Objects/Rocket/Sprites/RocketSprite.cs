@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SpaceFlight.Screen.Calculator;
 
-namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
+namespace SpaceFlight.Objects.Rocket.Sprites
 {
     class RocketSprite
     {
@@ -21,7 +21,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
             this._spritePieces = spritePieces;
         }
 
-        public List<RocketSpritePiece> CalculatePolygons(PointF pos, IProjectionCalculator ppCalc, AngularCalculator aCalc)
+        public List<RocketSpritePiece> CalculatePolygons(PointF pos, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
         {
             var spritePieces = new List<RocketSpritePiece>();
             foreach (var spritePiece in _spritePieces)
@@ -53,7 +53,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket.Sprites
             return BoundsCalculator.CalculateBounds(points);
         }
 
-        private PointF TurnAndProject(float x, float y, IProjectionCalculator p, AngularCalculator aCalc)
+        private PointF TurnAndProject(float x, float y, ProjectedPositionCalculator p, AngularCalculator aCalc)
         {
             return p.ProjectPoint(aCalc.Turn(new PointF(x, y)));
         }

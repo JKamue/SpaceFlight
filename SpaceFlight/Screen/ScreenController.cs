@@ -1,6 +1,4 @@
-﻿using SpaceFlight.Objects;
-using SpaceFlight.Screen.Calculator;
-using SpaceFlight.Screen.ScreenObjects;
+﻿using SpaceFlight.Screen.Calculator;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -59,23 +57,20 @@ namespace SpaceFlight.Screen
         private void Redraw(object sender, EventArgs e)
         {
             objectCounter = 0;
+            var percent = 1 / zoom;
 
-            IProjectionCalculator positionCalculator;
+            ProjectedPositionCalculator positionCalculator;
             RectangleF drawRectangle;
 
             if (mainObject != null)
             {
-                var percent = 1/zoom;
-                
                 var realCenter = mainObject.GetMiddle();
                 var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
-
                 drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter, percent);
                 positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter, zoom);
             }
             else
             {
-                var percent = 1 / zoom;
                 var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
                 drawRectangle = CalculateDisplayRectangle(staticCenter, projectedCenter, percent);
                 positionCalculator = new ProjectedPositionCalculator(staticCenter, projectedCenter, zoom);
@@ -96,7 +91,7 @@ namespace SpaceFlight.Screen
             return new RectangleF(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y, (int) Math.Round(_panel.Width * percent), (int)Math.Round(_panel.Height * percent));
         }
 
-        private void DrawObject(IScreenObject o, RectangleF panelBounds, IProjectionCalculator positionCalculator)
+        private void DrawObject(IScreenObject o, RectangleF panelBounds, ProjectedPositionCalculator positionCalculator)
         {
             var objectBounds = o.GetBounds();
 

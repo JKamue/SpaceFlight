@@ -1,11 +1,12 @@
 ﻿using SpaceFlight.Screen.Calculator;
-using SpaceFlight.Screen.ScreenObjects.Rocket.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using SpaceFlight.Objects.Rocket.Sprites;
+using SpaceFlight.Screen;
 using Timer = System.Windows.Forms.Timer;
 
-namespace SpaceFlight.Screen.ScreenObjects.Rocket
+namespace SpaceFlight.Objects.Rocket
 {
     class Rocket : IScreenObject
     {
@@ -40,7 +41,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             position.Y += speedY;
         }
 
-        public void Draw(Graphics g, IProjectionCalculator ppCalc, RectangleF screen)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
             var aCalc = new AngularCalculator(angle, position);
             var spritePieces =
@@ -54,7 +55,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             DrawFlames(g, ppCalc, aCalc);
         }
 
-        private void DrawFlames(Graphics g, IProjectionCalculator ppCalc, AngularCalculator aCalc)
+        private void DrawFlames(Graphics g, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
         {
             foreach (var thrustArea in rocketInf.ThrustAreas)
             {
@@ -66,7 +67,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
                 var endPoint = new PointF(position.X + thrustArea.Stop.X, position.Y + thrustArea.Stop.Y);
                 points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + thrustArea.Start.X, position.Y + thrustArea.Stop.Y))));
                 points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + thrustArea.Stop.X, position.Y + thrustArea.Stop.Y))));
-                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + width / 2, position.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * thrustPercentage * (float) GetRandomNumber(4.5,5.5)))));
+                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + width / 2, position.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * thrustPercentage * (float) GetRandomNumber(3.5,6)))));
 
 
                 g.FillPolygon(new SolidBrush(Color.OrangeRed), points.ToArray());

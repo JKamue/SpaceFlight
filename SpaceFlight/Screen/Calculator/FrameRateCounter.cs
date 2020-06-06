@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpaceFlight.Objects
+namespace SpaceFlight.Screen.Calculator
 {
     class FrameRateCounter
     {
