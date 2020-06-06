@@ -75,9 +75,9 @@ namespace SpaceFlight.Screen
             }
             else
             {
-                drawRectangle = _panel.Bounds;
                 var percent = 1 / zoom;
                 var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
+                drawRectangle = CalculateDisplayRectangle(staticCenter, projectedCenter, percent);
                 positionCalculator = new ProjectedPositionCalculator(staticCenter, projectedCenter, zoom);
             }
 
