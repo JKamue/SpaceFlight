@@ -63,5 +63,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Terrain
         }
 
         public PointF GetMiddle() => position;
+
+        public int GetPriority() => 1;
     }
 }

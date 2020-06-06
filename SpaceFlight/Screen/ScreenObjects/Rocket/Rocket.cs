@@ -33,6 +33,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
             t.Enabled = true;
         }
 
+
         private void CalculateVelocity(object sender, EventArgs e)
         {
             position.X += speedX;
@@ -81,5 +82,7 @@ namespace SpaceFlight.Screen.ScreenObjects.Rocket
         public RectangleF GetBounds() => sprite.GetBounds(position, new AngularCalculator(angle, position));
 
         public PointF GetMiddle() => position;
+
+        public int GetPriority() => 7;
     }
 }

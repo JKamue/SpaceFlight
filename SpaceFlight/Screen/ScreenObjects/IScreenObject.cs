@@ -8,5 +8,6 @@ namespace SpaceFlight.Screen.ScreenObjects
         RectangleF GetBounds();
         void Draw(Graphics g, IProjectionCalculator ppCalc, RectangleF screen);
         PointF GetMiddle();
+        int GetPriority();
     }
 }

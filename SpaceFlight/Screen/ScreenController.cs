@@ -4,6 +4,7 @@ using SpaceFlight.Screen.ScreenObjects;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SpaceFlight.Screen
@@ -23,7 +24,7 @@ namespace SpaceFlight.Screen
         private Color color;
         private float zoom;
 
-        private readonly List<IScreenObject> _panelObjects;
+        private List<IScreenObject> _panelObjects;
         private IScreenObject mainObject = null;
         private readonly Timer _drawTimer;
 
@@ -119,7 +120,16 @@ namespace SpaceFlight.Screen
             _debugLabel.Text = $"{objectCounter} objects; {actualFramerate.Framerate} fps";
         }
 
-        public void AddPanelObject(IScreenObject o) => _panelObjects.Add(o);
+        public void AddPanelObject(IScreenObject o)
+        {
+            _panelObjects.Add(o);
+            SortObjectList();
+        }
+
+        private void SortObjectList()
+        {
+            _panelObjects = _panelObjects.OrderBy(o => o.GetPriority()).ToList();
+        }
 
         public void RemovePanelObject(IScreenObject o) => _panelObjects.RemoveAll(x => x == o);
 

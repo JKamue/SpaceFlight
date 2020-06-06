@@ -49,5 +49,7 @@ namespace SpaceFlight.Screen.ScreenObjects
                 start.Y + ((end.Y - start.Y) / 2)
             );
         }
+
+        public int GetPriority() => 10;
     }
 }
