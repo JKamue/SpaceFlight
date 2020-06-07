@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using SpaceFlight.Screen;
 
 namespace SpaceFlight.Objects.Terrain
@@ -12,6 +13,7 @@ namespace SpaceFlight.Objects.Terrain
         private Color color;
         private double radius;
         private PointF position;
+        private List<PointF> allPoints;
 
         public Terrain(PointF position, double radius, Color color)
         {
@@ -21,6 +23,18 @@ namespace SpaceFlight.Objects.Terrain
 
             var rnd = new Random(DateTime.Now.Millisecond);
             Noise.Seed = rnd.Next(0, 3000);
+
+            GenerateAllPoints();
+        }
+
+        private void GenerateAllPoints()
+        {
+            allPoints = new List<PointF>();
+            for (int i = 0; i < 2 * Math.PI * radius; i += 40)
+            {
+                var y = (int) Math.Round(Noise.Generate(i * 0.001f) * 128 + 128 / 2.5);
+                allPoints.Add(ProjectOntoCircle(new Point(i, y)));
+            }
         }
 
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool inf)
@@ -29,18 +43,102 @@ namespace SpaceFlight.Objects.Terrain
 
             var points = new List<PointF>();
 
+            var firstOutsidePoint = new PointF();
+            var preInsidePoint = new PointF();
+            var pointOutside = false;
 
-            for (int i = 0; i < 2 * Math.PI * radius; i+=5)
+            foreach(var point in allPoints)
             {
-                var y = (int)Math.Round(Noise.Generate(i * 0.001f) * 128 + 128 / 2.5);
-                points.Add(ppCalc.ProjectPoint(ProjectOntoCircle(new Point(i, y))));
+                var finalIn = false;
 
-                if (y > height)
-                    height = y;
+                if (screen.Contains(point))
+                {
+                    if (pointOutside)
+                    {
+                        finalIn = true;
+                        pointOutside = false;
+                    }
+                    else
+                    {
+                        points.Add(ppCalc.ProjectPoint(point));
+
+                        if (point.Y > height)
+                            height = (int)Math.Round(point.Y);
+                    }
+                }
+                else
+                {
+                    if (!pointOutside)
+                    {
+                        pointOutside = true;
+                        firstOutsidePoint = point;
+                        points.Add(ppCalc.ProjectPoint(point));
+                    }
+
+                    preInsidePoint = point;
+                }
+
+                if (finalIn)
+                {
+                    if (firstOutsidePoint.X == point.X || firstOutsidePoint.Y == point.Y)
+                        continue;
+
+                    if (firstOutsidePoint.X < screen.X)
+                    {
+                        if (position.Y < firstOutsidePoint.Y)
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X, screen.Y - screen.Height)));
+                        }
+                        else
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X, screen.Y + screen.Height)));
+                        }
+                    }
+                    else if (firstOutsidePoint.X > screen.X + screen.Width)
+                    {
+                        if (position.Y < firstOutsidePoint.Y)
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Width, screen.Y - screen.Height)));
+                        }
+                        else
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Width, screen.Y + screen.Height)));
+                        }
+                    }
+
+                    if (preInsidePoint.X < screen.X)
+                    {
+                        if (position.Y < preInsidePoint.Y)
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X, screen.Y - screen.Height)));
+                        }
+                        else
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X, screen.Y + screen.Height)));
+                        }
+                    }
+                    else if (preInsidePoint.X > screen.X + screen.Width)
+                    {
+                        if (position.Y < preInsidePoint.Y)
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Width, screen.Y - screen.Height)));
+
+                        }
+                        else
+                        {
+                            points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Width, screen.Y + screen.Height)));
+                        }
+                    }
+                    points.Add(ppCalc.ProjectPoint(preInsidePoint));
+                }
             }
 
-
             SolidBrush b = new SolidBrush(color);
+
+            if (points.Count == 0)
+                return;
+
+            //points.Add(ppCalc.ProjectPoint(position));
             g.FillPolygon(b, points.ToArray());
         }
 

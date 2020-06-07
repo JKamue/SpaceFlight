@@ -53,7 +53,7 @@ namespace SpaceFlight.Screen
             _drawTimer.Start();
 
             _panel.MouseWheel += Scroll_Event;
-            staticCenter = new Point(250,750);
+            staticCenter = new Point(0,0);
             ShowInfo = false;
         }
 
