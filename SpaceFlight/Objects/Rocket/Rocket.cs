@@ -31,7 +31,7 @@ namespace SpaceFlight.Objects.Rocket
             this.position = position;
             this.speedX = speedX;
             this.speedY = speedY;
-            this.angle = angle;
+            this.angle = -1 * angle;
             this._rocketInf = rocketInf;
             this.thrustPercentage = thrustPercentage;
             restFuelWeight = rocketInf.FuelWeight;

@@ -5,12 +5,12 @@ namespace SpaceFlight.Screen.Calculator
 {
     class AngularCalculator
     {
-        private readonly float _angle;
+        private readonly double _angle;
         private readonly PointF _center;
 
         public AngularCalculator(float angle, PointF center)
         {
-            _angle = angle;
+            _angle = angle * Math.PI / 180;
             _center = center;
         }
 
