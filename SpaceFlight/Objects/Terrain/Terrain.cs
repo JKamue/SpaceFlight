@@ -11,11 +11,11 @@ namespace SpaceFlight.Objects.Terrain
     {
         private int height = 100;
         private Color color;
-        private double radius;
+        private float radius;
         private PointF position;
         private List<PointF> allPoints;
 
-        public Terrain(PointF position, double radius, Color color)
+        public Terrain(PointF position, float radius, Color color)
         {
             this.color = color;
             this.radius = radius;
@@ -48,6 +48,7 @@ namespace SpaceFlight.Objects.Terrain
 
             var pointDistance = allPoints.Count / 720;
             var distanceCounter = 0;
+            var realPoints = 0;
 
             foreach(var point in allPoints)
             {
@@ -59,6 +60,7 @@ namespace SpaceFlight.Objects.Terrain
                     {
                         pointOutside = false;
                         points.Add(ppCalc.ProjectPoint(lastPoint));
+                        realPoints++;
                     }
                     else
                     {
@@ -92,6 +94,21 @@ namespace SpaceFlight.Objects.Terrain
 
             if (points.Count == 0)
                 return;
+
+            if (realPoints == 0)
+            {
+                var rect = new RectangleF(position.X - radius,position.Y - radius, radius * 2, radius * 2);
+                if (rect.Contains(screen))
+                {
+                    points = new List<PointF>();
+                    var a = 100;
+                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X - a, screen.Y - a)));
+                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X - a, screen.Y + screen.Width * 2 + a)));
+                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Height * 2 + a, screen.Y + screen.Width * 2 + a)));
+                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Height * 2 + a, screen.Y - a)));
+
+                }
+            }
 
             //points.Add(ppCalc.ProjectPoint(position));
             g.FillPolygon(b, points.ToArray());
