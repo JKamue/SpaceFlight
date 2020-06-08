@@ -14,8 +14,8 @@ namespace SpaceFlight
         {
             InitializeComponent();
             closeDistanceScreen = new ScreenController(SimulationPanel, Color.NavajoWhite, 3, lblDebug);
-            //closeDistanceScreen.AddPanelObject(new Terrain(new Point(-500, 500), 500, Color.Blue));
-            //closeDistanceScreen.AddPanelObject(new Terrain(new Point(500, 500), 500, Color.Blue));
+            closeDistanceScreen.AddPanelObject(new Terrain(new Point(250, 500), 250, Color.Blue));
+            closeDistanceScreen.AddPanelObject(new Terrain(new Point(750, -500), 250, Color.Blue));
             closeDistanceScreen.AddPanelObject(new Terrain(new Point(0, -6371000), 6371000, Color.Green));
 
 
