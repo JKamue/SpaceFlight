@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 namespace SpaceFlight.Physics
 {
 
-    class Force
+    public class Force
     {
-        private double DirectionAngle;
-        private double Newton;
+        private double _angle;
+        private double _force;
 
         public Force(double directionAngle, double newton)
         {
-            DirectionAngle = directionAngle * Math.PI / 180;
-            Newton = newton;
+            _angle = directionAngle * Math.PI / 180;
+            _force = newton;
         }
 
         public static Force operator +(Force f1, Force f2)
@@ -29,17 +29,12 @@ namespace SpaceFlight.Physics
             }
 
             if (f1.Val == 0)
-            {
-                return f2;
-            }
+                return new Force(f2.Deg, f2.Val);
 
             var alpha = f1.Rad - f2.Rad;
             var resultingForce = Math.Sqrt(f1.Pow + f2.Pow + 2 * f1.Val * f2.Val * Math.Cos(alpha));
             var resultingAngle = Math.Acos((f1.Pow + Math.Pow(resultingForce, 2) - f2.Pow) / (2 * f1.Val * resultingForce)) *
                 180 / Math.PI;
-
-
-            Console.WriteLine(resultingAngle);
 
             if (f2.Deg - f1.Deg >= 180)
             {
@@ -60,17 +55,14 @@ namespace SpaceFlight.Physics
                 resultingAngle += 360;
             }
 
-
-            if (resultingForce == 0)
-                return new Force(0, 0);
-
-            return new Force(resultingAngle, resultingForce);
+            return resultingForce == 0 ? new Force(0, 0) : new Force(resultingAngle, resultingForce);
         }
 
-        public double Pow => Math.Pow(Newton, 2);
-        public double Val => Newton;
-        public double Rad => DirectionAngle;
-        public double Deg => DirectionAngle * 180 / Math.PI;
+        
+        public double Pow => Math.Pow(_force, 2);
+        public double Val => _force;
+        public double Rad => _angle;
+        public double Deg => _angle * 180 / Math.PI;
     }
 
 }
