@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Physics
 {
 
     public class Force
     {
-        private double _angle;
+        public Angle Angle { get; }
         private double _force;
 
-        public Force(double directionAngle, double newton)
+        public Force(Angle angle, double newton)
         {
-            _angle = directionAngle * Math.PI / 180;
+            Angle = angle;
             _force = newton;
         }
 
@@ -29,7 +30,7 @@ namespace SpaceFlight.Physics
             }
 
             if (f1.Val == 0)
-                return new Force(f2.Deg, f2.Val);
+                return new Force(f2.Angle, f2.Val);
 
             var alpha = f1.Rad - f2.Rad;
             var resultingForce = Math.Sqrt(f1.Pow + f2.Pow + 2 * f1.Val * f2.Val * Math.Cos(alpha));
@@ -55,14 +56,16 @@ namespace SpaceFlight.Physics
                 resultingAngle += 360;
             }
 
-            return resultingForce == 0 ? new Force(0, 0) : new Force(resultingAngle, resultingForce);
+            var angle = Angle.FromDegrees(resultingForce == 0 ? 0 : resultingAngle);
+
+            return new Force(angle, resultingForce);
         }
 
         
         public double Pow => Math.Pow(_force, 2);
         public double Val => _force;
-        public double Rad => _angle;
-        public double Deg => _angle * 180 / Math.PI;
+        public double Rad => Angle.Radian;
+        public double Deg => Angle.Degree;
     }
 
 }
