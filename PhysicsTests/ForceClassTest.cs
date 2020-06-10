@@ -51,6 +51,16 @@ namespace PhysicsTests
         }
 
         [TestMethod]
+        public void ForcesAddTest5()
+        {
+            var f1 = new Force(Angle.FromDegrees(45), 5);
+            var f2 = new Force(Angle.FromDegrees(45), 3);
+            var resultingForce = new Force(Angle.FromDegrees(45), 8);
+
+            ForcesWithSameAngleAreAddedCorrectly(f1, f2, resultingForce);
+        }
+
+        [TestMethod]
         public void ForcesCancelOutTest()
         {
             var f1 = new Force(Angle.FromDegrees(45), 2);
@@ -128,6 +138,22 @@ namespace PhysicsTests
             var resultingForce = new Force(Angle.FromDegrees(81), 3.6);
 
             ForcesWithSameAngleAreAddedCorrectly(f1, f2, resultingForce);
+        }
+
+        [TestMethod]
+        public void AccelerationCalculatedCorrectly()
+        {
+            var force = new Force(Angle.FromDegrees(0), 15);
+            var acceleration = force.GetAcceleration(new Mass(5));
+            Assert.AreEqual(3, acceleration.Value);
+        }
+
+        [TestMethod]
+        public void MassCalculatedCorrectly2()
+        {
+            var force = new Force(Angle.FromDegrees(0), 15);
+            var mass = force.GetMass(new Acceleration(5));
+            Assert.AreEqual(3, mass.Value);
         }
 
         public void ForcesWithSameAngleAreAddedCorrectly(Force f1, Force f2, Force expected)
