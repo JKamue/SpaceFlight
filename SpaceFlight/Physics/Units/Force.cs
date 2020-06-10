@@ -64,6 +64,16 @@ namespace SpaceFlight.Physics
 
             return new Force(angle, resultingForce);
         }
+
+        public Acceleration GetAcceleration(Mass mass)
+        {
+            return new Acceleration(Value / mass.Value);
+        }
+
+        public Mass GetMass(Acceleration ac)
+        {
+            return new Mass(Value / ac.Value);
+        }
     }
 
 }
