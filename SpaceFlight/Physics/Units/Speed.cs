@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace SpaceFlight.Physics.Units
 {
-    public class Acceleration
+    public class Speed
     {
         public double Value { get; }
 
-        public Acceleration(double value)
+        public Speed(double value)
         {
             Value = value;
         }
-
-        public Speed GetSpeed(TimeSpan span) => new Speed(Value * span.TotalSeconds);
     }
 }
