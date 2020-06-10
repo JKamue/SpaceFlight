@@ -16,5 +16,14 @@ namespace SpaceFlight.Physics.Units
         }
 
         public Speed GetSpeed(TimeSpan span) => new Speed(Value * span.TotalSeconds);
+
+        public static Acceleration operator +(Acceleration acc1, Acceleration acc2)
+        {
+            return new Acceleration(acc1.Value + acc2.Value);
+        }
+        public static Acceleration operator -(Acceleration acc1, Acceleration acc2)
+        {
+            return new Acceleration(acc1.Value - acc2.Value);
+        }
     }
 }
