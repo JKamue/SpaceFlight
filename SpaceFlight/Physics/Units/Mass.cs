@@ -12,6 +12,9 @@ namespace SpaceFlight.Physics.Units
 
         public Mass(double value)
         {
+            if (value <= 0)
+                throw new ArgumentOutOfRangeException(nameof(value), "Mass must be positive and bigger than zero");
+
             Value = value;
         }
 
