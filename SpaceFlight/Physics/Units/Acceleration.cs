@@ -8,7 +8,7 @@ namespace SpaceFlight.Physics.Units
 {
     public class Acceleration : Vector
     {
-        public Acceleration(Angle angle, double newton) : base(angle, newton) {}
+        public Acceleration(Angle angle, double mPerSecSquared) : base(angle, mPerSecSquared) {}
 
         public Speed GetSpeed(TimeSpan span) => new Speed(Angle, Value * span.TotalSeconds);
 

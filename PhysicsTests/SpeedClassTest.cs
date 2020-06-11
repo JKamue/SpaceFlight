@@ -10,27 +10,19 @@ namespace PhysicsTests
     public class SpeedClassTest
     {
         [TestMethod]
-        public void SpeedIsAddable()
+        public void SpeedCanBeConvertedToDistance1()
         {
-            var s1 = new Speed(30);
-            var s2 = new Speed(10);
-            Assert.AreEqual(40, (s1 + s2).Value);
-        }
-
-        [TestMethod]
-        public void SpeedIsSubtractable()
-        {
-            var s1 = new Speed(30);
-            var s2 = new Speed(10);
-            Assert.AreEqual(20, (s1 - s2).Value);
-        }
-
-        [TestMethod]
-        public void SpeedCanBeConvertedToDistance()
-        {
-            var s = new Speed(30);
+            var s = new Speed(Angle.FromDegrees(20), 30);
             var span = TimeSpan.FromSeconds(0.3);
-            Assert.AreEqual(9, s.GetDistance(span));
+            Assert.AreEqual(9, s.GetDistance(span).Value);
+        }
+
+        [TestMethod]
+        public void SpeedCanBeConvertedToDistance2()
+        {
+            var s = new Speed(Angle.FromDegrees(20), 30);
+            var span = TimeSpan.FromSeconds(0.3);
+            Assert.AreEqual(9, s.GetDistance(span).Value);
         }
     }
 }

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Physics\Units\Acceleration.cs" />
     <Compile Include="Physics\Units\Angle.cs" />
+    <Compile Include="Physics\Units\Distance.cs" />
     <Compile Include="Physics\Units\Force.cs" />
     <Compile Include="Physics\PhysicsObject.cs" />
     <Compile Include="Physics\Units\Mass.cs" />

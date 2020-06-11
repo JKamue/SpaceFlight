@@ -9,14 +9,10 @@ namespace SpaceFlight.Physics.Units
 {
     public class Speed : Vector
     {
-
-        public Speed(Angle angle, double newton) : base(angle, newton) {}
+        public Speed(Angle angle, double mPerSec) : base(angle, mPerSec) {}
 
         public static Speed operator +(Speed s1, Speed s2) => (Speed) (s1 + s2);
 
-        public double GetDistance(TimeSpan span)
-        {
-            return Value * span.TotalSeconds;
-        }
+        public Distance GetDistance(TimeSpan span) => new Distance(Angle, Value * span.TotalSeconds);
     }
 }
