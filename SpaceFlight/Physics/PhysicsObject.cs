@@ -4,15 +4,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Physics
 {
     class PhysicsObject
     {
-        public decimal Mass;
         public PointF Location;
-        public decimal DirectionAngle;
-        public decimal Acceleration;
-        public decimal Speed;
+        public Mass Mass;
+        public Angle DirectionAngle;
+        public Force Force;
+        public Acceleration Acceleration;
+        public Speed Speed;
     }
 }

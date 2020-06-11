@@ -7,24 +7,12 @@ using System.Windows.Forms.VisualStyles;
 
 namespace SpaceFlight.Physics.Units
 {
-    public class Speed
+    public class Speed : Vector
     {
-        public double Value { get; }
 
-        public Speed(double value)
-        {
-            Value = value;
-        }
+        public Speed(Angle angle, double newton) : base(angle, newton) {}
 
-        public static Speed operator +(Speed s1, Speed s2)
-        {
-            return new Speed(s1.Value + s2.Value);
-        }
-
-        public static Speed operator -(Speed s1, Speed s2)
-        {
-            return new Speed(s1.Value - s2.Value);
-        }
+        public static Speed operator +(Speed s1, Speed s2) => (Speed) (s1 + s2);
 
         public double GetDistance(TimeSpan span)
         {
