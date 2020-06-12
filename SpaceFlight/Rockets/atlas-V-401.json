@@ -14,7 +14,7 @@
   ],
   "Height": 56,
   "Width": 4,
-  "Thrust": 10600,
+  "Thrust": 10600000,
   "Weight": 330388,
   "FuelWeight": 304919,
   "BurnTime":  240, 

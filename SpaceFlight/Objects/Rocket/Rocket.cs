@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Net;
 using SpaceFlight.Objects.Rocket.Sprites;
+using SpaceFlight.Physics;
+using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
 using Timer = System.Windows.Forms.Timer;
 
 namespace SpaceFlight.Objects.Rocket
 {
-    class Rocket : IScreenObject
+    class Rocket : PhysicsObject, IScreenObject
     {
-        private PointF position;
-        private float speedX;
-        private float speedY;
         private float angle;
         private float thrustPercentage;
         private float restFuelWeight;
@@ -26,11 +25,9 @@ namespace SpaceFlight.Objects.Rocket
         private DateTime lastCheck;
         private readonly Timer _checkTimer;
 
-        public Rocket(PointF position, float speedX, float speedY, float angle, float thrustPercentage, RocketInformation rocketInf)
+        public Rocket(PointF location, Mass mass, Force force, Acceleration acceleration, Speed speed,
+            float angle, float thrustPercentage, RocketInformation rocketInf) : base(location, mass, force, acceleration, speed)
         {
-            this.position = position;
-            this.speedX = speedX;
-            this.speedY = speedY;
             this.angle = -1 * angle;
             this._rocketInf = rocketInf;
             this.thrustPercentage = thrustPercentage;
@@ -42,8 +39,8 @@ namespace SpaceFlight.Objects.Rocket
 
             _checkTimer = new Timer();
             _checkTimer.Interval = 10;
-            _checkTimer.Tick += CalculateVelocity;
             _checkTimer.Tick += CalculateFuelUsage;
+            _checkTimer.Tick += Recalculate;
             _checkTimer.Enabled = true;
 
             var rnd = new Random();
@@ -66,19 +63,15 @@ namespace SpaceFlight.Objects.Rocket
 
             if (restFuelWeight <= 0)
                 engineRunning = false;
-        }
 
-        private void CalculateVelocity(object sender, EventArgs e)
-        {
-            position.X += speedX;
-            position.Y += speedY;
+            Mass = new Mass(restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight);
         }
 
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool showStats)
         {
-            var aCalc = new AngularCalculator(angle, position);
+            var aCalc = new AngularCalculator(angle, Location);
             var spritePieces =
-                _sprite.CalculatePolygons(position, ppCalc, aCalc);
+                _sprite.CalculatePolygons(Location, ppCalc, aCalc);
 
             foreach (RocketSpritePiece piece in spritePieces)
             {
@@ -94,7 +87,7 @@ namespace SpaceFlight.Objects.Rocket
 
         private void DrawStats(Graphics g, ProjectedPositionCalculator ppCalc)
         {
-            var point = position;
+            var point = Location;
             point.Y += _rocketInf.Height / 2;
             point.X += 5;
             g.DrawString( _rocketInf.Model + " " + _rocketInf.Variant, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
@@ -104,6 +97,10 @@ namespace SpaceFlight.Objects.Rocket
             g.DrawString(Math.Round(restFuelWeight /_rocketInf.FuelWeight * 100).ToString() + "% Fuel", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
             g.DrawString((restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight).ToString() + "kg", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            point.Y -= 5;
+            g.DrawString((Math.Round(Acceleration.Value)).ToString() + "m/s^2", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            point.Y -= 5;
+            g.DrawString((Math.Round(Speed.Value)).ToString() + "m/s", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
         }
 
@@ -115,9 +112,9 @@ namespace SpaceFlight.Objects.Rocket
 
                 var points = new List<PointF>();
 
-                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + thrustArea.Start.X, position.Y + thrustArea.Stop.Y))));
-                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + thrustArea.Stop.X, position.Y + thrustArea.Stop.Y))));
-                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(position.X + width / 2, position.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * thrustPercentage * (float) GetRandomNumber(3.5,6)))));
+                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(Location.X + thrustArea.Start.X, Location.Y + thrustArea.Stop.Y))));
+                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(Location.X + thrustArea.Stop.X, Location.Y + thrustArea.Stop.Y))));
+                points.Add(ppCalc.ProjectPoint(aCalc.Turn(new PointF(Location.X + width / 2, Location.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * thrustPercentage * (float) GetRandomNumber(3.5,6)))));
 
 
                 g.FillPolygon(new SolidBrush(Color.OrangeRed), points.ToArray());
@@ -130,9 +127,9 @@ namespace SpaceFlight.Objects.Rocket
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
-        public RectangleF GetBounds() => _sprite.GetBounds(position, new AngularCalculator(angle, position));
+        public RectangleF GetBounds() => _sprite.GetBounds(Location, new AngularCalculator(angle, Location));
 
-        public PointF GetMiddle() => position;
+        public PointF GetMiddle() => Location;
 
         public int GetPriority() => 7;
     }

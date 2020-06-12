@@ -26,6 +26,10 @@ namespace SpaceFlight.Physics.Units
                 f1 = f2;
                 f2 = t;
             }
+            else if (f1.Angle.Degree == f2.Angle.Degree)
+            {
+                return new Vector(f1.Angle, f1.Value + f2.Value);
+            }
 
             if (f1.Value == 0)
                 return new Vector(f2.Angle, f2.Value);
@@ -55,6 +59,11 @@ namespace SpaceFlight.Physics.Units
             }
 
             var angle = Angle.FromDegrees(resultingForce == 0 ? 0 : resultingAngle);
+
+            if (Double.IsNaN(angle.Degree))
+            {
+                var test = "FUCK";
+            }
 
             return new Vector(angle, resultingForce);
         }

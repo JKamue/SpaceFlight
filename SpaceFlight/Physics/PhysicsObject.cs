@@ -27,15 +27,14 @@ namespace SpaceFlight.Physics
             Speed = speed;
 
             _lastRecalculation = DateTime.Now;
-            Add(Force.GetAcceleration(Mass));
         }
 
         public void Add(Force f) => Force += f;
-        public void Add(Acceleration a) => Acceleration += a;
         public void Add(Speed s) => Speed += s;
 
-        public void Recalculate()
+        public void Recalculate(object s, EventArgs e)
         {
+            Acceleration = Force.GetAcceleration(Mass);
             var timeSpan = DateTime.Now - _lastRecalculation;
             _lastRecalculation = DateTime.Now;
             Add(Acceleration.GetSpeed(timeSpan));
