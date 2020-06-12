@@ -1,8 +1,11 @@
 ﻿using SpaceFlight.Screen;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
+using SpaceFlight.Physics;
+using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight
 {
@@ -20,6 +23,18 @@ namespace SpaceFlight
             var inf = RocketInformation.LoadFromName("falcon-9-1.2");
             var atl = RocketInformation.LoadFromName("atlas-V-401");
             closeDistanceScreen.SetMainObject(new Rocket(new PointF(0, 0), 0, 100F, 0, 100F, inf));
+
+            var angle = Angle.FromDegrees(0);
+            var test = new PhysicsObject(new PointF(0, 0), new Mass(1), new Force(angle, 5), new Acceleration(angle, 0), new Speed(angle, 0));
+
+            for (int i = 0; i < 20; i++)
+            {
+                Thread.Sleep(100);
+                var ok = test.Location;
+                test.Recalculate();
+            }
+
+            var ok2 = test.Location;
 
         }
 

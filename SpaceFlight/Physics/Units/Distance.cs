@@ -10,6 +10,9 @@ namespace SpaceFlight.Physics.Units
     public class Distance : Vector
     {
         public Distance (Angle angle, double meter) : base(angle, meter) { }
+        public Distance (Vector v) : base(v.Angle, v.Value) { }
+
+        public static Distance operator +(Distance acc1, Distance acc2) => new Distance((Vector)acc1 + (Vector)acc2);
 
         public DistanceXAndY CalculateXAndY()
         {
