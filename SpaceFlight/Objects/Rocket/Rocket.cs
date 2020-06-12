@@ -37,18 +37,18 @@ namespace SpaceFlight.Objects.Rocket
 
             lastCheck = DateTime.Now;
 
-            _checkTimer = new Timer();
-            _checkTimer.Interval = 10;
-            _checkTimer.Tick += CalculateFuelUsage;
-            _checkTimer.Tick += Recalculate;
-            _checkTimer.Enabled = true;
-
             var rnd = new Random();
             int r = rnd.Next(rocketInf.Names.Count);
             this._name = rocketInf.Names[r];
         }
 
-        private void CalculateFuelUsage(object sender, EventArgs e)
+        public new void Tick()
+        {
+            CalculateFuelUsage();
+            Recalculate();
+        }
+
+        private void CalculateFuelUsage()
         {
             if (!engineRunning)
                 return;

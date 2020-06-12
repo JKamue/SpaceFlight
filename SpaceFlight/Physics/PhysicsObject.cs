@@ -12,29 +12,43 @@ namespace SpaceFlight.Physics
     {
         public PointF Location;
         public Mass Mass;
-        public Force Force;
+        public Force OwnForce;
+        public List<Force> ExternalForces;
         public Acceleration Acceleration;
         public Speed Speed;
 
         private DateTime _lastRecalculation;
 
-        public PhysicsObject(PointF location, Mass mass, Force force, Acceleration acceleration, Speed speed)
+        public PhysicsObject(PointF location, Mass mass, Force ownForce, Acceleration acceleration, Speed speed)
         {
             Location = location;
             Mass = mass;
-            Force = force;
+            OwnForce = ownForce;
             Acceleration = acceleration;
             Speed = speed;
+            ExternalForces = new List<Force>();
 
             _lastRecalculation = DateTime.Now;
         }
 
-        public void Add(Force f) => Force += f;
+        public void Add(Force f) => OwnForce += f;
         public void Add(Speed s) => Speed += s;
 
-        public void Recalculate(object s, EventArgs e)
+        public void Tick()
         {
-            Acceleration = Force.GetAcceleration(Mass);
+            Recalculate();
+        }
+
+        public void Recalculate()
+        {
+            var force = OwnForce;
+            foreach (var exForce in ExternalForces)
+            {
+                force += exForce;
+            }
+
+            Acceleration = force.GetAcceleration(Mass);
+
             var timeSpan = DateTime.Now - _lastRecalculation;
             _lastRecalculation = DateTime.Now;
             Add(Acceleration.GetSpeed(timeSpan));

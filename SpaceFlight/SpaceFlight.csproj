@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Physics\PhysicsController.cs" />
     <Compile Include="Physics\Units\Acceleration.cs" />
     <Compile Include="Physics\Units\Angle.cs" />
     <Compile Include="Physics\Units\Distance.cs" />
