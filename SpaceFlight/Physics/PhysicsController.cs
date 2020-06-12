@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,13 @@ namespace SpaceFlight.Physics
         {
             foreach (var movingObject in movingObjects)
             {
+                foreach (var gravityObject in gravityObjects)
+                {
+                    // TODO Calc distance
+                    // TODO Calc Force
+                    // TODO Calc Angle
+                    // TODO Add class with force and angle
+                }
                 movingObject.Tick();
             }
         }

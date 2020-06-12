@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using SpaceFlight.Physics;
+using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
 
 namespace SpaceFlight.Objects.Terrain
 {
-    class Terrain : IScreenObject
+    class Terrain : PhysicsObject, IScreenObject
     {
         private int height = 100;
         private Color color;
@@ -15,7 +17,7 @@ namespace SpaceFlight.Objects.Terrain
         private PointF position;
         private List<PointF> allPoints;
 
-        public Terrain(PointF position, float radius, Color color)
+        public Terrain(PointF position, float radius, Color color, Mass mass): base(position, mass)
         {
             this.color = color;
             this.radius = radius;

@@ -19,6 +19,15 @@ namespace SpaceFlight.Physics
 
         private DateTime _lastRecalculation;
 
+        public PhysicsObject(PointF location, Mass mass)
+        {
+            Location = location;
+            Mass = mass;
+            OwnForce = new Force(Angle.FromDegrees(0), 0);
+            Acceleration = new Acceleration(Angle.FromDegrees(0), 0);
+            Speed = new Speed(Angle.FromDegrees(0), 0);
+        }
+
         public PhysicsObject(PointF location, Mass mass, Force ownForce, Acceleration acceleration, Speed speed)
         {
             Location = location;
