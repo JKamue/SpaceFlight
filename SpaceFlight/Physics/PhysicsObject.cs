@@ -40,28 +40,28 @@ namespace SpaceFlight.Physics
             _lastRecalculation = DateTime.Now;
         }
 
-        public void Add(Force f) => OwnForce += f;
-        public void Add(Speed s) => Speed += s;
-
-        public void Tick()
+        public virtual void Tick()
         {
             Recalculate();
         }
 
         public void Recalculate()
         {
+            // Calculate resulting force
             var force = OwnForce;
             foreach (var exForce in ExternalForces)
             {
                 force += exForce;
             }
 
+            // Calculate Acceleration -> Speed -> Distance
             Acceleration = force.GetAcceleration(Mass);
-
             var timeSpan = DateTime.Now - _lastRecalculation;
             _lastRecalculation = DateTime.Now;
-            Add(Acceleration.GetSpeed(timeSpan));
+            Speed += Acceleration.GetSpeed(timeSpan);
             var distance = Speed.GetDistance(timeSpan).CalculateXAndY();
+
+            // Move it
             Location.X += (float) distance.X;
             Location.Y += (float) distance.Y;
         }

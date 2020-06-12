@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Physics\Calculator\GravityCalculator.cs" />
     <Compile Include="Physics\PhysicsController.cs" />
     <Compile Include="Physics\Units\Acceleration.cs" />
     <Compile Include="Physics\Units\Angle.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Screen\Calculator\FrameRateCounter.cs" />
     <Compile Include="Screen\Calculator\AngularCalculator.cs" />
     <Compile Include="Screen\Calculator\BoundsCalculator.cs" />
+    <Compile Include="Physics\Calculator\PointCalculator.cs" />
     <Compile Include="Screen\IScreenObject.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Objects\Rocket\Rocket.cs" />

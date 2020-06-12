@@ -42,7 +42,7 @@ namespace SpaceFlight.Objects.Rocket
             this._name = rocketInf.Names[r];
         }
 
-        public new void Tick()
+        public override void Tick()
         {
             CalculateFuelUsage();
             Recalculate();
@@ -63,6 +63,15 @@ namespace SpaceFlight.Objects.Rocket
 
             if (restFuelWeight <= 0)
                 engineRunning = false;
+
+            if (engineRunning)
+            {
+                OwnForce = new Force(Angle.FromDegrees(angle), _rocketInf.Thrust * thrustPercentage);
+            }
+            else
+            {
+                OwnForce = new Force(Angle.FromDegrees(0), 0);
+            }
 
             Mass = new Mass(restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight);
         }

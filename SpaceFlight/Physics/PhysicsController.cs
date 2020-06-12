@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SpaceFlight.Physics.Calculator;
 
 namespace SpaceFlight.Physics
 {
@@ -13,14 +14,17 @@ namespace SpaceFlight.Physics
         private List<PhysicsObject> movingObjects;
         private List<PhysicsObject> gravityObjects;
 
-        private Timer physTimer;
+        private readonly Timer _physTimer;
+        private readonly Label _distanceDebug;
 
-        public PhysicsController(int msPerTick)
+        public PhysicsController(int msPerTick, Label distanceDebug)
         {
-            physTimer = new Timer();
-            physTimer.Interval = msPerTick;
-            physTimer.Tick += Tick;
-            physTimer.Start();
+            _distanceDebug = distanceDebug;
+
+            _physTimer = new Timer();
+            _physTimer.Interval = msPerTick;
+            _physTimer.Tick += Tick;
+            _physTimer.Start();
 
             movingObjects = new List<PhysicsObject>();
             gravityObjects = new List<PhysicsObject>();
@@ -34,12 +38,14 @@ namespace SpaceFlight.Physics
         {
             foreach (var movingObject in movingObjects)
             {
+                movingObject.ExternalForces = new List<Force>();
                 foreach (var gravityObject in gravityObjects)
                 {
-                    // TODO Calc distance
-                    // TODO Calc Force
-                    // TODO Calc Angle
-                    // TODO Add class with force and angle
+                    var distance = PointCalculator.Distance(movingObject.Location, gravityObject.Location);
+                    _distanceDebug.Text = (distance - 6371000).ToString();
+                    var angle = PointCalculator.CalculateAngle(movingObject.Location, gravityObject.Location);
+                    var force = GravityCalculator.CalculateGravity(movingObject.Mass, gravityObject.Mass, distance, angle);
+                    movingObject.ExternalForces.Add(force);
                 }
                 movingObject.Tick();
             }

@@ -62,7 +62,7 @@ namespace SpaceFlight.Physics.Units
 
             if (Double.IsNaN(angle.Degree))
             {
-                var test = "FUCK";
+                angle = Angle.FromDegrees(0);
             }
 
             return new Vector(angle, resultingForce);
