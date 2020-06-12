@@ -14,10 +14,10 @@
   ],
   "Height": 56,
   "Width": 4,
-  "Thrust": 10600000,
+  "Thrust": 3830000,
   "Weight": 330388,
   "FuelWeight": 304919,
-  "BurnTime":  240, 
+  "BurnTime": 240,
   "ThrustAreas": [
     {
       "Start": {

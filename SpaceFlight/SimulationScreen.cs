@@ -24,6 +24,7 @@ namespace SpaceFlight
             var atl = RocketInformation.LoadFromName("atlas-V-401");
             var zeroAngle = Angle.FromDegrees(0);
             closeDistanceScreen.SetMainObject( new Rocket(new PointF(0,0), new Mass(inf.Weight), new Force(zeroAngle, inf.Thrust), new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, inf ));
+            closeDistanceScreen.SetMainObject(new Rocket(new PointF(50, 0), new Mass(atl.Weight), new Force(zeroAngle, atl.Thrust), new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, atl));
         }
 
         private void SimulationScreen_KeyPress(object sender, KeyPressEventArgs e)
