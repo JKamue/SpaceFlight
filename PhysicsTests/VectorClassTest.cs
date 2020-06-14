@@ -61,10 +61,20 @@ namespace PhysicsTests
         }
 
         [TestMethod]
-        public void VectorsCancelOutTest()
+        public void VectorsCancelOutTest1()
         {
             var f1 = new Vector(Angle.FromDegrees(45), 2);
             var f2 = new Vector(Angle.FromDegrees(225), 2);
+            var resultingVector = new Vector(Angle.FromDegrees(0), 0);
+
+            VectorsWithSameAngleAreAddedCorrectly(f1, f2, resultingVector);
+        }
+
+        [TestMethod]
+        public void VectorsCancelOutTest2()
+        {
+            var f1 = new Vector(Angle.FromDegrees(0), 2);
+            var f2 = new Vector(Angle.FromDegrees(180), 2);
             var resultingVector = new Vector(Angle.FromDegrees(0), 0);
 
             VectorsWithSameAngleAreAddedCorrectly(f1, f2, resultingVector);

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpaceFlight.Physics.Calculator;
 
 namespace SpaceFlight.Physics.Units
 {
@@ -18,54 +20,20 @@ namespace SpaceFlight.Physics.Units
             Value = value;
         }
 
-        public static Vector operator +(Vector f1, Vector f2)
+        public static Vector operator +(Vector v1, Vector v2)
         {
-            if (f1.Angle.Degree > f2.Angle.Degree)
-            {
-                var t = f1;
-                f1 = f2;
-                f2 = t;
-            }
-            else if (f1.Angle.Degree == f2.Angle.Degree)
-            {
-                return new Vector(f1.Angle, f1.Value + f2.Value);
-            }
+            var x = PointCalculator.GetVectorX(v1) + PointCalculator.GetVectorX(v2);
+            var y = PointCalculator.GetVectorY(v1) + PointCalculator.GetVectorY(v2);
 
-            if (f1.Value == 0)
-                return new Vector(f2.Angle, f2.Value);
+            var point = new PointF((float) x , (float) y);
 
-            var alpha = f1.Angle.Radian - f2.Angle.Radian;
-            var resultingForce = Math.Sqrt(f1.Pow + f2.Pow + 2 * f1.Value * f2.Value * Math.Cos(alpha));
-            var resultingAngle = Math.Acos((f1.Pow + Math.Pow(resultingForce, 2) - f2.Pow) / (2 * f1.Value * resultingForce)) *
-                180 / Math.PI;
+            var resultingValue = PointCalculator.Distance(new PointF(0, 0), point);
+            var resultingAngle = PointCalculator.CalculateAngle(new PointF(0, 0), point);
 
-            if (f2.Angle.Degree - f1.Angle.Degree >= 180)
-            {
-                resultingAngle = f1.Angle.Degree - resultingAngle;
-            }
-            else
-            {
-                resultingAngle += f1.Angle.Degree;
-            }
+            if (resultingValue < 0.0001)
+                resultingAngle = Angle.FromDegrees(0);
 
-            if (resultingAngle >= 360)
-            {
-                resultingAngle -= 360;
-            }
-
-            if (resultingAngle < 0)
-            {
-                resultingAngle += 360;
-            }
-
-            var angle = Angle.FromDegrees(resultingForce == 0 ? 0 : resultingAngle);
-
-            if (Double.IsNaN(angle.Degree))
-            {
-                angle = Angle.FromDegrees(0);
-            }
-
-            return new Vector(angle, resultingForce);
+            return new Vector(resultingAngle, resultingValue);
         }
     }
 }
