@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpaceFlight.Physics.Calculator;
+using SpaceFlight.Physics.Units;
 
 namespace PhysicsTests
 {
@@ -113,6 +114,63 @@ namespace PhysicsTests
             var p1 = new PointF(0, 0);
             var p2 = new Point(2, 0);
             Assert.AreEqual(2, PointCalculator.Distance(p1, p2), 0.1);
+        }
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly1()
+        {
+            var v = new Vector(Angle.FromDegrees(0), 100);
+            Assert.AreEqual(0, PointCalculator.GetVectorX(v));
+            Assert.AreEqual(100, PointCalculator.GetVectorY(v));
+        }
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly2()
+        {
+            var v = new Vector(Angle.FromDegrees(30), 5);
+            Assert.AreEqual(2.5, PointCalculator.GetVectorX(v), 0.1);
+            Assert.AreEqual(4.3, PointCalculator.GetVectorY(v), 0.1);
+        }
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly3()
+        {
+            var v = new Vector(Angle.FromDegrees(70), 4.3);
+            Assert.AreEqual(4, PointCalculator.GetVectorX(v), 0.1);
+            Assert.AreEqual(1.5, PointCalculator.GetVectorY(v), 0.1);
+        }
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly4()
+        {
+            var v = new Vector(Angle.FromDegrees(130), 3.9);
+            Assert.AreEqual(3, PointCalculator.GetVectorX(v), 0.1);
+            Assert.AreEqual(-2.5, PointCalculator.GetVectorY(v), 0.1);
+        }
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly5()
+        {
+            var v = new Vector(Angle.FromDegrees(180), 4);
+            Assert.AreEqual(0, PointCalculator.GetVectorX(v), 0.1);
+            Assert.AreEqual(-4, PointCalculator.GetVectorY(v), 0.1);
+        }
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly6()
+        {
+            var v = new Vector(Angle.FromDegrees(250), 4.3);
+            Assert.AreEqual(-4, PointCalculator.GetVectorX(v), 0.1);
+            Assert.AreEqual(-1.5, PointCalculator.GetVectorY(v), 0.1);
+        }
+
+
+        [TestMethod]
+        public void VectorXAndYCalculatedCorrectly7()
+        {
+            var v = new Vector(Angle.FromDegrees(320), 3.9);
+            Assert.AreEqual(-2.5, PointCalculator.GetVectorX(v), 0.1);
+            Assert.AreEqual(3, PointCalculator.GetVectorY(v), 0.1);
         }
     }
 }
