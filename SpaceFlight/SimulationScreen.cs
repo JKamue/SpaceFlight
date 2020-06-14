@@ -26,23 +26,28 @@ namespace SpaceFlight
 
 
             // Load Rockets
-            var inf = RocketInformation.LoadFromName("falcon-9-1.2");
-            var atl = RocketInformation.LoadFromName("atlas-V-401");
+            var f9_inf = RocketInformation.LoadFromName("falcon-9-1.2");
+            var aV401_inf = RocketInformation.LoadFromName("atlas-V-401");
+            var v2_inf = RocketInformation.LoadFromName("vergeltungswaffe-2");
 
-            var f9 = new Rocket(new PointF(0, 0), new Mass(inf.Weight), new Force(zeroAngle, inf.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, inf);
-            var aV401 = new Rocket(new PointF(30, 0), new Mass(inf.Weight), new Force(zeroAngle, atl.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, atl);
+            var f9 = new Rocket(new PointF(0, 0), new Mass(f9_inf.Weight), new Force(zeroAngle, f9_inf.Thrust),
+                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, f9_inf);
+            var aV401 = new Rocket(new PointF(30, 0), new Mass(aV401_inf.Weight), new Force(zeroAngle, aV401_inf.Thrust),
+                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, aV401_inf);
+            var v2 = new Rocket(new PointF(0, 0), new Mass(v2_inf.Weight), new Force(zeroAngle, v2_inf.Thrust),
+                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), 0, 1F, v2_inf);
 
 
             // Load Screen objects
             closeDistanceScreen.AddPanelObject(earth);
-            closeDistanceScreen.SetMainObject(f9);
-            // closeDistanceScreen.SetMainObject(aV401);
+            //closeDistanceScreen.SetMainObject(f9);
+            closeDistanceScreen.SetMainObject(v2);
+            //closeDistanceScreen.SetMainObject(aV401);
 
             // Set Physic objects
-            physicsController.AddMovingObject(f9);
-            // physicsController.AddMovingObject(aV401);
+            //physicsController.AddMovingObject(f9);
+            physicsController.AddMovingObject(v2);
+            //physicsController.AddMovingObject(aV401);
             physicsController.AddGravityObject(earth);
         }
 

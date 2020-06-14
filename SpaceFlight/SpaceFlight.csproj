@@ -104,6 +104,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Rockets\vergeltungswaffe-2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -127,4 +130,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties rockets_4vergeltungswaffe-2_1json__JsonSchema="https://json.schemastore.org/ansible-stable-2.9" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
