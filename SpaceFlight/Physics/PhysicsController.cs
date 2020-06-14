@@ -42,9 +42,9 @@ namespace SpaceFlight.Physics
                 foreach (var gravityObject in gravityObjects)
                 {
                     var distance = PointCalculator.Distance(movingObject.Location, gravityObject.Location);
-                    _distanceDebug.Text = (distance - 6371000).ToString();
                     var angle = PointCalculator.CalculateAngle(movingObject.Location, gravityObject.Location);
                     var force = GravityCalculator.CalculateGravity(movingObject.Mass, gravityObject.Mass, distance, angle);
+                    _distanceDebug.Text = force.Value / movingObject.Mass.Value + "\n" + (distance - 6371000);
                     movingObject.ExternalForces.Add(force);
                 }
                 movingObject.Tick();
