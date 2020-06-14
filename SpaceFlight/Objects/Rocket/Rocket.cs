@@ -103,13 +103,13 @@ namespace SpaceFlight.Objects.Rocket
             point.Y -= 5;
             g.DrawString(_name + " " + _rocketInf.Manufacturer, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
-            g.DrawString(Math.Round(restFuelWeight /_rocketInf.FuelWeight * 100).ToString() + "% Fuel", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            g.DrawString((restFuelWeight /_rocketInf.FuelWeight * 100).ToString() + "% Fuel", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
             g.DrawString((restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight).ToString() + "kg", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
-            g.DrawString((Math.Round(Acceleration.Value)).ToString() + "m/s^2", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            g.DrawString(((Acceleration.Value)).ToString() + "m/s^2", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
-            g.DrawString((Math.Round(Speed.Value)).ToString() + "m/s", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
+            g.DrawString(((Speed.Value)).ToString() + "m/s", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
             point.Y -= 5;
         }
 

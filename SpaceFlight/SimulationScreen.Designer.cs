@@ -59,7 +59,7 @@ namespace SpaceFlight
             // 
             this.lblDebugDistance.AutoSize = true;
             this.lblDebugDistance.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebugDistance.Location = new System.Drawing.Point(12, 913);
+            this.lblDebugDistance.Location = new System.Drawing.Point(12, 880);
             this.lblDebugDistance.Name = "lblDebugDistance";
             this.lblDebugDistance.Size = new System.Drawing.Size(289, 39);
             this.lblDebugDistance.TabIndex = 1;
@@ -70,6 +70,7 @@ namespace SpaceFlight
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 961);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Controls.Add(this.SimulationPanel);
             this.DoubleBuffered = true;
             this.Icon = global::SpaceFlight.Properties.Resources.Rocket_symbol;
