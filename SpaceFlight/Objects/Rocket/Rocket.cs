@@ -12,7 +12,7 @@ namespace SpaceFlight.Objects.Rocket
 {
     class Rocket : PhysicsObject, IScreenObject
     {
-        private float angle;
+        private Angle angle;
         private float thrustPercentage;
         private float restFuelWeight;
         private bool engineRunning;
@@ -25,9 +25,9 @@ namespace SpaceFlight.Objects.Rocket
         private readonly Timer _checkTimer;
 
         public Rocket(PointF location, Mass mass, Force force, Acceleration acceleration, Speed speed,
-            float angle, float thrustPercentage, RocketInformation rocketInf) : base(location, mass, force, acceleration, speed)
+            Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, mass, force, acceleration, speed)
         {
-            this.angle = -1 * angle;
+            this.angle = angle;
             this._rocketInf = rocketInf;
             this.thrustPercentage = thrustPercentage;
             restFuelWeight = rocketInf.FuelWeight;
@@ -65,7 +65,7 @@ namespace SpaceFlight.Objects.Rocket
 
             if (engineRunning)
             {
-                OwnForce = new Force(Angle.FromDegrees(angle), _rocketInf.Thrust * thrustPercentage);
+                OwnForce = new Force(angle, _rocketInf.Thrust * thrustPercentage);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace SpaceFlight.Objects.Rocket
 
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool showStats)
         {
-            var aCalc = new AngularCalculator(angle, Location);
+            var aCalc = new AngularCalculator((float) angle.Degree * -1, Location);
             var spritePieces =
                 _sprite.CalculatePolygons(Location, ppCalc, aCalc);
 
@@ -136,7 +136,7 @@ namespace SpaceFlight.Objects.Rocket
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
-        public RectangleF GetBounds() => _sprite.GetBounds(Location, new AngularCalculator(angle, Location));
+        public RectangleF GetBounds() => _sprite.GetBounds(Location, new AngularCalculator((float)angle.Degree * -1, Location));
 
         public PointF GetMiddle() => Location;
 

@@ -43,7 +43,7 @@ namespace SpaceFlight
             this.SimulationPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SimulationPanel.Location = new System.Drawing.Point(0, 0);
             this.SimulationPanel.Name = "SimulationPanel";
-            this.SimulationPanel.Size = new System.Drawing.Size(984, 961);
+            this.SimulationPanel.Size = new System.Drawing.Size(1000, 1000);
             this.SimulationPanel.TabIndex = 0;
             // 
             // lblDebug
@@ -69,7 +69,7 @@ namespace SpaceFlight
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 961);
+            this.ClientSize = new System.Drawing.Size(1000, 1000);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Controls.Add(this.SimulationPanel);
             this.DoubleBuffered = true;
