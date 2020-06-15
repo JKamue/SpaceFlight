@@ -137,6 +137,8 @@ namespace SpaceFlight.Objects.Terrain
 
         public PointF GetMiddle() => position;
 
+        public void ChangeAngle(float change) { }
+
         public int GetPriority() => 1;
     }
 }

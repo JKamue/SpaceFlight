@@ -1,5 +1,6 @@
 ﻿using SpaceFlight.Screen.Calculator;
 using System.Drawing;
+using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Screen
 {
@@ -9,5 +10,6 @@ namespace SpaceFlight.Screen
         void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool information);
         PointF GetMiddle();
         int GetPriority();
+        void ChangeAngle(float change);
     }
 }

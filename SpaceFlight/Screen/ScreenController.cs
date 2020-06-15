@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Screen
 {
@@ -143,6 +144,8 @@ namespace SpaceFlight.Screen
             RemovePanelObject(o);
             AddPanelObject(o);
         }
+
+        public void ChangeMainObjectAngle(float change) => mainObject.ChangeAngle(change);
 
     }
 }

@@ -141,5 +141,7 @@ namespace SpaceFlight.Objects.Rocket
         public PointF GetMiddle() => Location;
 
         public int GetPriority() => 7;
+
+        public void ChangeAngle(float change) => angle = Angle.FromDegrees(angle.Degree + change);
     }
 }

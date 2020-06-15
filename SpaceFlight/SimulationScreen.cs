@@ -1,4 +1,5 @@
-﻿using SpaceFlight.Screen;
+﻿using System;
+using SpaceFlight.Screen;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -7,19 +8,31 @@ using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen.Calculator;
+using Timer = System.Windows.Forms.Timer;
 
 namespace SpaceFlight
 {
     public partial class SimulationScreen : Form
     {
-        private ScreenController closeDistanceScreen;
+        private readonly ScreenController _closeDistanceScreen;
+        private readonly Timer _keyStatusTimer;
 
         public SimulationScreen()
         {
             InitializeComponent();
-            closeDistanceScreen = new ScreenController(SimulationPanel, Color.NavajoWhite, 3, lblDebug);
+            this.KeyDown += KeyStatus.KeyDownHandler;
+            this.KeyUp += KeyStatus.KeyUpHander;
+
+            // Load controllers
+            _closeDistanceScreen = new ScreenController(SimulationPanel, Color.NavajoWhite, 3, lblDebug);
             var physicsController = new PhysicsController(10, lblDebugDistance);
             var zeroAngle = Angle.FromDegrees(0);
+
+            // Setup Key Status Timer
+            _keyStatusTimer = new Timer();
+            _keyStatusTimer.Interval = 100;
+            _keyStatusTimer.Tick += CheckKeyStatus;
+            _keyStatusTimer.Start();
 
             // Load Planets
             var earth = new Terrain(new Point(0, -6371000), 6371000, Color.Green, new Mass(5.972E+024));
@@ -39,9 +52,9 @@ namespace SpaceFlight
 
 
             // Load Screen objects
-            closeDistanceScreen.AddPanelObject(earth);
+            _closeDistanceScreen.AddPanelObject(earth);
             //closeDistanceScreen.SetMainObject(f9);
-            closeDistanceScreen.SetMainObject(v2);
+            _closeDistanceScreen.SetMainObject(v2);
             //closeDistanceScreen.SetMainObject(aV401);
 
             // Set Physic objects
@@ -51,10 +64,15 @@ namespace SpaceFlight
             physicsController.AddGravityObject(earth);
         }
 
-        private void SimulationScreen_KeyPress(object sender, KeyPressEventArgs e)
+        private void CheckKeyStatus(object sender, EventArgs e)
         {
-            if (e.KeyChar == 105)
-                closeDistanceScreen.ShowInfo = !closeDistanceScreen.ShowInfo;
+            _closeDistanceScreen.ShowInfo = KeyStatus.IsPressed(73);
+
+            if (KeyStatus.IsPressed(37))
+                _closeDistanceScreen.ChangeMainObjectAngle(-1F);
+
+            if (KeyStatus.IsPressed(39))
+                _closeDistanceScreen.ChangeMainObjectAngle(1F);
 
         }
     }

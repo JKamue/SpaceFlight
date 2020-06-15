@@ -79,7 +79,6 @@ namespace SpaceFlight
             this.Name = "SimulationScreen";
             this.Text = "SpaceFlight";
             this.TopMost = true;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SimulationScreen_KeyPress);
             this.SimulationPanel.ResumeLayout(false);
             this.SimulationPanel.PerformLayout();
             this.ResumeLayout(false);
