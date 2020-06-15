@@ -96,20 +96,20 @@ namespace SpaceFlight.Objects.Rocket
         private void DrawStats(Graphics g, ProjectedPositionCalculator ppCalc)
         {
             var point = Location;
-            var y = point.Y + _rocketInf.Height / 2;
+            var y = point.Y;
             point.X += 5;
 
-            point.Y = y + 7.5F;
+            point.Y = y + 12.5F;
             g.DrawString( _rocketInf.Model + " " + _rocketInf.Variant, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y + 2.5F;
+            point.Y = y + 7.5F;
             g.DrawString(_name + " " + _rocketInf.Manufacturer, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 2.5F;
+            point.Y = y + 2.5F;
             g.DrawString((restFuelWeight /_rocketInf.FuelWeight * 100).ToString() + "% Fuel", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 7.5F;
+            point.Y = y - 2.5F;
             g.DrawString((restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight).ToString() + "kg", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 12.5F;
+            point.Y = y - 7.5F;
             g.DrawString(((Acceleration.Value)).ToString() + "m/s^2", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 17.5F;
+            point.Y = y - 12.5F;
             g.DrawString(((Speed.Value)).ToString() + "m/s", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
         }
 
