@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Physics\Calculator\AtmosphereCalculator.cs" />
+    <Compile Include="Physics\Calculator\DragCalculator.cs" />
     <Compile Include="Physics\Calculator\GravityCalculator.cs" />
     <Compile Include="Physics\PhysicsController.cs" />
     <Compile Include="Physics\Units\Acceleration.cs" />
