@@ -17,7 +17,7 @@ namespace SpaceFlight.Objects.Terrain
         private PointF position;
         private List<PointF> allPoints;
 
-        public Terrain(PointF position, float radius, Color color, Mass mass): base(position, mass)
+        public Terrain(PointF position, float radius, Color color, Mass mass): base(position, mass, radius)
         {
             this.color = color;
             this.radius = radius;

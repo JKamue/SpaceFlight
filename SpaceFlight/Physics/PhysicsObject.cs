@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Physics
@@ -16,19 +17,23 @@ namespace SpaceFlight.Physics
         public List<Force> ExternalForces;
         public Acceleration Acceleration;
         public Speed Speed;
+        public DragProperties Drag;
+        public double Diameter;
 
         private DateTime _lastRecalculation;
 
-        public PhysicsObject(PointF location, Mass mass)
+        public PhysicsObject(PointF location, Mass mass, double diameter)
         {
             Location = location;
             Mass = mass;
             OwnForce = new Force(Angle.FromDegrees(0), 0);
             Acceleration = new Acceleration(Angle.FromDegrees(0), 0);
             Speed = new Speed(Angle.FromDegrees(0), 0);
+            Drag = new DragProperties(0,0,0,0);
+            Diameter = diameter;
         }
 
-        public PhysicsObject(PointF location, Mass mass, Force ownForce, Acceleration acceleration, Speed speed)
+        public PhysicsObject(PointF location, Mass mass, Force ownForce, Acceleration acceleration, Speed speed, DragProperties drag)
         {
             Location = location;
             Mass = mass;
@@ -36,6 +41,8 @@ namespace SpaceFlight.Physics
             Acceleration = acceleration;
             Speed = speed;
             ExternalForces = new List<Force>();
+            Drag = drag;
+            Diameter = 0;
 
             _lastRecalculation = DateTime.Now;
         }

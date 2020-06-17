@@ -25,7 +25,7 @@ namespace SpaceFlight.Objects.Rocket
         private readonly Timer _checkTimer;
 
         public Rocket(PointF location, Mass mass, Force force, Acceleration acceleration, Speed speed,
-            Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, mass, force, acceleration, speed)
+            Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, mass, force, acceleration, speed, rocketInf.DragProperties)
         {
             this.angle = angle;
             this._rocketInf = rocketInf;

@@ -3,9 +3,11 @@ using SpaceFlight.Screen;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
+using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen.Calculator;
 using Timer = System.Windows.Forms.Timer;
@@ -40,28 +42,32 @@ namespace SpaceFlight
 
             // Load Rockets
             var f9_inf = RocketInformation.LoadFromName("falcon-9-1.2");
-            var aV401_inf = RocketInformation.LoadFromName("atlas-V-401");
-            var v2_inf = RocketInformation.LoadFromName("vergeltungswaffe-2");
+            //var aV401_inf = RocketInformation.LoadFromName("atlas-V-401");
+            //var v2_inf = RocketInformation.LoadFromName("vergeltungswaffe-2");
 
             var f9 = new Rocket(new PointF(0, 0), new Mass(f9_inf.Weight), new Force(zeroAngle, f9_inf.Thrust),
                 new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), zeroAngle, 1F, f9_inf);
-            var aV401 = new Rocket(new PointF(30, 0), new Mass(aV401_inf.Weight), new Force(zeroAngle, aV401_inf.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), zeroAngle, 1F, aV401_inf);
-            var v2 = new Rocket(new PointF(0, 0), new Mass(v2_inf.Weight), new Force(zeroAngle, v2_inf.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), Angle.FromDegrees(45), 1F, v2_inf);
+            //var aV401 = new Rocket(new PointF(30, 0), new Mass(aV401_inf.Weight), new Force(zeroAngle, aV401_inf.Thrust),
+            //    new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), zeroAngle, 1F, aV401_inf);
+            //var v2 = new Rocket(new PointF(0, 0), new Mass(v2_inf.Weight), new Force(zeroAngle, v2_inf.Thrust),
+            //    new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), Angle.FromDegrees(45), 1F, v2_inf);
 
 
             // Load Screen objects
             _closeDistanceScreen.AddPanelObject(earth);
-            //closeDistanceScreen.SetMainObject(f9);
-            _closeDistanceScreen.SetMainObject(v2);
+            _closeDistanceScreen.SetMainObject(f9);
+            //_closeDistanceScreen.SetMainObject(v2);
             //closeDistanceScreen.SetMainObject(aV401);
 
             // Set Physic objects
-            //physicsController.AddMovingObject(f9);
-            physicsController.AddMovingObject(v2);
+            physicsController.AddMovingObject(f9);
+            //physicsController.AddMovingObject(v2);
             //physicsController.AddMovingObject(aV401);
             physicsController.AddGravityObject(earth);
+
+           var test =  new DragProperties(0.25, 0.41, 10, 100);
+           string output = JsonConvert.SerializeObject(test, Formatting.Indented);
+           DragProperties deserializedProduct = JsonConvert.DeserializeObject<DragProperties>(output);
         }
 
         private void CheckKeyStatus(object sender, EventArgs e)
