@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using SpaceFlight.Physics.Units;
@@ -9,31 +11,38 @@ namespace SpaceFlight.Physics.Calculator
 {
     public class AtmosphereCalculator
     {
-        public static readonly double SeaLevelPressure = 101325;
-        public static readonly double TemperatureLapseRate = 0.00976;
-        public static readonly double SeaLevelStandardTemperature = 288.16;
-        public static readonly double EarthSurfaceGravitationalAcceleration	 = 9.80665;
-        public static readonly double DryAirMolarMass = 0.02896968;
-        public static readonly double UniversalGasConstant = 8.314462618;
-
-        
-
-        public static double CalculatePressureAtAltitude(double altitude)
+        // Using U.S. Standard Atmosphere Air Properties https://www.engineeringtoolbox.com/standard-atmosphere-d_604.html
+        public static double CalculateAirDensityAtAltitude(double altitude)
         {
-            if (altitude > 80000)
-                return 0;
 
-            if (altitude > 28950)
-                return 0.1;
+            // Sorry for this
+            var densityAtAltitude = new Dictionary<Func<double, bool>, double>
+            {
+                { x => x < 0, 0},
+                { x => x < 1000, 1.225},
+                { x => x < 2000, 1.112},
+                { x => x < 3000, 1.007},
+                { x => x < 4000, 0.9093},
+                { x => x < 5000, 0.8194},
+                { x => x < 6000, 0.7364},
+                { x => x < 7000, 0.6601},
+                { x => x < 8000, 0.5900},
+                { x => x < 9000, 0.5258},
+                { x => x < 10000, 0.4671},
+                { x => x < 15000, 0.4135},
+                { x => x < 20000, 0.1948},
+                { x => x < 25000, 0.08891},
+                { x => x < 30000, 0.04008},
+                { x => x < 40000, 0.01841},
+                { x => x < 50000, 0.003996},
+                { x => x < 60000, 0.001027},
+                { x => x < 70000, 0.0003097},
+                { x => x < 80000, 0.00008283},
+                { x => x < 90000, 0.00001846},
+                { x => x >= 90000, 0},
+            };
 
-            if (altitude < 0)
-                return 0;
-
-            return SeaLevelPressure *
-                   Math.Pow(
-                       1 - (TemperatureLapseRate * altitude) / SeaLevelStandardTemperature,
-                       (EarthSurfaceGravitationalAcceleration * DryAirMolarMass) /
-                       (UniversalGasConstant * TemperatureLapseRate));
+            return densityAtAltitude.First(sw => sw.Key(altitude)).Value;
         }
     }
 }
