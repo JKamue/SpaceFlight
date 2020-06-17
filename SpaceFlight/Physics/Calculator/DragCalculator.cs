@@ -7,7 +7,7 @@ using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Physics.Calculator
 {
-    class DragCalculator
+    public class DragCalculator
     {
         public static Force CalculateDrag(Angle resultingForce, double Cd, double p, Speed speed, double area)
         {
