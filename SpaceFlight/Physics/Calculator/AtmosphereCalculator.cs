@@ -7,7 +7,7 @@ using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Physics.Calculator
 {
-    class AtmosphereCalculator
+    public class AtmosphereCalculator
     {
         public static readonly double SeaLevelPressure = 101325;
         public static readonly double TemperatureLapseRate = 0.00976;
@@ -18,17 +18,20 @@ namespace SpaceFlight.Physics.Calculator
 
         
 
-        public static double CalculatePressureAtAltitude(Distance altitude)
+        public static double CalculatePressureAtAltitude(double altitude)
         {
-            if (altitude.Value > 80000)
+            if (altitude > 80000)
                 return 0;
 
-            if (altitude.Value < 28950)
+            if (altitude > 28950)
                 return 0.1;
+
+            if (altitude < 0)
+                return 0;
 
             return SeaLevelPressure *
                    Math.Pow(
-                       1 - (TemperatureLapseRate * altitude.Value) / SeaLevelStandardTemperature,
+                       1 - (TemperatureLapseRate * altitude) / SeaLevelStandardTemperature,
                        (EarthSurfaceGravitationalAcceleration * DryAirMolarMass) /
                        (UniversalGasConstant * TemperatureLapseRate));
         }
