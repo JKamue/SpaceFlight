@@ -9,17 +9,17 @@ namespace SpaceFlight.Physics.Other
 {
     public class DragProperties
     {
-        private readonly double _cdUp;
-        private readonly double _cdSide;
-        private readonly double _areaUp;
-        private readonly double _areaSide;
+        public readonly double CdUp;
+        public readonly double CdSide;
+        public readonly double AreaUp;
+        public readonly double AreaSide;
 
-        public DragProperties(double cdUp, double cdSide, double areaUp, double areaSide)
+        public DragProperties(double CdUp, double CdSide, double AreaUp, double AreaSide)
         {
-            _cdUp = cdUp;
-            _cdSide = cdSide;
-            _areaUp = areaUp;
-            _areaSide = areaSide;
+            this.CdUp = CdUp;
+            this.CdSide = CdSide;
+            this.AreaUp = AreaUp;
+            this.AreaSide = AreaSide;
         }
 
         private static double MapAngle(Angle a) => Math.Cos(2 * a.Radian);
@@ -32,13 +32,13 @@ namespace SpaceFlight.Physics.Other
         public double GetArea(Angle a)
         {
             var value = MapAngle(a);
-            return Map(value, 1, -1, _areaUp, _areaSide);
+            return Map(value, 1, -1, AreaUp, AreaSide);
         }
 
         public double GetDragCoefficient(Angle a)
         {
             var value = MapAngle(a);
-            return Map(value, 1, -1, _cdUp, _cdSide);
+            return Map(value, 1, -1, CdUp, CdSide);
         }
     }
 }
