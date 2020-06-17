@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using SpaceFlight.Objects.Rocket.Sprites;
+using SpaceFlight.Physics.Other;
 
 namespace SpaceFlight.Objects.Rocket
 {
@@ -17,6 +18,7 @@ namespace SpaceFlight.Objects.Rocket
         public float Weight { get; }
         public float FuelWeight { get; }
         public float BurnTime { get; }
+        public DragProperties DragProperties { get; }
         public List<RocketSpritePiece> Sprite { get; }
 
         public List<ThrustArea> ThrustAreas;
@@ -32,7 +34,7 @@ namespace SpaceFlight.Objects.Rocket
         }
 
         public RocketInformation(string model, string variant, string manufacturer, List<string> names, float height, float width,
-            float thrust, float weight, float fuelWeight, float burnTime, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
+            float thrust, float weight, float fuelWeight, float burnTime, DragProperties dragProperties, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
         {
             Model = model;
             Variant = variant;
@@ -46,6 +48,7 @@ namespace SpaceFlight.Objects.Rocket
             Sprite = sprite;
             ThrustAreas = thrustAreas;
             BurnTime = burnTime;
+            DragProperties = dragProperties;
         }
 
         public RocketSprite GetRocketSprite() =>  new RocketSprite(Height, Width, Sprite);
