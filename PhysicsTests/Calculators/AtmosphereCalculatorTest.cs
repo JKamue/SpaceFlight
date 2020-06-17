@@ -11,71 +11,51 @@ namespace PhysicsTests.Calculators
     public class AtmosphereCalculatorTest
     {
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly1()
+        public void AirDensityCalculatedCorrectly1()
         {
-            Assert.AreEqual(101325,AtmosphereCalculator.CalculatePressureAtAltitude(0));
+            Assert.AreEqual(0,AtmosphereCalculator.CalculateAirDensityAtAltitude(-100));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly2()
+        public void AirDensityCalculatedCorrectly2()
         {
-            Assert.AreEqual(95443.78, AtmosphereCalculator.CalculatePressureAtAltitude(500), 0.01);
+            Assert.AreEqual(1.225, AtmosphereCalculator.CalculateAirDensityAtAltitude(0));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly3()
+        public void AirDensityCalculatedCorrectly3()
         {
-            Assert.AreEqual(89810.56, AtmosphereCalculator.CalculatePressureAtAltitude(1000), 0.01);
+            Assert.AreEqual(1.112, AtmosphereCalculator.CalculateAirDensityAtAltitude(1000));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly4()
+        public void AirDensityCalculatedCorrectly4()
         {
-            Assert.AreEqual(52918.34, AtmosphereCalculator.CalculatePressureAtAltitude(5000), 0.01);
+            Assert.AreEqual(1.007, AtmosphereCalculator.CalculateAirDensityAtAltitude(2500));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly5()
+        public void AirDensityCalculatedCorrectly5()
         {
-            Assert.AreEqual(23820.29, AtmosphereCalculator.CalculatePressureAtAltitude(10000), 0.01);
+            Assert.AreEqual(0.4135, AtmosphereCalculator.CalculateAirDensityAtAltitude(12500));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly6()
+        public void AirDensityCalculatedCorrectly6()
         {
-            Assert.AreEqual(1930.14, AtmosphereCalculator.CalculatePressureAtAltitude(20000), 0.01);
+            Assert.AreEqual(0.01841, AtmosphereCalculator.CalculateAirDensityAtAltitude(35000));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly7()
+        public void AirDensityCalculatedCorrectly7()
         {
-            Assert.AreEqual(0.1038, AtmosphereCalculator.CalculatePressureAtAltitude(28950), 0.0001);
+            Assert.AreEqual(0.0003097, AtmosphereCalculator.CalculateAirDensityAtAltitude(62100.12312312));
         }
 
         [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly8()
+        public void AirDensityCalculatedCorrectly8()
         {
-            Assert.AreEqual(0.1, AtmosphereCalculator.CalculatePressureAtAltitude(28951));
+            Assert.AreEqual(0, AtmosphereCalculator.CalculateAirDensityAtAltitude(90000));
         }
-
-        [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly10()
-        {
-            Assert.AreEqual(0.1, AtmosphereCalculator.CalculatePressureAtAltitude(80000));
-        }
-
-        [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly11()
-        {
-            Assert.AreEqual(0, AtmosphereCalculator.CalculatePressureAtAltitude(80001));
-        }
-
-        [TestMethod]
-        public void AtmosphericPressureCalculatedCorrectly12()
-        {
-            Assert.AreEqual(0, AtmosphereCalculator.CalculatePressureAtAltitude(-100));
-        }
-
-
     }
 }
