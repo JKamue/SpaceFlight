@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpaceFlight.Physics.Units;
 
-namespace PhysicsTests
+namespace PhysicsTests.Units
 {
     [TestClass]
     public class SpeedClassTest

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
 
-namespace PhysicsTests
+namespace PhysicsTests.Units
 {
     [TestClass]
     public class ForceClassTest

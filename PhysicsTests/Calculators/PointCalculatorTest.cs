@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Units;
 
-namespace PhysicsTests
+namespace PhysicsTests.Calculators
 {
     [TestClass]
     public class PointCalculatorTest
