@@ -9,12 +9,11 @@ namespace SpaceFlight.Physics.Calculator
 {
     public class DragCalculator
     {
-        public static Force CalculateDrag(Angle resultingForce, double Cd, double p, Speed speed, double area)
+        public static Force CalculateDrag(Angle dragAngle, double cd, double p, Speed speed, double area)
         {
-            var angle = Angle.FromDegrees(resultingForce.Degree + 180);
-            var force = Cd * 0.5 * p * Math.Pow(speed.Value, 2) * area;
+            var force = cd * 0.5 * p * Math.Pow(speed.Value, 2) * area;
 
-            return new Force(angle, force);
+            return new Force(dragAngle, force);
         }
     }
 }

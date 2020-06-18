@@ -18,6 +18,12 @@
   "Weight": 330388,
   "FuelWeight": 304919,
   "BurnTime": 240,
+  "DragProperties": {
+    "CdUp": 0.25,
+    "CdSide": 0.42,
+    "AreaUp": 13.8544236,
+    "AreaSide": 218.313
+  },
   "ThrustAreas": [
     {
       "Start": {

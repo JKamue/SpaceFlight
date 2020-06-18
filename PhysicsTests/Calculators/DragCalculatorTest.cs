@@ -20,7 +20,10 @@ namespace PhysicsTests.Calculators
             var p = AtmosphereCalculator.CalculateAirDensityAtAltitude(5000);
             var s = new Speed(zeroAngle, 500);
             var area = 21;
-            var f = DragCalculator.CalculateDrag(zeroAngle, cd, p, s, area);
+            var f = DragCalculator.CalculateDrag(zeroAngle, 0.25, p, s, area);
+            var d1 = f.Value;
+            var f2 = DragCalculator.CalculateDrag(zeroAngle, 0.2, p, s, area);
+            var d2 = f2.Value;
             Assert.AreEqual(483262.5, f.Value, 0.1);
         }
     }

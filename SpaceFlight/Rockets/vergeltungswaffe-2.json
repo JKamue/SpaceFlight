@@ -11,10 +11,16 @@
   ],
   "Height": 12,
   "Width": 3.56,
-  "Thrust": 311800,
+  "Thrust": 264900,
   "Weight": 12805,
   "FuelWeight": 8797,
   "BurnTime": 68,
+  "DragProperties": {
+    "CdUp": 0.25,
+    "CdSide": 0.43,
+    "AreaUp": 2.1382465,
+    "AreaSide": 19.8
+  },
   "ThrustAreas": [
     {
       "Start": {
