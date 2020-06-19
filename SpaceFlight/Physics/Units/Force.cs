@@ -11,6 +11,7 @@ namespace SpaceFlight.Physics
 
     public class Force : Vector
     {
+        public Force() : base() { }
         public Force(Angle angle, double newton) : base(angle, newton) { }
         public Force(Vector v) : base(v.Angle, v.Value) { }
 

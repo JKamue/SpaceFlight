@@ -14,6 +14,11 @@ namespace SpaceFlight.Physics.Units
         public double Value { get; }
         private double Pow => Math.Pow(Value, 2);
 
+        public Vector()
+        {
+            Angle = Angle.Zero;
+            Value = 0;
+        }
         public Vector(Angle angle, double value)
         {
             Angle = angle;
@@ -31,7 +36,7 @@ namespace SpaceFlight.Physics.Units
             var resultingAngle = PointCalculator.CalculateAngle(new PointF(0, 0), point);
 
             if (resultingValue < 0.0001)
-                resultingAngle = Angle.FromDegrees(0);
+                resultingAngle = Angle.Zero;
 
             return new Vector(resultingAngle, resultingValue);
         }

@@ -28,7 +28,6 @@ namespace SpaceFlight
             // Load controllers
             _closeDistanceScreen = new ScreenController(SimulationPanel, Color.NavajoWhite, 3, lblDebug);
             var physicsController = new PhysicsController(10, lblDebugDistance);
-            var zeroAngle = Angle.FromDegrees(0);
 
             // Setup Key Status Timer
             _keyStatusTimer = new Timer();
@@ -45,12 +44,12 @@ namespace SpaceFlight
             var aV401_inf = RocketInformation.LoadFromName("atlas-V-401");
             var v2_inf = RocketInformation.LoadFromName("vergeltungswaffe-2");
 
-            var f9 = new Rocket(new PointF(0, 0), new Mass(f9_inf.Weight), new Force(zeroAngle, f9_inf.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), zeroAngle, 1F, f9_inf);
-            var aV401 = new Rocket(new PointF(30, 0), new Mass(aV401_inf.Weight), new Force(zeroAngle, aV401_inf.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), zeroAngle, 1F, aV401_inf);
-            var v2 = new Rocket(new PointF(0, 0), new Mass(v2_inf.Weight), new Force(zeroAngle, v2_inf.Thrust),
-                new Acceleration(zeroAngle, 0), new Speed(zeroAngle, 0), zeroAngle, 1F, v2_inf);
+            var f9 = new Rocket(new PointF(0, 0), new Mass(f9_inf.Weight), new Force(Angle.Zero, f9_inf.Thrust),
+                new Acceleration(), new Speed(), Angle.Zero, 1F, f9_inf);
+            var aV401 = new Rocket(new PointF(30, 0), new Mass(aV401_inf.Weight), new Force(Angle.Zero, aV401_inf.Thrust),
+                new Acceleration(), new Speed(), Angle.Zero, 1F, aV401_inf);
+            var v2 = new Rocket(new PointF(0, 0), new Mass(v2_inf.Weight), new Force(Angle.Zero, v2_inf.Thrust),
+                new Acceleration(), new Speed(), Angle.Zero, 1F, v2_inf);
 
 
             // Load Screen objects

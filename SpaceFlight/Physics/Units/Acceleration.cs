@@ -8,6 +8,8 @@ namespace SpaceFlight.Physics.Units
 {
     public class Acceleration : Vector
     {
+        public Acceleration() : base() { }
+
         public Acceleration(Angle angle, double mPerSecSquared) : base(angle, mPerSecSquared) {}
 
         public Acceleration(Vector v) : base(v.Angle, v.Value) {}

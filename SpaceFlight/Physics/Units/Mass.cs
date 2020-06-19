@@ -9,7 +9,7 @@ namespace SpaceFlight.Physics.Units
     public class Mass
     {
         public double Value { get; }
-
+        public Mass() : base() { }
         public Mass(double value)
         {
             if (value <= 0)

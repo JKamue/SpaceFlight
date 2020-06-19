@@ -26,9 +26,9 @@ namespace SpaceFlight.Physics
         {
             Location = location;
             Mass = mass;
-            OwnForce = new Force(Angle.FromDegrees(0), 0);
-            Acceleration = new Acceleration(Angle.FromDegrees(0), 0);
-            Speed = new Speed(Angle.FromDegrees(0), 0);
+            OwnForce = new Force();
+            Acceleration = new Acceleration();
+            Speed = new Speed();
             Drag = new DragProperties(0,0,0,0);
             Diameter = diameter;
         }

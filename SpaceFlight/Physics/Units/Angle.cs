@@ -8,6 +8,7 @@ namespace SpaceFlight.Physics.Units
 {
     public class Angle
     {
+        public static Angle Zero => new Angle(0);
         public static Angle FromDegrees(double degrees) => new Angle(degrees);
         public static Angle FromRadian(double radian) => new Angle(RadToDegree(radian));
 

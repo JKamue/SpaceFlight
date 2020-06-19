@@ -69,7 +69,7 @@ namespace SpaceFlight.Objects.Rocket
             }
             else
             {
-                OwnForce = new Force(Angle.FromDegrees(0), 0);
+                OwnForce = new Force();
             }
 
             Mass = new Mass(restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight);
