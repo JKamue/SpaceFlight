@@ -115,7 +115,7 @@ namespace SpaceFlight.Objects.Terrain
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private static float Generate(float x, float y)
+        public static float Generate(float x, float y)
         {
             const float F2 = 0.366025403f; // F2 = 0.5*(sqrt(3.0)-1.0)
             const float G2 = 0.211324865f; // G2 = (3.0-Math.sqrt(3.0))/6.0

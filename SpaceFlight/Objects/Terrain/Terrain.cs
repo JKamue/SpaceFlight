@@ -34,15 +34,21 @@ namespace SpaceFlight.Objects.Terrain
             allPoints = new List<PointF>();
             for (int i = 0; i < 2 * Math.PI * radius; i += 40)
             {
-                var y = (int) Math.Round(Noise.Generate(i * 0.001f) * 128 + 128 / 2.5);
-                allPoints.Add(ProjectOntoCircle(new Point(i, y)));
+                var angle = 360 * (i / (2 * Math.PI * radius));
+                var noiseX = radius * (float) Math.Sin(angle * Math.PI / 180) * 0.0015f;
+                var noiseY = radius * (float) Math.Cos(angle * Math.PI / 180) * 0.0015f;
+
+                var noiseHeight = (int) Math.Round(Noise.Generate(noiseX, noiseY) * 128 + 128 / 2.5);
+
+                if (noiseHeight > height)
+                    height = noiseHeight;
+
+                allPoints.Add(ProjectOntoCircle(new Point(i, noiseHeight)));
             }
         }
 
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool inf)
         {
-            height = 0;
-
             var points = new List<PointF>();
 
             var lastPoint = new PointF();
@@ -67,9 +73,6 @@ namespace SpaceFlight.Objects.Terrain
                     else
                     {
                         points.Add(ppCalc.ProjectPoint(point));
-
-                        if (point.Y > height)
-                            height = (int)Math.Round(point.Y);
                     }
                 }
                 else
@@ -128,9 +131,9 @@ namespace SpaceFlight.Objects.Terrain
 
         public RectangleF GetBounds()
         {
-            var x = position.X - radius - 80;
-            var y = position.Y - radius - 80;
-            var size = radius * 2 + 160;
+            var x = position.X - radius - height;
+            var y = position.Y - radius - height;
+            var size = radius * 2 + height * 2;
 
             return new RectangleF((float) x, (float) y, (float) size, (float) size);
         }
