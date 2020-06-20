@@ -61,7 +61,8 @@ namespace SpaceFlight.Screen
         private void Redraw(object sender, EventArgs e)
         {
             objectCounter = 0;
-            var percent = 1 / zoom;
+            var calculatedZoom = CalculateZoom();
+            var percent = 1 / calculatedZoom;
 
             ProjectedPositionCalculator positionCalculator;
             RectangleF drawRectangle;
@@ -71,13 +72,13 @@ namespace SpaceFlight.Screen
                 var realCenter = mainObject.GetMiddle();
                 var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
                 drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter, percent);
-                positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter, zoom);
+                positionCalculator = new ProjectedPositionCalculator(mainObject.GetMiddle(), projectedCenter, calculatedZoom);
             }
             else
             {
                 var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2), (int)Math.Round((double)_panel.Height * percent / 2));
                 drawRectangle = CalculateDisplayRectangle(staticCenter, projectedCenter, percent);
-                positionCalculator = new ProjectedPositionCalculator(staticCenter, projectedCenter, zoom);
+                positionCalculator = new ProjectedPositionCalculator(staticCenter, projectedCenter, calculatedZoom);
             }
 
 
@@ -89,6 +90,8 @@ namespace SpaceFlight.Screen
             if (_debugLabel != null)
                 WriteDebugText();
         }
+
+        private float CalculateZoom() => (14.95F / 225F) * (float) Math.Pow(zoom, 2) + 0.05F;
 
         private RectangleF CalculateDisplayRectangle(PointF realCenter, Point projectedCenter, float percent)
         {
@@ -106,21 +109,21 @@ namespace SpaceFlight.Screen
             objectCounter++;
         }
 
-        private void Scroll_Event(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void Scroll_Event(object sender, MouseEventArgs e)
         {
-            if (e.Delta > 0 && zoom + 0.1 <= 15)
+            if (e.Delta > 0 && zoom + 1 <= 15)
             {
-                zoom += (float) 0.1;
-            } 
-            else if (e.Delta < 0 && zoom - 0.05 >= 0.02)
+                zoom++;
+            }
+            else if (e.Delta < 0 && zoom - 1 >= 0)
             {
-                zoom -= (float) 0.05;
+                zoom--;
             }
         }
 
         private void WriteDebugText()
         {
-            _debugLabel.Text = $"{objectCounter} objects; {actualFramerate.Framerate} fps";
+            _debugLabel.Text = $@"{objectCounter} objects; {actualFramerate.Framerate} fps";
         }
 
         public void AddPanelObject(IScreenObject o)
