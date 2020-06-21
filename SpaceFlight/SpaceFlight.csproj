@@ -109,7 +109,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Rockets\vergeltungswaffe-2.json">
+    <None Include="Data\Rockets\vergeltungswaffe-2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -126,18 +126,14 @@
     <None Include="Resources\Rocket_symbol.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Rockets\atlas-V-401.json">
+    <None Include="Data\Rockets\atlas-V-401.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Rockets\falcon-9-1.2.json">
+    <None Include="Data\Rockets\falcon-9-1.2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties rockets_4vergeltungswaffe-2_1json__JsonSchema="https://json.schemastore.org/ansible-stable-2.9" />
-    </VisualStudio>
-  </ProjectExtensions>
+  <ProjectExtensions />
 </Project>

@@ -26,11 +26,11 @@ namespace SpaceFlight.Objects.Rocket
 
         public static RocketInformation LoadFromName(string name)
         {
-            var path = $@"{Directory.GetCurrentDirectory()}/Rockets/{name}.json";
+            var path = $"{Directory.GetCurrentDirectory()}/Data/Rockets/{name}.json";
             if (!File.Exists(path))
                 throw new FileNotFoundException("Configuration file for " + name + " could not be found!");
 
-            return JsonConvert.DeserializeObject<RocketInformation>(File.ReadAllText($@"{Directory.GetCurrentDirectory()}/Rockets/{name}.json"));
+            return JsonConvert.DeserializeObject<RocketInformation>(File.ReadAllText(path));
         }
 
         public RocketInformation(string model, string variant, string manufacturer, List<string> names, float height, float width,
