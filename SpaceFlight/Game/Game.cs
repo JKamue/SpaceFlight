@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
-using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
 
@@ -20,16 +16,15 @@ namespace SpaceFlight.Game
     {
         private readonly ScreenController _closeDistanceScreen;
         private readonly PhysicsController _physicsController;
-        private readonly Timer _keyStatusTimer;
+        private readonly Timer _keyStatusTimer = new Timer();
 
-        public Game(Panel SimulationPanel, Label lblDebug, Label lblDebugDistance, string levelName)
+        public Game(Panel simulationPanel, Label lblDebug, Label lblDebugDistance, string levelName)
         {
             // Load controllers
-            _closeDistanceScreen = new ScreenController(SimulationPanel, Color.NavajoWhite, 3, lblDebug);
+            _closeDistanceScreen = new ScreenController(simulationPanel, Color.NavajoWhite, 3, lblDebug);
             _physicsController = new PhysicsController(10, lblDebugDistance);
 
             // Setup Key Status Timer
-            _keyStatusTimer = new Timer();
             _keyStatusTimer.Interval = 100;
             _keyStatusTimer.Tick += CheckKeyStatus;
             _keyStatusTimer.Start();

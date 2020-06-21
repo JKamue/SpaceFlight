@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
@@ -32,7 +31,7 @@ namespace SpaceFlight.Objects.Terrain
         private void GenerateAllPoints()
         {
             allPoints = new List<PointF>();
-            for (int i = 0; i < 2 * Math.PI * radius; i += 40)
+            for (var i = 0; i < 2 * Math.PI * radius; i += 40)
             {
                 var angle = 360 * (i / (2 * Math.PI * radius));
                 var noiseX = radius * (float) Math.Sin(angle * Math.PI / 180) * 0.0015f;
@@ -95,7 +94,7 @@ namespace SpaceFlight.Objects.Terrain
                 lastPoint = point;
             }
 
-            SolidBrush b = new SolidBrush(color);
+            var b = new SolidBrush(color);
 
             if (points.Count == 0)
                 return;
@@ -115,7 +114,6 @@ namespace SpaceFlight.Objects.Terrain
                 }
             }
 
-            //points.Add(ppCalc.ProjectPoint(position));
             g.FillPolygon(b, points.ToArray());
         }
 

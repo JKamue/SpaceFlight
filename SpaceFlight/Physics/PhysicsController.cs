@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Units;
@@ -15,14 +11,13 @@ namespace SpaceFlight.Physics
         private List<PhysicsObject> movingObjects;
         private List<PhysicsObject> gravityObjects;
 
-        private readonly Timer _physTimer;
+        private readonly Timer _physTimer = new Timer();
         private readonly Label _distanceDebug;
 
         public PhysicsController(int msPerTick, Label distanceDebug)
         {
             _distanceDebug = distanceDebug;
 
-            _physTimer = new Timer();
             _physTimer.Interval = msPerTick;
             _physTimer.Tick += Tick;
             _physTimer.Start();
@@ -42,11 +37,10 @@ namespace SpaceFlight.Physics
                 movingObject.ExternalForces = new List<Force>();
                 foreach (var gravityObject in gravityObjects)
                 {
-                    var labelText = "";
                     var distance = PointCalculator.Distance(movingObject.Location, gravityObject.Location);
                     var angle = PointCalculator.CalculateAngle(movingObject.Location, gravityObject.Location);
                     var force = GravityCalculator.CalculateGravity(movingObject.Mass, gravityObject.Mass, distance, angle);
-                    labelText = force.Value / movingObject.Mass.Value + "\n" + (distance - gravityObject.Diameter);
+                    var labelText = force.Value / movingObject.Mass.Value + "\n" + (distance - gravityObject.Diameter);
                     movingObject.ExternalForces.Add(force);
 
                     var altitude = distance - gravityObject.Diameter;

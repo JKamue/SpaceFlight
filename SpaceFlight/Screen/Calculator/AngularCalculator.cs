@@ -17,8 +17,8 @@ namespace SpaceFlight.Screen.Calculator
         // Changed code from Fraser Chapman: https://stackoverflow.com/a/13695630
         public PointF Turn(PointF p)
         {
-            double cosTheta = Math.Cos(_angle);
-            double sinTheta = Math.Sin(_angle);
+            var cosTheta = Math.Cos(_angle);
+            var sinTheta = Math.Sin(_angle);
             return new PointF(
                 (float)
                 (cosTheta * (p.X - _center.X) -

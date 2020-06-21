@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SpaceFlight.Physics.Calculator;
 
 namespace SpaceFlight.Physics.Units
@@ -12,7 +8,6 @@ namespace SpaceFlight.Physics.Units
     {
         public Angle Angle { get; }
         public double Value { get; }
-        private double Pow => Math.Pow(Value, 2);
 
         public Vector()
         {

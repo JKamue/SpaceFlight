@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SpaceFlight.Screen.Calculator;
 
 namespace SpaceFlight.Objects.Rocket.Sprites
@@ -44,16 +40,18 @@ namespace SpaceFlight.Objects.Rocket.Sprites
             var hWidth = _width / 2;
             var hHeight = _height / 2;
 
-            var points = new List<PointF>();
-            points.Add(aCalc.Turn(new PointF(pos.X - hWidth, pos.Y - hHeight)));
-            points.Add(aCalc.Turn(new PointF(pos.X + hWidth, pos.Y - hHeight)));
-            points.Add(aCalc.Turn(new PointF(pos.X + hWidth, pos.Y + hHeight)));
-            points.Add(aCalc.Turn(new PointF(pos.X - hWidth, pos.Y + hHeight)));
+            var points = new List<PointF>
+            {
+                aCalc.Turn(new PointF(pos.X - hWidth, pos.Y - hHeight)),
+                aCalc.Turn(new PointF(pos.X + hWidth, pos.Y - hHeight)),
+                aCalc.Turn(new PointF(pos.X + hWidth, pos.Y + hHeight)),
+                aCalc.Turn(new PointF(pos.X - hWidth, pos.Y + hHeight))
+            };
 
             return BoundsCalculator.CalculateBounds(points);
         }
 
-        private PointF TurnAndProject(float x, float y, ProjectedPositionCalculator p, AngularCalculator aCalc)
+        private static PointF TurnAndProject(float x, float y, ProjectedPositionCalculator p, AngularCalculator aCalc)
         {
             return p.ProjectPoint(aCalc.Turn(new PointF(x, y)));
         }

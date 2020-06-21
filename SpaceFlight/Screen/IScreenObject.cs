@@ -1,6 +1,5 @@
 ﻿using SpaceFlight.Screen.Calculator;
 using System.Drawing;
-using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Screen
 {
