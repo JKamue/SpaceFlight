@@ -8,6 +8,7 @@ using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Other;
+using SpaceFlight.Game;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen.Calculator;
 using Timer = System.Windows.Forms.Timer;
@@ -22,7 +23,7 @@ namespace SpaceFlight
             this.KeyDown += KeyStatus.KeyDownHandler;
             this.KeyUp += KeyStatus.KeyUpHander;
 
-            new Game(SimulationPanel, lblDebug, lblDebugDistance);
+            new Game.Game(SimulationPanel, lblDebug, lblDebugDistance, "atlas-V-401-earth");
         }
     }
 }

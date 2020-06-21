@@ -22,10 +22,9 @@ namespace SpaceFlight.Objects.Rocket
         private readonly RocketSprite _sprite;
 
         private DateTime lastCheck;
-        private readonly Timer _checkTimer;
 
-        public Rocket(PointF location, Mass mass, Force force, Acceleration acceleration, Speed speed,
-            Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, mass, force, acceleration, speed, rocketInf.DragProperties)
+        public Rocket(PointF location, Force force, Acceleration acceleration, Speed speed,
+            Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, new Mass(rocketInf.Weight), force, acceleration, speed, rocketInf.DragProperties)
         {
             this.angle = angle;
             this._rocketInf = rocketInf;

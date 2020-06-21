@@ -16,7 +16,7 @@ namespace SpaceFlight.Physics.Units
         public double Degree { get; }
         public double Radian => DegToRad(Degree);
 
-        private Angle(double degree)
+        public Angle(double degree)
         {
             Degree = AngleToRightRange(degree);
         }

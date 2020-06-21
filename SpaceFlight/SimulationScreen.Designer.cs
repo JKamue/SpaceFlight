@@ -88,7 +88,6 @@ namespace SpaceFlight
         #endregion
 
         private Panel SimulationPanel;
-        private Button button1;
         private Label lblDebug;
         private Label lblDebugDistance;
     }

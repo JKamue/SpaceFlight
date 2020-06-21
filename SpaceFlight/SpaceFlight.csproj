@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\GameDto.cs" />
+    <Compile Include="Objects\Rocket\RocketDto.cs" />
+    <Compile Include="Objects\Terrain\TerrainDto.cs" />
     <Compile Include="Physics\Calculator\AtmosphereCalculator.cs" />
     <Compile Include="Physics\Calculator\DragCalculator.cs" />
     <Compile Include="Physics\Calculator\GravityCalculator.cs" />
@@ -99,6 +102,15 @@
     <EmbeddedResource Include="SimulationScreen.resx">
       <DependentUpon>SimulationScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\Levels\atlas-V-401-earth.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Levels\vergeltungswaffe-2-earth.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Levels\falcon-9-1.2-earth.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
