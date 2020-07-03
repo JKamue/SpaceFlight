@@ -1,4 +1,4 @@
-﻿{
+{
   "Model": "Atlas V",
   "Variant": "401",
   "Manufacturer": "ULA",
@@ -15,6 +15,7 @@
   "Height": 56,
   "Width": 4,
   "Thrust": 3830000,
+ 
   "Weight": 330388,
   "FuelWeight": 304919,
   "BurnTime": 240,
@@ -197,7 +198,7 @@
         }
       ],
       "Brush": {
-        "Color": "Orange"
+        "Color": "173, 145, 139"
       }
     },
     {
@@ -220,17 +221,17 @@
         {
           "IsEmpty": false,
           "X": 0.6,
-          "Y": -22.7
+          "Y": -23.2
         },
         {
           "IsEmpty": false,
           "X": 1.7,
-          "Y": -22.7
+          "Y": -23.2
         },
         {
           "IsEmpty": false,
           "X": 1.7,
-          "Y": -22.9
+          "Y": -23.2
         },
         {
           "IsEmpty": false,
@@ -239,7 +240,8 @@
         }
       ],
       "Brush": {
-        "Color": "212, 123, 72"
+        "Color": "156, 136, 125"
+
       }
     },
     {
@@ -286,7 +288,7 @@
         }
       ],
       "Brush": {
-        "Color": "186, 119, 81"
+        "Color": "156, 136, 125"
       }
     },
     {
