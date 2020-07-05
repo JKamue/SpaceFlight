@@ -20,10 +20,7 @@ namespace SpaceFlight
         public SimulationScreen()
         {
             InitializeComponent();
-            this.KeyDown += KeyStatus.KeyDownHandler;
-            this.KeyUp += KeyStatus.KeyUpHander;
-
-            new Game.Game(SimulationPanel, lblDebug, lblDebugDistance, "atlas-V-401-earth");
+            new Game.Game(SimulationPanel, "atlas-V-401-earth");
         }
     }
 }

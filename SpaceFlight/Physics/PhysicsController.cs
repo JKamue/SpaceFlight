@@ -12,11 +12,9 @@ namespace SpaceFlight.Physics
         private List<PhysicsObject> gravityObjects;
 
         private readonly Timer _physTimer = new Timer();
-        private readonly Label _distanceDebug;
 
-        public PhysicsController(int msPerTick, Label distanceDebug)
+        public PhysicsController(int msPerTick)
         {
-            _distanceDebug = distanceDebug;
 
             _physTimer.Interval = msPerTick;
             _physTimer.Tick += Tick;
@@ -40,8 +38,9 @@ namespace SpaceFlight.Physics
                     var distance = PointCalculator.Distance(movingObject.Location, gravityObject.Location);
                     var angle = PointCalculator.CalculateAngle(movingObject.Location, gravityObject.Location);
                     var force = GravityCalculator.CalculateGravity(movingObject.Mass, gravityObject.Mass, distance, angle);
-                    var labelText = force.Value / movingObject.Mass.Value + "\n" + (distance - gravityObject.Diameter);
                     movingObject.ExternalForces.Add(force);
+                    // TODO: Calculate largest of multiple gravities
+                    movingObject.LastGravity = force;
 
                     var altitude = distance - gravityObject.Diameter;
                     if (altitude < 100000)
@@ -54,9 +53,12 @@ namespace SpaceFlight.Physics
                         var p = AtmosphereCalculator.CalculateAirDensityAtAltitude(altitude);
                         var dragForce = DragCalculator.CalculateDrag(dragAngle, cd, p, movingObject.Speed, a);
                         movingObject.ExternalForces.Add(dragForce);
-                        labelText += "\n" + dragForce.Value;
+                        movingObject.LastDrag = dragForce;
                     }
-                    _distanceDebug.Text = labelText;
+                    else
+                    {
+                        movingObject.LastDrag = new Force(Angle.Zero, 0);
+                    }
                 }
                 movingObject.Tick();
             }

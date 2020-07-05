@@ -46,7 +46,7 @@ namespace SpaceFlight.Objects.Terrain
             }
         }
 
-        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool inf)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
             var points = new List<PointF>();
 

@@ -16,6 +16,8 @@ namespace SpaceFlight.Physics
         public Speed Speed;
         public DragProperties Drag;
         public double Diameter;
+        public Force LastDrag;
+        public Force LastGravity;
 
         private DateTime _lastRecalculation;
 

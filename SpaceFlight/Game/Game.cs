@@ -16,23 +16,25 @@ namespace SpaceFlight.Game
     {
         private readonly ScreenController _closeDistanceScreen;
         private readonly PhysicsController _physicsController;
-        private readonly Timer _keyStatusTimer = new Timer();
+        private readonly InfoScreen _infoScreen;
 
-        public Game(Panel simulationPanel, Label lblDebug, Label lblDebugDistance, string levelName)
+        private List<Rocket> _rockets = new List<Rocket>();
+        private List<Terrain> _planets = new List<Terrain>();
+
+        public Game(Panel simulationPanel, string levelName)
         {
             // Load controllers
-            _closeDistanceScreen = new ScreenController(simulationPanel, Color.NavajoWhite, 3, lblDebug);
-            _physicsController = new PhysicsController(10, lblDebugDistance);
-
-            // Setup Key Status Timer
-            _keyStatusTimer.Interval = 100;
-            _keyStatusTimer.Tick += CheckKeyStatus;
-            _keyStatusTimer.Start();
+            _closeDistanceScreen = new ScreenController(simulationPanel, Color.NavajoWhite, 3);
+            _physicsController = new PhysicsController(10);
 
             // Load Level
             var level = LoadFromName(levelName);
             LoadPlanets(level.Planets);
             LoadRockets(level.Rockets);
+
+            // Show info Screen
+            _infoScreen = new InfoScreen(_rockets, _planets, _closeDistanceScreen);
+            _infoScreen.Show();
         }
 
         private void LoadRockets(List<RocketDto> rockets)
@@ -43,6 +45,7 @@ namespace SpaceFlight.Game
                 var rocket = new Rocket(rDto.Location, rDto.Force, rDto.Acceleration, rDto.Speed, rDto.Angle, rDto.ThrustPercentage, inf);
                 _closeDistanceScreen.SetMainObject(rocket);
                 _physicsController.AddMovingObject(rocket);
+                _rockets.Add(rocket);
             }
         }
 
@@ -53,19 +56,8 @@ namespace SpaceFlight.Game
                 var planet = new Terrain(pDto.Position, pDto.Radius, pDto.Color, new Mass(pDto.Mass));
                 _closeDistanceScreen.AddPanelObject(planet);
                 _physicsController.AddGravityObject(planet);
+                _planets.Add(planet);
             }
-        }
-
-        private void CheckKeyStatus(object sender, EventArgs e)
-        {
-            _closeDistanceScreen.ShowInfo = KeyStatus.IsPressed(73);
-
-            if (KeyStatus.IsPressed(37))
-                _closeDistanceScreen.ChangeMainObjectAngle(-1F);
-
-            if (KeyStatus.IsPressed(39))
-                _closeDistanceScreen.ChangeMainObjectAngle(1F);
-
         }
 
         private static GameDto LoadFromName(string name)

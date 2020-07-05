@@ -11,14 +11,17 @@ namespace SpaceFlight.Objects.Rocket
 {
     class Rocket : PhysicsObject, IScreenObject
     {
-        private Angle _angle;
-        private float _thrustPercentage;
-        private float _restFuelWeight;
-        private bool _engineRunning;
+        public Angle _angle { get; private set; }
+        public float _thrustPercentage { get; private set; }
+        public float _restFuelWeight { get; private set; }
+        public bool _engineRunning { get; private set; }
 
-        private readonly string _name;
-        private readonly RocketInformation _rocketInf;
+        public DateTime LiftOffTime = DateTime.Now;
+
         private readonly RocketSprite _sprite;
+
+        public readonly string _name;
+        public readonly RocketInformation _rocketInf;
 
         private DateTime lastCheck;
 
@@ -66,7 +69,7 @@ namespace SpaceFlight.Objects.Rocket
             Mass = new Mass(_restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight);
         }
 
-        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen, bool showStats)
+        public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
             var aCalc = new AngularCalculator((float) _angle.Degree * -1, Location);
             var spritePieces =
@@ -76,32 +79,9 @@ namespace SpaceFlight.Objects.Rocket
             {
                 g.FillPolygon(piece.Brush, piece.Points.ToArray());
             }
-
-            if (showStats)
-                DrawStats(g, ppCalc);
             
             if (_engineRunning)
                 DrawFlames(g, ppCalc, aCalc);
-        }
-
-        private void DrawStats(Graphics g, ProjectedPositionCalculator ppCalc)
-        {
-            var point = Location;
-            var y = point.Y;
-            point.X += 5;
-
-            point.Y = y + 12.5F;
-            g.DrawString( _rocketInf.Model + " " + _rocketInf.Variant, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y + 7.5F;
-            g.DrawString(_name + " " + _rocketInf.Manufacturer, new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y + 2.5F;
-            g.DrawString((_restFuelWeight /_rocketInf.FuelWeight * 100) + "% Fuel", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 2.5F;
-            g.DrawString((_restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight) + "kg", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 7.5F;
-            g.DrawString(((Acceleration.Value)) + "m/s^2", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
-            point.Y = y - 12.5F;
-            g.DrawString(((Speed.Value)) + "m/s", new Font("Arial", 10), new SolidBrush(Color.Black), ppCalc.ProjectPoint(point));
         }
 
         private void DrawFlames(Graphics g, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
@@ -135,5 +115,9 @@ namespace SpaceFlight.Objects.Rocket
         public int GetPriority() => 7;
 
         public void ChangeAngle(float change) => _angle = Angle.FromDegrees(_angle.Degree + change);
+
+        public void SetAngle(Angle a) => _angle = a;
+
+        public void SetThrustPercentage(float i) => _thrustPercentage = i;
     }
 }

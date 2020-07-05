@@ -11,7 +11,6 @@ namespace SpaceFlight.Screen
     class ScreenController
     {
         private readonly Panel _panel;
-        private readonly Label _debugLabel;
 
         private readonly BufferedGraphicsContext _context;
         private readonly BufferedGraphics _graphicsBuffer;
@@ -31,10 +30,9 @@ namespace SpaceFlight.Screen
 
         public bool ShowInfo;
 
-        public ScreenController(Panel panel, Color color, float zoom, Label label = null)
+        public ScreenController(Panel panel, Color color, float zoom)
         {
             _panel = panel;
-            _debugLabel = label;
             this.color = color;
             this.zoom = zoom;
 
@@ -55,7 +53,6 @@ namespace SpaceFlight.Screen
 
             _panel.MouseWheel += Scroll_Event;
             staticCenter = new Point(0,0);
-            ShowInfo = false;
         }
 
         private void Redraw(object sender, EventArgs e)
@@ -86,9 +83,6 @@ namespace SpaceFlight.Screen
             _panelObjects.ForEach(x => DrawObject(x, drawRectangle, positionCalculator));
             actualFramerate.FrameDrawn();
             _graphicsBuffer.Render(_panelGraphics);
-
-            if (_debugLabel != null)
-                WriteDebugText();
         }
 
         private float CalculateZoom() => (14.95F / 225F) * (float) Math.Pow(zoom, 2) + 0.05F;
@@ -105,7 +99,7 @@ namespace SpaceFlight.Screen
             if (!panelBounds.IntersectsWith(objectBounds) && !panelBounds.Contains(objectBounds) && !objectBounds.Contains(panelBounds))
                 return;
 
-            o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds, ShowInfo);
+            o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds);
             objectCounter++;
         }
 
@@ -119,11 +113,6 @@ namespace SpaceFlight.Screen
             {
                 zoom--;
             }
-        }
-
-        private void WriteDebugText()
-        {
-            _debugLabel.Text = $@"{objectCounter} objects; {actualFramerate.Framerate} fps";
         }
 
         public void AddPanelObject(IScreenObject o)
@@ -147,6 +136,8 @@ namespace SpaceFlight.Screen
             RemovePanelObject(o);
             AddPanelObject(o);
         }
+
+        public IScreenObject GetMainObject() => mainObject;
 
         public void ChangeMainObjectAngle(float change) => mainObject.ChangeAngle(change);
 

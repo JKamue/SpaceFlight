@@ -79,7 +79,6 @@
       <DependentUpon>InfoScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\IScreenObject.cs" />
-    <Compile Include="Screen\KeyStatus.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Objects\Rocket\Rocket.cs" />
     <Compile Include="Objects\Rocket\RocketInformation.cs" />
