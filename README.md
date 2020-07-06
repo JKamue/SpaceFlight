@@ -42,6 +42,8 @@ You can [download](https://github.com/JKamue/SpaceFlight/releases) the latest ve
 
 At the moment only one Level is loaded by default, future updates will include a menu screen to select different levels and rockets.
 
+Currently there are only 3 rockets avalible, more are under development.
+
 You can already change the main level in the Data/Rockets folder or change the different statistics of the rockets.
 Rockets are encoded in json:
 ```json
