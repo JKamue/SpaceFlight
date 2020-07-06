@@ -27,6 +27,10 @@ namespace SpaceFlight.Screen
             _rockets = rockets;
             _planets = planets;
             _screen = screen;
+            StartPosition = FormStartPosition.Manual;
+            Left = 40;
+            Top = 5;
+
 
             Ticker.Interval = 50;
             Ticker.Tick += UpdateDisplay;
