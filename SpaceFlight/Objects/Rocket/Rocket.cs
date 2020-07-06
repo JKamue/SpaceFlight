@@ -12,6 +12,9 @@ namespace SpaceFlight.Objects.Rocket
     class Rocket : PhysicsObject, IScreenObject
     {
         public Angle _angle { get; private set; }
+
+        public Angle targetAngle;
+
         public float _thrustPercentage { get; private set; }
         public float _restFuelWeight { get; private set; }
         public bool _engineRunning { get; private set; }
@@ -29,6 +32,7 @@ namespace SpaceFlight.Objects.Rocket
             Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, new Mass(rocketInf.Weight), force, acceleration, speed, rocketInf.DragProperties)
         {
             _angle = angle;
+            targetAngle = angle;
             _rocketInf = rocketInf;
             _thrustPercentage = thrustPercentage;
             _restFuelWeight = rocketInf.FuelWeight;
@@ -50,6 +54,7 @@ namespace SpaceFlight.Objects.Rocket
 
         private void CalculateFuelUsage()
         {
+            NearAngleToTargetAngle();
             if (!_engineRunning)
                 return;
 
@@ -108,6 +113,18 @@ namespace SpaceFlight.Objects.Rocket
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
+        public void NearAngleToTargetAngle()
+        {
+            var target = targetAngle.Degree - (targetAngle.Degree > 180 ? 360 : 0);
+            var angle = _angle.Degree - (_angle.Degree > 180 ? 360 : 0);
+
+            if (angle - 0.1 >= target)
+                _angle = new Angle(_angle.Degree - 0.1);
+            else if (angle + 0.1 <= target)
+                _angle = new Angle(_angle.Degree + 0.1);
+
+        }
+
         public RectangleF GetBounds() => _sprite.GetBounds(Location, new AngularCalculator((float)_angle.Degree * -1, Location));
 
         public PointF GetMiddle() => Location;
@@ -115,8 +132,6 @@ namespace SpaceFlight.Objects.Rocket
         public int GetPriority() => 7;
 
         public void ChangeAngle(float change) => _angle = Angle.FromDegrees(_angle.Degree + change);
-
-        public void SetAngle(Angle a) => _angle = a;
 
         public void SetThrustPercentage(float i) => _thrustPercentage = i;
     }

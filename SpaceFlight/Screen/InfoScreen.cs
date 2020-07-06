@@ -101,7 +101,7 @@ namespace SpaceFlight.Screen
 
         public void QuerySliders(Rocket rocket)
         {
-            rocket.SetAngle(Angle.FromDegrees(sldCtrlAngle.Value));
+            rocket.targetAngle = Angle.FromDegrees(sldCtrlAngle.Value);
             rocket.SetThrustPercentage(((float) sldCtrlThrust.Value) / 100F);
             lblSldAngleVal.Text = sldCtrlAngle.Value + "°";
             lblSldThrustVal.Text = sldCtrlThrust.Value + "%";
