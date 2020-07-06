@@ -103,6 +103,8 @@ namespace SpaceFlight.Screen
         {
             rocket.SetAngle(Angle.FromDegrees(sldCtrlAngle.Value));
             rocket.SetThrustPercentage(((float) sldCtrlThrust.Value) / 100F);
+            lblSldAngleVal.Text = sldCtrlAngle.Value + "°";
+            lblSldThrustVal.Text = sldCtrlThrust.Value + "%";
         }
     }
 }

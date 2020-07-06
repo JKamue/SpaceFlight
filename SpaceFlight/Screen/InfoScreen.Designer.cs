@@ -64,6 +64,8 @@
             this.sldCtrlThrust = new System.Windows.Forms.TrackBar();
             this.lblCtrlThrust = new System.Windows.Forms.Label();
             this.lblDebugFps = new System.Windows.Forms.Label();
+            this.lblSldAngleVal = new System.Windows.Forms.Label();
+            this.lblSldThrustVal = new System.Windows.Forms.Label();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -424,11 +426,31 @@
             this.lblDebugFps.TabIndex = 14;
             this.lblDebugFps.Text = "fps";
             // 
+            // lblSldAngleVal
+            // 
+            this.lblSldAngleVal.AutoSize = true;
+            this.lblSldAngleVal.Location = new System.Drawing.Point(156, 270);
+            this.lblSldAngleVal.Name = "lblSldAngleVal";
+            this.lblSldAngleVal.Size = new System.Drawing.Size(17, 13);
+            this.lblSldAngleVal.TabIndex = 15;
+            this.lblSldAngleVal.Text = "0°";
+            // 
+            // lblSldThrustVal
+            // 
+            this.lblSldThrustVal.AutoSize = true;
+            this.lblSldThrustVal.Location = new System.Drawing.Point(383, 270);
+            this.lblSldThrustVal.Name = "lblSldThrustVal";
+            this.lblSldThrustVal.Size = new System.Drawing.Size(33, 13);
+            this.lblSldThrustVal.TabIndex = 16;
+            this.lblSldThrustVal.Text = "100%";
+            // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 351);
+            this.Controls.Add(this.lblSldThrustVal);
+            this.Controls.Add(this.lblSldAngleVal);
             this.Controls.Add(this.lblDebugFps);
             this.Controls.Add(this.lblCtrlThrust);
             this.Controls.Add(this.sldCtrlThrust);
@@ -492,5 +514,7 @@
         private System.Windows.Forms.Label lblLocAngleVal;
         private System.Windows.Forms.Label lblLocClosestVal;
         private System.Windows.Forms.Label lblDebugFps;
+        private System.Windows.Forms.Label lblSldAngleVal;
+        private System.Windows.Forms.Label lblSldThrustVal;
     }
 }
