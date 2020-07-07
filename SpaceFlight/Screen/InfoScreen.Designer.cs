@@ -183,11 +183,11 @@
             // lblStatFuelWeight
             // 
             this.lblStatFuelWeight.AutoSize = true;
-            this.lblStatFuelWeight.Location = new System.Drawing.Point(11, 170);
+            this.lblStatFuelWeight.Location = new System.Drawing.Point(45, 171);
             this.lblStatFuelWeight.Name = "lblStatFuelWeight";
-            this.lblStatFuelWeight.Size = new System.Drawing.Size(64, 13);
+            this.lblStatFuelWeight.Size = new System.Drawing.Size(30, 13);
             this.lblStatFuelWeight.TabIndex = 6;
-            this.lblStatFuelWeight.Text = "Fuel weight:";
+            this.lblStatFuelWeight.Text = "Fuel:";
             // 
             // lblStatWeight
             // 

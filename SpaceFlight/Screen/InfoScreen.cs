@@ -96,7 +96,11 @@ namespace SpaceFlight.Screen
             lblStatAccelerationVal.Text = Math.Round(rocket.Acceleration.Value, 8) + " m/s²";
             lblStatSpeedVal.Text = Math.Round(rocket.Speed.Value, 8) + " m/s";
             lblStatWeightVal.Text = Math.Round(rocket.Mass.Value, 2 ) + " kg";
-            lblStatFuelWeightVal.Text = Math.Round(rocket._restFuelWeight, 2) + " kg";
+
+            var fuelPercent = Math.Round(rocket._restFuelWeight / rocket._rocketInf.FuelWeight * 100);
+            lblStatFuelWeightVal.Text = Math.Round(rocket._restFuelWeight, 2) + " kg (" + fuelPercent + "%)";
+
+
             lblStatGravityVal.Text = Math.Round(rocket.LastGravity.Value,4) + " kN";
             lblStatDragVal.Text = Math.Round(rocket.LastDrag.Value, 4) + " kN";
         }
