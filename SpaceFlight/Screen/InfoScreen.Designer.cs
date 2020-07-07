@@ -67,6 +67,7 @@
             this.lblSldAngleVal = new System.Windows.Forms.Label();
             this.lblSldThrustVal = new System.Windows.Forms.Label();
             this.cbxSelectRocket = new System.Windows.Forms.ComboBox();
+            this.pnlForcesScreen = new System.Windows.Forms.Panel();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -78,7 +79,7 @@
             // 
             this.lblRocketName.AutoSize = true;
             this.lblRocketName.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRocketName.Location = new System.Drawing.Point(98, 9);
+            this.lblRocketName.Location = new System.Drawing.Point(96, 50);
             this.lblRocketName.Name = "lblRocketName";
             this.lblRocketName.Size = new System.Drawing.Size(119, 26);
             this.lblRocketName.TabIndex = 0;
@@ -88,7 +89,7 @@
             // 
             this.lblClock.AutoSize = true;
             this.lblClock.Font = new System.Drawing.Font("Impact", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClock.Location = new System.Drawing.Point(302, 9);
+            this.lblClock.Location = new System.Drawing.Point(300, 50);
             this.lblClock.Name = "lblClock";
             this.lblClock.Size = new System.Drawing.Size(102, 26);
             this.lblClock.TabIndex = 1;
@@ -110,7 +111,7 @@
             this.gbxStatus.Controls.Add(this.lblStatSpeed);
             this.gbxStatus.Controls.Add(this.lblStatAcceleration);
             this.gbxStatus.Controls.Add(this.lblStatThrust);
-            this.gbxStatus.Location = new System.Drawing.Point(250, 45);
+            this.gbxStatus.Location = new System.Drawing.Point(248, 86);
             this.gbxStatus.Name = "gbxStatus";
             this.gbxStatus.Size = new System.Drawing.Size(200, 213);
             this.gbxStatus.TabIndex = 2;
@@ -251,7 +252,7 @@
             this.gbxInformation.Controls.Add(this.lblInfHeight);
             this.gbxInformation.Controls.Add(this.lblInfManufacturer);
             this.gbxInformation.Controls.Add(this.lblInfModel);
-            this.gbxInformation.Location = new System.Drawing.Point(44, 45);
+            this.gbxInformation.Location = new System.Drawing.Point(42, 86);
             this.gbxInformation.Name = "gbxInformation";
             this.gbxInformation.Size = new System.Drawing.Size(200, 103);
             this.gbxInformation.TabIndex = 3;
@@ -320,7 +321,7 @@
             this.gbxLocation.Controls.Add(this.lblLocCoords);
             this.gbxLocation.Controls.Add(this.lblLocAngle);
             this.gbxLocation.Controls.Add(this.lblLocClosest);
-            this.gbxLocation.Location = new System.Drawing.Point(44, 155);
+            this.gbxLocation.Location = new System.Drawing.Point(42, 196);
             this.gbxLocation.Name = "gbxLocation";
             this.gbxLocation.Size = new System.Drawing.Size(200, 103);
             this.gbxLocation.TabIndex = 4;
@@ -383,7 +384,7 @@
             // 
             // sldCtrlAngle
             // 
-            this.sldCtrlAngle.Location = new System.Drawing.Point(44, 286);
+            this.sldCtrlAngle.Location = new System.Drawing.Point(248, 416);
             this.sldCtrlAngle.Maximum = 180;
             this.sldCtrlAngle.Minimum = -179;
             this.sldCtrlAngle.Name = "sldCtrlAngle";
@@ -393,7 +394,7 @@
             // lblCtrlAngle
             // 
             this.lblCtrlAngle.AutoSize = true;
-            this.lblCtrlAngle.Location = new System.Drawing.Point(120, 270);
+            this.lblCtrlAngle.Location = new System.Drawing.Point(324, 400);
             this.lblCtrlAngle.Name = "lblCtrlAngle";
             this.lblCtrlAngle.Size = new System.Drawing.Size(34, 13);
             this.lblCtrlAngle.TabIndex = 7;
@@ -401,7 +402,7 @@
             // 
             // sldCtrlThrust
             // 
-            this.sldCtrlThrust.Location = new System.Drawing.Point(250, 286);
+            this.sldCtrlThrust.Location = new System.Drawing.Point(248, 354);
             this.sldCtrlThrust.Maximum = 100;
             this.sldCtrlThrust.Name = "sldCtrlThrust";
             this.sldCtrlThrust.Size = new System.Drawing.Size(200, 45);
@@ -412,7 +413,7 @@
             // lblCtrlThrust
             // 
             this.lblCtrlThrust.AutoSize = true;
-            this.lblCtrlThrust.Location = new System.Drawing.Point(340, 270);
+            this.lblCtrlThrust.Location = new System.Drawing.Point(338, 338);
             this.lblCtrlThrust.Name = "lblCtrlThrust";
             this.lblCtrlThrust.Size = new System.Drawing.Size(37, 13);
             this.lblCtrlThrust.TabIndex = 9;
@@ -421,7 +422,7 @@
             // lblDebugFps
             // 
             this.lblDebugFps.AutoSize = true;
-            this.lblDebugFps.Location = new System.Drawing.Point(456, 338);
+            this.lblDebugFps.Location = new System.Drawing.Point(470, 491);
             this.lblDebugFps.Name = "lblDebugFps";
             this.lblDebugFps.Size = new System.Drawing.Size(21, 13);
             this.lblDebugFps.TabIndex = 14;
@@ -430,7 +431,7 @@
             // lblSldAngleVal
             // 
             this.lblSldAngleVal.AutoSize = true;
-            this.lblSldAngleVal.Location = new System.Drawing.Point(156, 270);
+            this.lblSldAngleVal.Location = new System.Drawing.Point(360, 400);
             this.lblSldAngleVal.Name = "lblSldAngleVal";
             this.lblSldAngleVal.Size = new System.Drawing.Size(17, 13);
             this.lblSldAngleVal.TabIndex = 15;
@@ -439,7 +440,7 @@
             // lblSldThrustVal
             // 
             this.lblSldThrustVal.AutoSize = true;
-            this.lblSldThrustVal.Location = new System.Drawing.Point(383, 270);
+            this.lblSldThrustVal.Location = new System.Drawing.Point(381, 338);
             this.lblSldThrustVal.Name = "lblSldThrustVal";
             this.lblSldThrustVal.Size = new System.Drawing.Size(33, 13);
             this.lblSldThrustVal.TabIndex = 16;
@@ -448,16 +449,24 @@
             // cbxSelectRocket
             // 
             this.cbxSelectRocket.FormattingEnabled = true;
-            this.cbxSelectRocket.Location = new System.Drawing.Point(159, 330);
+            this.cbxSelectRocket.Location = new System.Drawing.Point(157, 12);
             this.cbxSelectRocket.Name = "cbxSelectRocket";
             this.cbxSelectRocket.Size = new System.Drawing.Size(190, 21);
             this.cbxSelectRocket.TabIndex = 17;
+            // 
+            // pnlForcesScreen
+            // 
+            this.pnlForcesScreen.Location = new System.Drawing.Point(47, 305);
+            this.pnlForcesScreen.Name = "pnlForcesScreen";
+            this.pnlForcesScreen.Size = new System.Drawing.Size(195, 195);
+            this.pnlForcesScreen.TabIndex = 18;
             // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 355);
+            this.ClientSize = new System.Drawing.Size(503, 513);
+            this.Controls.Add(this.pnlForcesScreen);
             this.Controls.Add(this.cbxSelectRocket);
             this.Controls.Add(this.lblSldThrustVal);
             this.Controls.Add(this.lblSldAngleVal);
@@ -527,5 +536,6 @@
         private System.Windows.Forms.Label lblSldAngleVal;
         private System.Windows.Forms.Label lblSldThrustVal;
         private System.Windows.Forms.ComboBox cbxSelectRocket;
+        private System.Windows.Forms.Panel pnlForcesScreen;
     }
 }

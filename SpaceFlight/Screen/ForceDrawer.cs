@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using SpaceFlight.Physics;
+using SpaceFlight.Physics.Units;
+using SpaceFlight.Screen.Calculator;
+
+namespace SpaceFlight.Screen
+{
+    class ForceDrawer
+    {
+        private readonly Panel _panel;
+        private readonly BufferedGraphicsContext _context;
+        private readonly BufferedGraphics _graphicsBuffer;
+        private readonly Graphics _panelGraphics;
+
+        public Force Drag;
+        public Force Thrust;
+        public Force Gravity;
+        public Force ResultingForce;
+        public Speed Speed;
+
+        public ForceDrawer(Panel panel)
+        {
+            _panel = panel;
+
+            // Setup graphics
+            _context = BufferedGraphicsManager.Current;
+            _panelGraphics = _panel.CreateGraphics();
+            _graphicsBuffer = _context.Allocate(_panelGraphics, panel.DisplayRectangle);
+
+            // Setup forces
+            Drag = Thrust = Gravity = ResultingForce = new Force(Angle.Zero, 0);
+        }
+
+        public void Redraw()
+        {
+            _graphicsBuffer.Graphics.Clear(Color.FromArgb(240, 240, 240));
+            var g = _graphicsBuffer.Graphics;
+            var factor = CalcForceScalingFactor();
+            var center = (float ) _panel.Height / 2;
+
+            DrawForce(g, Drag, Color.Red, factor, center);
+            DrawForce(g, Thrust, Color.Green, factor, center);
+            DrawForce(g, Gravity, Color.Blue, factor, center);
+            DrawForce(g, ResultingForce, Color.Black, factor, center);
+            g.DrawEllipse(new Pen(Color.Black, 1), new Rectangle(1,1, _panel.Height - 2, _panel.Height - 2));
+            DrawDot(g, Speed, Color.OrangeRed);
+
+            _graphicsBuffer.Render(_panelGraphics);
+        }
+
+        private void DrawDot(Graphics g, Speed speed, Color c)
+        {
+            var height = ((float) _panel.Height - 2) / 2;
+            var point = new PointF(height-5, 5);
+            var aCalc = new AngularCalculator((float) Speed.Angle.Degree, new PointF(height, height));
+            var rect = new RectangleF(aCalc.Turn(point), new Size(10,10));
+            g.FillEllipse(new SolidBrush(c), rect);
+        }
+
+        private void DrawForce(Graphics g, Force force, Color c, float factor, float center)
+        {
+            var aCalc = new AngularCalculator((float) force.Angle.Degree, new PointF(center, center));
+            var height = (float) Math.Round(center - (float) force.Value / factor);
+
+            if (force.Value / factor < 15)
+                return;
+
+            var points = new List<PointF>
+            {
+                aCalc.Turn(new PointF(center-5, height+15)),
+                aCalc.Turn(new PointF(center-1, height+15)),
+                aCalc.Turn(new PointF(center-1, center)),
+                aCalc.Turn(new PointF(center+1, center)),
+                aCalc.Turn(new PointF(center+1, height+15)),
+                aCalc.Turn(new PointF(center+5, height+15)),
+                aCalc.Turn(new PointF(center, height+1)),
+            };
+
+            var b = new SolidBrush(c);
+            var array = points.ToArray();
+            g.FillPolygon(b, array);
+        }
+
+        private float CalcForceScalingFactor()
+        {
+            var forces = new List<Force>{ Drag, Thrust, Gravity, ResultingForce };
+            double biggest = -1;
+
+            foreach (var force in forces)
+                biggest = force.Value > biggest ? force.Value : biggest;
+
+            return (float) (biggest / (((float)_panel.Height -2) / 2));
+        }
+    }
+}

@@ -11,6 +11,7 @@ namespace SpaceFlight.Physics
         public PointF Location;
         public Mass Mass;
         public Force OwnForce;
+        public Force ResutlingForce;
         public List<Force> ExternalForces;
         public Acceleration Acceleration;
         public Speed Speed;
@@ -37,6 +38,7 @@ namespace SpaceFlight.Physics
             Location = location;
             Mass = mass;
             OwnForce = ownForce;
+            ResutlingForce = ownForce;
             Acceleration = acceleration;
             Speed = speed;
             ExternalForces = new List<Force>();
@@ -59,6 +61,7 @@ namespace SpaceFlight.Physics
             {
                 force += exForce;
             }
+            ResutlingForce = force;
 
             // Calculate Acceleration -> Speed -> Distance
             Acceleration = force.GetAcceleration(Mass);

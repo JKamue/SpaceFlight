@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
+using SpaceFlight.Physics;
 using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Units;
 
@@ -19,6 +20,7 @@ namespace SpaceFlight.Screen
         private readonly List<Rocket> _rockets;
         private readonly List<Terrain> _planets;
         private readonly ScreenController _screen;
+        private readonly ForceDrawer _forceDrawer;
         private Timer Ticker = new Timer();
 
         private int lastSelected = -1;
@@ -29,10 +31,12 @@ namespace SpaceFlight.Screen
             _rockets = rockets;
             _planets = planets;
             _screen = screen;
+
+            _forceDrawer = new ForceDrawer(pnlForcesScreen);
+
             StartPosition = FormStartPosition.Manual;
             Left = 40;
             Top = 5;
-
 
             Ticker.Interval = 50;
             Ticker.Tick += UpdateDisplay;
@@ -52,6 +56,7 @@ namespace SpaceFlight.Screen
             DisplayStats(rocket);
             DisplayLocation(rocket);
             QuerySliders(rocket);
+            UpdateForceDrawer(rocket);
             lblDebugFps.Text = _screen.GetActualFramerate() + " fps";
         }
 
@@ -63,6 +68,17 @@ namespace SpaceFlight.Screen
                 return null;
 
             return (Rocket) screenObject;
+        }
+
+        public void UpdateForceDrawer(Rocket rocket)
+        {
+            _forceDrawer.Drag = rocket.LastDrag;
+            _forceDrawer.Gravity = rocket.LastGravity;
+            var thrust = new Force(rocket._angle, rocket._engineRunning ? rocket._rocketInf.Thrust * rocket._thrustPercentage : 0);
+            _forceDrawer.Thrust = thrust;
+            _forceDrawer.ResultingForce = rocket.ResutlingForce;
+            _forceDrawer.Speed = rocket.Speed;
+            _forceDrawer.Redraw();
         }
 
         public void DisplayInformation(Rocket rocket)
