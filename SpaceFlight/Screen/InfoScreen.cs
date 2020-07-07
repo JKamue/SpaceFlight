@@ -21,6 +21,8 @@ namespace SpaceFlight.Screen
         private readonly ScreenController _screen;
         private Timer Ticker = new Timer();
 
+        private int lastSelected = -1;
+
         public InfoScreen(List<Rocket> rockets, List<Terrain> planets, ScreenController screen)
         {
             InitializeComponent();
@@ -35,10 +37,13 @@ namespace SpaceFlight.Screen
             Ticker.Interval = 50;
             Ticker.Tick += UpdateDisplay;
             Ticker.Start();
+
+            cbxSelectRocket.DataSource = _rockets;
         }
 
         public void UpdateDisplay(object sender, EventArgs e)
         {
+            SelectRightRocket();
             var rocket = GetMainObject();
             if (rocket is null)
                 return;
@@ -70,6 +75,18 @@ namespace SpaceFlight.Screen
             lblInfModelVal.Text = rocket._rocketInf.Model + " " + rocket._rocketInf.Variant;
             lblInfManufacturerVal.Text = rocket._rocketInf.Manufacturer;
             lblInfHeightVal.Text = rocket._rocketInf.Height + "m";
+        }
+
+        public void SelectRightRocket()
+        {
+            if (cbxSelectRocket.SelectedIndex != lastSelected)
+            {
+                lastSelected = cbxSelectRocket.SelectedIndex;
+                var rocket = (Rocket) cbxSelectRocket.SelectedItem;
+                _screen.SetMainObject(rocket);
+                sldCtrlThrust.Value = (int) Math.Round(rocket._thrustPercentage * 100);
+                sldCtrlAngle.Value = (int) Math.Round(rocket.targetAngle.Degree - (rocket.targetAngle.Degree > 180 ? 360 : 0));
+            }
         }
 
         public void DisplayStats(Rocket rocket)

@@ -66,6 +66,7 @@
             this.lblDebugFps = new System.Windows.Forms.Label();
             this.lblSldAngleVal = new System.Windows.Forms.Label();
             this.lblSldThrustVal = new System.Windows.Forms.Label();
+            this.cbxSelectRocket = new System.Windows.Forms.ComboBox();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -384,7 +385,7 @@
             // 
             this.sldCtrlAngle.Location = new System.Drawing.Point(44, 286);
             this.sldCtrlAngle.Maximum = 180;
-            this.sldCtrlAngle.Minimum = -180;
+            this.sldCtrlAngle.Minimum = -179;
             this.sldCtrlAngle.Name = "sldCtrlAngle";
             this.sldCtrlAngle.Size = new System.Drawing.Size(200, 45);
             this.sldCtrlAngle.TabIndex = 5;
@@ -444,11 +445,20 @@
             this.lblSldThrustVal.TabIndex = 16;
             this.lblSldThrustVal.Text = "100%";
             // 
+            // cbxSelectRocket
+            // 
+            this.cbxSelectRocket.FormattingEnabled = true;
+            this.cbxSelectRocket.Location = new System.Drawing.Point(159, 330);
+            this.cbxSelectRocket.Name = "cbxSelectRocket";
+            this.cbxSelectRocket.Size = new System.Drawing.Size(190, 21);
+            this.cbxSelectRocket.TabIndex = 17;
+            // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 351);
+            this.ClientSize = new System.Drawing.Size(503, 355);
+            this.Controls.Add(this.cbxSelectRocket);
             this.Controls.Add(this.lblSldThrustVal);
             this.Controls.Add(this.lblSldAngleVal);
             this.Controls.Add(this.lblDebugFps);
@@ -516,5 +526,6 @@
         private System.Windows.Forms.Label lblDebugFps;
         private System.Windows.Forms.Label lblSldAngleVal;
         private System.Windows.Forms.Label lblSldThrustVal;
+        private System.Windows.Forms.ComboBox cbxSelectRocket;
     }
 }

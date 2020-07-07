@@ -125,6 +125,11 @@ namespace SpaceFlight.Objects.Rocket
 
         }
 
+        public override string ToString()
+        {
+            return _name + " - " + _rocketInf.Model + " " + _rocketInf.Variant;
+        }
+
         public RectangleF GetBounds() => _sprite.GetBounds(Location, new AngularCalculator((float)_angle.Degree * -1, Location));
 
         public PointF GetMiddle() => Location;
