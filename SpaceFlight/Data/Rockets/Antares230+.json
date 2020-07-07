@@ -1,0 +1,468 @@
+{
+  "Model": "Antares",
+  "Variant": "230+",
+  "Manufacturer": "Northrop-Grumman",
+  "Names": [
+    "Cygnus NG-13"
+
+  ],
+  "Height": 42.5,
+  "Width": 3.9,
+  "Thrust": 4170000,
+
+  "Weight": 292887,
+  "FuelWeight": 239280,
+  "BurnTime": 209,
+  // Data from: www.russianspaceweb.com/antares.html and www.spaceflightinsider.com/hangar/antares/
+  "DragProperties": {
+    "CdUp": 0.25,
+    "CdSide": 0.42,
+    "AreaUp": 13,
+    "AreaSide": 218.313
+  },
+
+  "ThrustAreas": [
+    {
+      "Start": {
+        "IsEmpty": false,
+        "X": 0.1,
+        "Y": -21
+      },
+      "Stop": {
+        "IsEmpty": false,
+        "X": 1.5,
+        "Y": -21
+      }
+    },
+    {
+      "Start": {
+        "IsEmpty": false,
+        "X": -0.1,
+        "Y": -21
+      },
+      "Stop": {
+        "IsEmpty": false,
+        "X": -1.5,
+        "Y": -21
+      }
+    }
+  ],
+  "Sprite": [
+
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 16.0
+        },
+
+
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 18
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.25,
+          "Y": 19
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.8,
+          "Y": 20
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.35,
+          "Y": 20.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.35,
+          "Y": 20.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.8,
+          "Y": 20
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.25,
+          "Y": 19
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 18
+        },
+
+
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 16.0
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 230"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 16
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 16
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 11
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 11
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 230"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 11
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 11
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 10.9
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 10.9
+        }
+      ],
+      "Brush": {
+        "Color": "102, 68, 0"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 10.9
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 10.9
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 9.2
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 9.2
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 230"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 9.2
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 9.2
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 9.1
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 9.1
+        }
+      ],
+      "Brush": {
+        "Color": "102, 68, 0"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 9.1
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 9.1
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 8.5
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 8.5
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 230"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 8.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 8.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 8.4
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 8.4
+        }
+      ],
+      "Brush": {
+        "Color": "102, 68, 0"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 8.4
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 8.4
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 6.7
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 6.7
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 230"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 6.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 6.7
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 6.6
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 6.6
+        }
+      ],
+      "Brush": {
+        "Color": "102, 68, 0"
+      }
+    },
+
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": 6.6
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": 6.6
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": -19.8
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": -19.8
+        }
+      ],
+      "Brush": {
+        "Color": "230, 230, 230"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": -19.8
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": -19.8
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.65,
+          "Y": -19.7
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.65,
+          "Y": -19.7
+        }
+      ],
+      "Brush": {
+        "Color": "102, 68, 0"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": 0.35,
+          "Y": -19.8
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.1,
+          "Y": -21
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.5,
+          "Y": -21
+        },
+        {
+          "IsEmpty": false,
+          "X": 1.25,
+          "Y": -19.8
+        }
+      ],
+      "Brush": {
+        "Color": "Gray"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -0.35,
+          "Y": -19.8
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.1,
+          "Y": -21
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.5,
+          "Y": -21
+        },
+        {
+          "IsEmpty": false,
+          "X": -1.25,
+          "Y": -19.8
+        }
+      ],
+      "Brush": {
+        "Color": "Gray"
+      }
+    },
+    {
+      "Points": [
+        {
+          "IsEmpty": false,
+          "X": -0.05,
+          "Y": 20.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.05,
+          "Y": 20.5
+        },
+        {
+          "IsEmpty": false,
+          "X": 0.05,
+          "Y": 11
+        },
+        {
+          "IsEmpty": false,
+          "X": -0.05,
+          "Y": 11
+        }
+      ],
+      "Brush": {
+        "Color": "210, 210, 210"
+      }
+    }
+
+
+  ]
+}
