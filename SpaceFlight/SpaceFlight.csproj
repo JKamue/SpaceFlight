@@ -112,6 +112,9 @@
     <EmbeddedResource Include="SimulationScreen.resx">
       <DependentUpon>SimulationScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\Levels\all-rockets-earth.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Data\Levels\atlas-V-401-earth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

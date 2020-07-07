@@ -23,7 +23,7 @@ namespace SpaceFlight
             StartPosition = FormStartPosition.Manual;
             Left = 550;
             Top = 5;
-            new Game.Game(SimulationPanel, "atlas-V-401-earth");
+            new Game.Game(SimulationPanel, "all-rockets-earth");
         }
     }
 }
