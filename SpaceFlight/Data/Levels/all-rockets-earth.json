@@ -135,6 +135,40 @@
       },
       "ThrustPercentage": 1.0,
       "Type": "falcon-9-1.2"
+    },
+    {
+      "Location": {
+        "IsEmpty": true,
+        "X": -100.0,
+        "Y": 0.0
+      },
+      "Force": {
+        "Angle": {
+          "Degree": 0.0,
+          "Radian": 0.0
+        },
+        "Value": 0.0
+      },
+      "Acceleration": {
+        "Angle": {
+          "Degree": 0.0,
+          "Radian": 0.0
+        },
+        "Value": 0.0
+      },
+      "Speed": {
+        "Angle": {
+          "Degree": 0.0,
+          "Radian": 0.0
+        },
+        "Value": 0.0
+      },
+      "Angle": {
+        "Degree": 0.0,
+        "Radian": 0.0
+      },
+      "ThrustPercentage": 1.0,
+      "Type": "unidentified-flying-object"
     }
   ],
   "Planets": [
