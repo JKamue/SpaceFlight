@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Units;
 
@@ -46,10 +47,12 @@ namespace SpaceFlight.Physics
                     if (altitude < 100000)
                     {
                         // Drag Relevant
-                        var rocketForceAngle = movingObject.OwnForce.Angle;
+                        var rocketForceAngle = ((Rocket)movingObject)._angle;
                         var dragAngle = Angle.FromDegrees(rocketForceAngle.Degree + 180);
-                        var cd = movingObject.Drag.GetDragCoefficient(rocketForceAngle);
-                        var a = movingObject.Drag.GetArea(rocketForceAngle);
+                        var speedDirectionDiff =
+                            Angle.FromDegrees(rocketForceAngle.Degree - movingObject.Speed.Angle.Degree);
+                        var cd = movingObject.Drag.GetDragCoefficient(speedDirectionDiff);
+                        var a = movingObject.Drag.GetArea(speedDirectionDiff);
                         var p = AtmosphereCalculator.CalculateAirDensityAtAltitude(altitude);
                         var dragForce = DragCalculator.CalculateDrag(dragAngle, cd, p, movingObject.Speed, a);
                         movingObject.ExternalForces.Add(dragForce);
