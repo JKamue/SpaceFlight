@@ -116,7 +116,7 @@
     <None Include="Data\Levels\all-rockets-earth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Data\Levels\Antares230+-earth.json">
+    <None Include="Data\Levels\antares-230+-earth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Data\Levels\atlas-V-401-earth.json">
@@ -128,7 +128,7 @@
     <None Include="Data\Levels\falcon-9-1.2-earth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Data\Rockets\Antares230+.json">
+    <None Include="Data\Rockets\antares-230+.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
