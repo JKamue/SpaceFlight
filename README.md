@@ -1,10 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://jkamue.de"><img src="https://jkamue.de/logos/logo_dark.png" alt="Markdownify" width="200"></a>
-  <br>
-  Space Flight Simulator
-  <br>
+  <a href="https://jkamue.de"><img src="https://jkamue.de/logos/spaceflight_logo.png" alt="Markdownify" width="400"></a>
 </h1>
 
 <h4 align="center">A small rocket simulator inspired by <a href="https://play.google.com/store/apps/details?id=com.StefMorojna.SpaceflightSimulator&hl=de" target="_blank">Spaceflight Simulator</a>.</h4>
