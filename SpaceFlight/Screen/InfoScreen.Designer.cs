@@ -68,6 +68,7 @@
             this.lblSldThrustVal = new System.Windows.Forms.Label();
             this.cbxSelectRocket = new System.Windows.Forms.ComboBox();
             this.pnlForcesScreen = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -111,7 +112,7 @@
             this.gbxStatus.Controls.Add(this.lblStatSpeed);
             this.gbxStatus.Controls.Add(this.lblStatAcceleration);
             this.gbxStatus.Controls.Add(this.lblStatThrust);
-            this.gbxStatus.Location = new System.Drawing.Point(248, 86);
+            this.gbxStatus.Location = new System.Drawing.Point(248, 79);
             this.gbxStatus.Name = "gbxStatus";
             this.gbxStatus.Size = new System.Drawing.Size(200, 213);
             this.gbxStatus.TabIndex = 2;
@@ -252,7 +253,7 @@
             this.gbxInformation.Controls.Add(this.lblInfHeight);
             this.gbxInformation.Controls.Add(this.lblInfManufacturer);
             this.gbxInformation.Controls.Add(this.lblInfModel);
-            this.gbxInformation.Location = new System.Drawing.Point(42, 86);
+            this.gbxInformation.Location = new System.Drawing.Point(42, 79);
             this.gbxInformation.Name = "gbxInformation";
             this.gbxInformation.Size = new System.Drawing.Size(200, 103);
             this.gbxInformation.TabIndex = 3;
@@ -321,7 +322,7 @@
             this.gbxLocation.Controls.Add(this.lblLocCoords);
             this.gbxLocation.Controls.Add(this.lblLocAngle);
             this.gbxLocation.Controls.Add(this.lblLocClosest);
-            this.gbxLocation.Location = new System.Drawing.Point(42, 196);
+            this.gbxLocation.Location = new System.Drawing.Point(42, 189);
             this.gbxLocation.Name = "gbxLocation";
             this.gbxLocation.Size = new System.Drawing.Size(200, 103);
             this.gbxLocation.TabIndex = 4;
@@ -422,7 +423,7 @@
             // lblDebugFps
             // 
             this.lblDebugFps.AutoSize = true;
-            this.lblDebugFps.Location = new System.Drawing.Point(470, 491);
+            this.lblDebugFps.Location = new System.Drawing.Point(470, 501);
             this.lblDebugFps.Name = "lblDebugFps";
             this.lblDebugFps.Size = new System.Drawing.Size(21, 13);
             this.lblDebugFps.TabIndex = 14;
@@ -456,16 +457,27 @@
             // 
             // pnlForcesScreen
             // 
-            this.pnlForcesScreen.Location = new System.Drawing.Point(47, 305);
+            this.pnlForcesScreen.Location = new System.Drawing.Point(47, 298);
             this.pnlForcesScreen.Name = "pnlForcesScreen";
             this.pnlForcesScreen.Size = new System.Drawing.Size(195, 195);
             this.pnlForcesScreen.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(115, 496);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Forcedial";
             // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 513);
+            this.ClientSize = new System.Drawing.Size(503, 523);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlForcesScreen);
             this.Controls.Add(this.cbxSelectRocket);
             this.Controls.Add(this.lblSldThrustVal);
@@ -537,5 +549,6 @@
         private System.Windows.Forms.Label lblSldThrustVal;
         private System.Windows.Forms.ComboBox cbxSelectRocket;
         private System.Windows.Forms.Panel pnlForcesScreen;
+        private System.Windows.Forms.Label label1;
     }
 }
