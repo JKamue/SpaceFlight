@@ -37,7 +37,41 @@
     {
       "Location": {
         "IsEmpty": true,
-        "X": -30.0,
+        "X": 10.0,
+        "Y": 0.0
+      },
+      "Force": {
+        "Angle": {
+          "Degree": 0.0,
+          "Radian": 0.0
+        },
+        "Value": 0.0
+      },
+      "Acceleration": {
+        "Angle": {
+          "Degree": 0.0,
+          "Radian": 0.0
+        },
+        "Value": 0.0
+      },
+      "Speed": {
+        "Angle": {
+          "Degree": 0.0,
+          "Radian": 0.0
+        },
+        "Value": 0.0
+      },
+      "Angle": {
+        "Degree": 0.0,
+        "Radian": 0.0
+      },
+      "ThrustPercentage": 1.0,
+      "Type": "antares230+"
+    },
+    {
+      "Location": {
+        "IsEmpty": true,
+        "X": -10.0,
         "Y": 0.0
       },
       "Force": {
@@ -71,7 +105,7 @@
     {
       "Location": {
         "IsEmpty": true,
-        "X": 0.0,
+        "X": -30.0,
         "Y": 0.0
       },
       "Force": {
