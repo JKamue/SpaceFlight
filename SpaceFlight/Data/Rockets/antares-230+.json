@@ -3,13 +3,12 @@
   "Variant": "230+",
   "Manufacturer": "Northrop-Grumman",
   "Names": [
+    "Cygnus NG-12",
     "Cygnus NG-13"
-
   ],
   "Height": 42.5,
   "Width": 3.9,
   "Thrust": 4170000,
-
   "Weight": 292887,
   "FuelWeight": 239280,
   "BurnTime": 209,
@@ -17,8 +16,8 @@
   "DragProperties": {
     "CdUp": 0.25,
     "CdSide": 0.42,
-    "AreaUp": 13,
-    "AreaSide": 218.313
+    "AreaUp": 11.95,
+    "AreaSide": 157.95
   },
 
   "ThrustAreas": [
