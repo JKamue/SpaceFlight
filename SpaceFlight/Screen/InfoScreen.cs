@@ -108,7 +108,7 @@ namespace SpaceFlight.Screen
         public void DisplayStats(Rocket rocket)
         {
             var thrust = rocket._engineRunning ? rocket._rocketInf.Thrust * rocket._thrustPercentage : 0;
-            lblStatThrustVal.Text = thrust + " kN";
+            lblStatThrustVal.Text = Math.Round(thrust / 1000,4) + " kN";
             lblStatAccelerationVal.Text = Math.Round(rocket.Acceleration.Value, 8) + " m/s²";
             lblStatSpeedVal.Text = Math.Round(rocket.Speed.Value, 8) + " m/s";
             lblStatWeightVal.Text = Math.Round(rocket.Mass.Value, 2 ) + " kg";
@@ -116,9 +116,8 @@ namespace SpaceFlight.Screen
             var fuelPercent = Math.Round(rocket._restFuelWeight / rocket._rocketInf.FuelWeight * 100);
             lblStatFuelWeightVal.Text = Math.Round(rocket._restFuelWeight, 2) + " kg (" + fuelPercent + "%)";
 
-
-            lblStatGravityVal.Text = Math.Round(rocket.LastGravity.Value,4) + " kN";
-            lblStatDragVal.Text = Math.Round(rocket.LastDrag.Value, 4) + " kN";
+            lblStatGravityVal.Text = Math.Round(rocket.LastGravity.Value / 1000,4) + " kN";
+            lblStatDragVal.Text = Math.Round(rocket.LastDrag.Value / 1000, 4) + " kN";
         }
 
         public void DisplayLocation(Rocket rocket)
