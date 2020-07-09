@@ -495,6 +495,7 @@
             this.Controls.Add(this.lblRocketName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfoScreen_FormClosing);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InfoScreen";

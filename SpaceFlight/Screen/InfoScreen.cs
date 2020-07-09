@@ -142,5 +142,17 @@ namespace SpaceFlight.Screen
             lblSldAngleVal.Text = sldCtrlAngle.Value + "°";
             lblSldThrustVal.Text = sldCtrlThrust.Value + "%";
         }
+
+        private void InfoScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var res = MessageBox.Show(this, "You really want to quit?", "Exit",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            if (res != DialogResult.Yes)
+            {
+                e.Cancel = true;
+                return;
+            }
+            System.Windows.Forms.Application.ExitThread();
+        }
     }
 }
