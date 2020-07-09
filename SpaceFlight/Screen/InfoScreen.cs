@@ -162,26 +162,32 @@ namespace SpaceFlight.Screen
             switch (playBackSpeed)
             {
                 case 1:
-                    playBackSpeed++;
-                    TimeKeeper.SetConstant(2);
-                    btnSetPlaybackSpeed.Text = "2X";
+                    TimeKeeper.TimeConstant = 2;
                     break;
                 case 2:
-                    playBackSpeed++;
-                    TimeKeeper.SetConstant(0.5F);
-                    btnSetPlaybackSpeed.Text = "1/2X";
+                    TimeKeeper.TimeConstant = 5;
                     break;
                 case 3:
-                    playBackSpeed++;
-                    TimeKeeper.SetConstant(-1F);
-                    btnSetPlaybackSpeed.Text = "-1X";
+                    TimeKeeper.TimeConstant = 10;
                     break;
                 case 4:
-                    playBackSpeed = 1;
-                    TimeKeeper.SetConstant(1);
-                    btnSetPlaybackSpeed.Text = "1X";
+                    TimeKeeper.TimeConstant = 25;
+                    break;
+                case 5:
+                    TimeKeeper.TimeConstant = 50;
+                    break;
+                case 6:
+                    TimeKeeper.TimeConstant = 100;
+                    break;
+                case 7:
+                    playBackSpeed = -1;
+                    TimeKeeper.TimeConstant = 0;
                     break;
             }
+
+            playBackSpeed++;
+
+            btnSetPlaybackSpeed.Text = TimeKeeper.TimeConstant + "X";
         }
     }
 }
