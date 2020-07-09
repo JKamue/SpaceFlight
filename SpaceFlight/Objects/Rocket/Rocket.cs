@@ -27,7 +27,7 @@ namespace SpaceFlight.Objects.Rocket
         public readonly string _name;
         public readonly RocketInformation _rocketInf;
 
-        private DateTime lastCheck;
+        private TimeSpan lastCheck;
 
         public Rocket(PointF location, Force force, Acceleration acceleration, Speed speed,
             Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, new Mass(rocketInf.Weight), force, acceleration, speed, rocketInf.DragProperties)
@@ -40,7 +40,7 @@ namespace SpaceFlight.Objects.Rocket
             _sprite = rocketInf.GetRocketSprite();
             _engineRunning = true;
 
-            lastCheck = DateTime.Now;
+            lastCheck = TimeKeeper.Now();
 
             var rnd = new Random();
             var r = rnd.Next(rocketInf.Names.Count);
@@ -60,10 +60,10 @@ namespace SpaceFlight.Objects.Rocket
                 return;
 
             var burnedFuelPerSec = _rocketInf.FuelWeight / _rocketInf.BurnTime;
-            var span = DateTime.Now - lastCheck;
+            var span = TimeKeeper.Now() - lastCheck;
             var ms = span.TotalMilliseconds;
             var burnedFuel = (ms / 1000) * burnedFuelPerSec * _thrustPercentage;
-            lastCheck = DateTime.Now;
+            lastCheck = TimeKeeper.Now();
 
             _restFuelWeight -= (_restFuelWeight - burnedFuel <= 0) ? _restFuelWeight : (float) burnedFuel;
 

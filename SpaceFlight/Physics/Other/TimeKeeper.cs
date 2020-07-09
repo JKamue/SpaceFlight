@@ -12,6 +12,7 @@ namespace SpaceFlight.Physics.Other
     {
         private static double microSecondsSinceStart = 0;
         private static DateTime lastCheck = DateTime.Now;
+        private static float timeConstant = 1;
 
         public static TimeSpan Now()
         {
@@ -19,9 +20,13 @@ namespace SpaceFlight.Physics.Other
             return new TimeSpan((long) microSecondsSinceStart * 100);
         }
 
+        public static void SetConstant(float i) => timeConstant = i;
+
         private static void UpdateMilisecondsSinceStart()
         {
-            microSecondsSinceStart += (DateTime.Now - lastCheck).TotalMilliseconds * 100;
+            var diff = (DateTime.Now - lastCheck).TotalMilliseconds * 100 * timeConstant;
+            microSecondsSinceStart += (microSecondsSinceStart + diff < 0) ? 0 : diff;
+            
             lastCheck = DateTime.Now;
         }
     }

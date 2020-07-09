@@ -70,6 +70,7 @@
             this.cbxSelectRocket = new System.Windows.Forms.ComboBox();
             this.pnlForcesScreen = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSetPlaybackSpeed = new System.Windows.Forms.Button();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -451,7 +452,7 @@
             // cbxSelectRocket
             // 
             this.cbxSelectRocket.FormattingEnabled = true;
-            this.cbxSelectRocket.Location = new System.Drawing.Point(157, 12);
+            this.cbxSelectRocket.Location = new System.Drawing.Point(118, 12);
             this.cbxSelectRocket.Name = "cbxSelectRocket";
             this.cbxSelectRocket.Size = new System.Drawing.Size(190, 21);
             this.cbxSelectRocket.TabIndex = 17;
@@ -473,11 +474,22 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Forcedial";
             // 
+            // btnSetPlaybackSpeed
+            // 
+            this.btnSetPlaybackSpeed.Location = new System.Drawing.Point(320, 12);
+            this.btnSetPlaybackSpeed.Name = "btnSetPlaybackSpeed";
+            this.btnSetPlaybackSpeed.Size = new System.Drawing.Size(75, 23);
+            this.btnSetPlaybackSpeed.TabIndex = 19;
+            this.btnSetPlaybackSpeed.Text = "1X";
+            this.btnSetPlaybackSpeed.UseVisualStyleBackColor = true;
+            this.btnSetPlaybackSpeed.Click += new System.EventHandler(this.btnSetPlaybackSpeed_Click);
+            // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 523);
+            this.Controls.Add(this.btnSetPlaybackSpeed);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlForcesScreen);
             this.Controls.Add(this.cbxSelectRocket);
@@ -495,12 +507,12 @@
             this.Controls.Add(this.lblRocketName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfoScreen_FormClosing);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InfoScreen";
             this.Text = "InfoScreen";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfoScreen_FormClosing);
             this.gbxStatus.ResumeLayout(false);
             this.gbxStatus.PerformLayout();
             this.gbxInformation.ResumeLayout(false);
@@ -557,5 +569,6 @@
         private System.Windows.Forms.ComboBox cbxSelectRocket;
         private System.Windows.Forms.Panel pnlForcesScreen;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSetPlaybackSpeed;
     }
 }
