@@ -493,9 +493,13 @@
             this.Controls.Add(this.gbxStatus);
             this.Controls.Add(this.lblClock);
             this.Controls.Add(this.lblRocketName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "InfoScreen";
             this.Text = "InfoScreen";
+            this.TopMost = true;
             this.gbxStatus.ResumeLayout(false);
             this.gbxStatus.PerformLayout();
             this.gbxInformation.ResumeLayout(false);
