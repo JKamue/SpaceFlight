@@ -11,6 +11,7 @@ using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Calculator;
+using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Screen
@@ -84,7 +85,7 @@ namespace SpaceFlight.Screen
         public void DisplayInformation(Rocket rocket)
         {
             var liftoffTime = rocket.LiftOffTime;
-            var time = DateTime.Now;
+            var time = TimeKeeper.Now();
             var diff = time - liftoffTime;
             lblClock.Text = "T+ " + diff.ToString(@"dd\.hh\:mm\:ss");
             lblRocketName.Text = rocket._name;

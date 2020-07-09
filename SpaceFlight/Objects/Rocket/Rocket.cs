@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using SpaceFlight.Objects.Rocket.Sprites;
 using SpaceFlight.Physics;
+using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
 
@@ -19,7 +20,7 @@ namespace SpaceFlight.Objects.Rocket
         public float _restFuelWeight { get; private set; }
         public bool _engineRunning { get; private set; }
 
-        public DateTime LiftOffTime = DateTime.Now;
+        public TimeSpan LiftOffTime = TimeKeeper.Now();
 
         private readonly RocketSprite _sprite;
 

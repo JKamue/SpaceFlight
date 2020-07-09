@@ -20,7 +20,7 @@ namespace SpaceFlight.Physics
         public Force LastDrag;
         public Force LastGravity;
 
-        private DateTime _lastRecalculation;
+        private TimeSpan _lastRecalculation;
 
         public PhysicsObject(PointF location, Mass mass, double diameter)
         {
@@ -45,7 +45,7 @@ namespace SpaceFlight.Physics
             Drag = drag;
             Diameter = 0;
 
-            _lastRecalculation = DateTime.Now;
+            _lastRecalculation = TimeKeeper.Now();
         }
 
         public virtual void Tick()
@@ -65,8 +65,8 @@ namespace SpaceFlight.Physics
 
             // Calculate Acceleration -> Speed -> Distance
             Acceleration = force.GetAcceleration(Mass);
-            var timeSpan = DateTime.Now - _lastRecalculation;
-            _lastRecalculation = DateTime.Now;
+            var timeSpan = TimeKeeper.Now() - _lastRecalculation;
+            _lastRecalculation = TimeKeeper.Now();
             Speed += Acceleration.GetSpeed(timeSpan);
             var distance = Speed.GetDistance(timeSpan).CalculateXAndY();
 
