@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoScreen));
             this.lblRocketName = new System.Windows.Forms.Label();
             this.lblClock = new System.Windows.Forms.Label();
             this.gbxStatus = new System.Windows.Forms.GroupBox();
@@ -492,6 +493,7 @@
             this.Controls.Add(this.gbxStatus);
             this.Controls.Add(this.lblClock);
             this.Controls.Add(this.lblRocketName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InfoScreen";
             this.Text = "InfoScreen";
             this.gbxStatus.ResumeLayout(false);
