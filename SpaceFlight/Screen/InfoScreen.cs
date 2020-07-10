@@ -110,8 +110,11 @@ namespace SpaceFlight.Screen
         public void DisplayStats(Rocket rocket)
         {
             var thrust = rocket._engineRunning ? rocket._rocketInf.Thrust * rocket._thrustPercentage : 0;
+            var forcesWithoutGravity = rocket.LastDrag + new Force(rocket._angle, thrust);
+            var g = Math.Round(forcesWithoutGravity.GetAcceleration(rocket.Mass).Value / 9.80665, 1);
+
             lblStatThrustVal.Text = Math.Round(thrust / 1000,4) + " kN";
-            lblStatAccelerationVal.Text = Math.Round(rocket.Acceleration.Value, 8) + " m/s²";
+            lblStatAccelerationVal.Text = Math.Round(rocket.Acceleration.Value, 4) + " m/s²  (" + g + "g)";
             lblStatSpeedVal.Text = Math.Round(rocket.Speed.Value, 8) + " m/s";
             lblStatWeightVal.Text = Math.Round(rocket.Mass.Value, 2 ) + " kg";
 
