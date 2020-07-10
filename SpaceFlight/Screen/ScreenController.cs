@@ -17,7 +17,6 @@ namespace SpaceFlight.Screen
         private readonly Graphics _panelGraphics;
 
         private FrameRateCounter actualFramerate;
-        private int objectCounter = 0;
 
         private Color color;
         private float zoom;
@@ -27,8 +26,6 @@ namespace SpaceFlight.Screen
         private readonly Timer _drawTimer;
 
         private Point staticCenter;
-
-        public bool ShowInfo;
 
         public ScreenController(Panel panel, Color color, float zoom)
         {
@@ -57,7 +54,6 @@ namespace SpaceFlight.Screen
 
         private void Redraw(object sender, EventArgs e)
         {
-            objectCounter = 0;
             var calculatedZoom = CalculateZoom();
             var percent = 1 / calculatedZoom;
 
@@ -100,7 +96,6 @@ namespace SpaceFlight.Screen
                 return;
 
             o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds);
-            objectCounter++;
         }
 
         private void Scroll_Event(object sender, MouseEventArgs e)
@@ -138,8 +133,5 @@ namespace SpaceFlight.Screen
         }
 
         public IScreenObject GetMainObject() => mainObject;
-
-        public void ChangeMainObjectAngle(float change) => mainObject.ChangeAngle(change);
-
     }
 }
