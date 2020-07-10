@@ -18,7 +18,6 @@ namespace SpaceFlight.Screen
 
         private FrameRateCounter actualFramerate;
 
-        private Color color;
         private float zoom;
 
         private List<IScreenObject> _panelObjects;
@@ -27,10 +26,12 @@ namespace SpaceFlight.Screen
 
         private Point staticCenter;
 
+        public Color Color;
+
         public ScreenController(Panel panel, Color color, float zoom)
         {
             _panel = panel;
-            this.color = color;
+            this.Color = color;
             this.zoom = zoom;
 
             // Setup graphics
@@ -75,7 +76,7 @@ namespace SpaceFlight.Screen
             }
 
 
-            _graphicsBuffer.Graphics.Clear(color);
+            _graphicsBuffer.Graphics.Clear(Color);
             _panelObjects.ForEach(x => DrawObject(x, drawRectangle, positionCalculator));
             actualFramerate.FrameDrawn();
             _graphicsBuffer.Render(_panelGraphics);

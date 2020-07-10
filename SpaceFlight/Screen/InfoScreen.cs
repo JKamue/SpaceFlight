@@ -135,6 +135,30 @@ namespace SpaceFlight.Screen
             lblLocClosestVal.Text = Math.Round(distance) + " m";
             lblLocAngleVal.Text = Math.Round(rocket._angle.Degree - ((rocket._angle.Degree > 180) ? 360 : 0), 1) + "°";
             lblLocCoordsVal.Text = Math.Round(rocket.Location.X) + " | " + Math.Round(rocket.Location.Y);
+
+            _screen.Color = CalcColor(distance);
+        }
+
+        public Color CalcColor(float altitude)
+        {
+            var factor = 0f;
+            if (altitude < 80000 && altitude > 0)
+            {
+                factor = (altitude - 0) / (80000 - 0) * (0 - 1) + 1;
+            }
+            else if (altitude <= 0)
+            {
+                factor = 1f;
+            }
+
+            // https://stackoverflow.com/a/2011839
+            var max = Color.NavajoWhite;
+            var min = Color.FromArgb(50, 50, 50);
+
+            var r = min.R + (int)((max.R - min.R) * factor);
+            var g = min.G + (int)((max.G - min.G) * factor);
+            var b = min.B + (int)((max.B - min.B) * factor);
+            return Color.FromArgb(r, g, b);
         }
 
         public void QuerySliders(Rocket rocket)
