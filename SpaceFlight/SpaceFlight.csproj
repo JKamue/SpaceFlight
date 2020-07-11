@@ -71,6 +71,7 @@
     <Compile Include="Physics\Units\Mass.cs" />
     <Compile Include="Physics\Units\Speed.cs" />
     <Compile Include="Physics\Units\Vector.cs" />
+    <Compile Include="Screen\BufferedScreen.cs" />
     <Compile Include="Screen\Calculator\FrameRateCounter.cs" />
     <Compile Include="Screen\Calculator\AngularCalculator.cs" />
     <Compile Include="Screen\Calculator\BoundsCalculator.cs" />

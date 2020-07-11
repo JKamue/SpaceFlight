@@ -9,49 +9,29 @@ using SpaceFlight.Physics.Units;
 
 namespace SpaceFlight.Screen
 {
-    class ScreenController
+    class ScreenController : BufferedScreen
     {
-        private readonly Panel _panel;
         private readonly ScreenObjectCollection _objects;
 
-        private readonly BufferedGraphicsContext _context;
-        private readonly BufferedGraphics _graphicsBuffer;
-        private readonly Graphics _panelGraphics;
-
-        private FrameRateCounter actualFramerate;
-
         private float zoom;
-
-        private readonly Timer _drawTimer;
 
         private Point staticCenter;
 
         public Color Color;
 
-        public ScreenController(Panel panel, ScreenObjectCollection objects, Color color, float zoom)
+        public ScreenController(Panel panel, ScreenObjectCollection objects, Color color, float zoom) : base(panel)
         {
-            _panel = panel;
             _objects = objects;
             this.Color = color;
             this.zoom = zoom;
 
             // Setup graphics
-            _context = BufferedGraphicsManager.Current;
-            _panelGraphics = _panel.CreateGraphics();
-            _graphicsBuffer = _context.Allocate(_panelGraphics, panel.DisplayRectangle);
-
-            actualFramerate = new FrameRateCounter();
-
-            _drawTimer = new Timer();
-            _drawTimer.Interval = 10;
-            _drawTimer.Tick += Redraw;
-            _drawTimer.Start();
 
             _panel.MouseWheel += Scroll_Event;
             staticCenter = new Point(0, 0);
         }
 
-        private void Redraw(object sender, EventArgs e)
+        public override void Redraw(object sender, EventArgs e)
         {
             var calculatedZoom = CalculateZoom();
             var percent = 1 / calculatedZoom;
@@ -113,8 +93,6 @@ namespace SpaceFlight.Screen
                 zoom--;
             }
         }
-
-        public int GetActualFramerate() => actualFramerate.Framerate;
     }
 
 }

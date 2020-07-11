@@ -11,12 +11,8 @@ using SpaceFlight.Screen.Calculator;
 
 namespace SpaceFlight.Screen
 {
-    class ForceDrawer
+    class ForceDrawer : BufferedScreen
     {
-        private readonly Panel _panel;
-        private readonly BufferedGraphicsContext _context;
-        private readonly BufferedGraphics _graphicsBuffer;
-        private readonly Graphics _panelGraphics;
 
         public List<Force> Drag;
         public Force Thrust;
@@ -24,15 +20,9 @@ namespace SpaceFlight.Screen
         public Force ResultingForce;
         public Speed Speed;
 
-        public ForceDrawer(Panel panel)
+        public ForceDrawer(Panel panel) : base(panel)
         {
-            _panel = panel;
-
-            // Setup graphics
-            _context = BufferedGraphicsManager.Current;
-            _panelGraphics = _panel.CreateGraphics();
-            _graphicsBuffer = _context.Allocate(_panelGraphics, panel.DisplayRectangle);
-
+            _drawTimer.Enabled = false;
             // Setup forces
             Thrust = new Force(Angle.Zero, 0);
             Gravity = Drag = new List<Force>();
