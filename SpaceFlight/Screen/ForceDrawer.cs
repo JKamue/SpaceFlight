@@ -49,18 +49,25 @@ namespace SpaceFlight.Screen
             DrawForce(g, Gravity, Color.Blue, factor, center);
             DrawForce(g, ResultingForce, Color.Black, factor, center);
             g.DrawEllipse(new Pen(Color.Black, 1), new Rectangle(1,1, _panel.Height - 2, _panel.Height - 2));
-            DrawDot(g, Speed, Color.OrangeRed);
+            DrawSpeed(g, Speed, Color.OrangeRed, center);
 
             _graphicsBuffer.Render(_panelGraphics);
         }
 
-        private void DrawDot(Graphics g, Speed speed, Color c)
+        private void DrawSpeed(Graphics g, Speed speed, Color c, float center)
         {
-            var height = ((float) _panel.Height - 2) / 2;
-            var point = new PointF(height-5, 5);
-            var aCalc = new AngularCalculator((float) Speed.Angle.Degree, new PointF(height, height));
-            var rect = new RectangleF(aCalc.Turn(point), new Size(10,10));
-            g.FillEllipse(new SolidBrush(c), rect);
+            var aCalc = new AngularCalculator((float)Speed.Angle.Degree, new PointF(center, center));
+            var points = new List<PointF>
+            {
+                aCalc.Turn(new PointF(center - 1, 0)),
+                aCalc.Turn(new PointF(center - 1, 15)),
+                aCalc.Turn(new PointF(center + 1, 15)),
+                aCalc.Turn(new PointF(center + 1, 0))
+            };
+
+            var b = new SolidBrush(c);
+            var array = points.ToArray();
+            g.FillPolygon(b, array);
         }
 
         private void DrawForce(Graphics g, Force force, Color c, float factor, float center)
