@@ -28,7 +28,6 @@ namespace SpaceFlight.Physics
         {
             foreach (var movingObject in _objects.Rockets)
             {
-                movingObject.ExternalForces = new List<Force>();
                 movingObject.DragForces = new List<Force>();
                 movingObject.GravityForces = new List<Force>();
 
@@ -37,7 +36,6 @@ namespace SpaceFlight.Physics
                     var distance = PointCalculator.Distance(movingObject.Location, gravityObject.Location);
                     var angle = PointCalculator.CalculateAngle(movingObject.Location, gravityObject.Location);
                     var force = GravityCalculator.CalculateGravity(movingObject.Mass, gravityObject.Mass, distance, angle);
-                    movingObject.ExternalForces.Add(force);
                     movingObject.GravityForces.Add(force);
 
                     var altitude = distance - gravityObject.Diameter;
@@ -52,7 +50,6 @@ namespace SpaceFlight.Physics
                         var a = movingObject.Drag.GetArea(speedDirectionDiff);
                         var p = AtmosphereCalculator.CalculateAirDensityAtAltitude(altitude);
                         var dragForce = DragCalculator.CalculateDrag(dragAngle, cd, p, movingObject.Speed, a);
-                        movingObject.ExternalForces.Add(dragForce);
                         movingObject.DragForces.Add(dragForce);
                     }
                 }

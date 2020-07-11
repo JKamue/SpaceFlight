@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 
@@ -12,7 +13,7 @@ namespace SpaceFlight.Physics
         public Mass Mass;
         public Force OwnForce;
         public Force ResutlingForce;
-        public List<Force> ExternalForces;
+        public List<Force> ExternalForces => DragForces.Concat(GravityForces).ToList();
         public Acceleration Acceleration;
         public Speed Speed;
         public DragProperties Drag;
@@ -41,7 +42,6 @@ namespace SpaceFlight.Physics
             ResutlingForce = ownForce;
             Acceleration = acceleration;
             Speed = speed;
-            ExternalForces = new List<Force>();
             GravityForces = new List<Force>();
             DragForces = new List<Force>();
             Drag = drag;
