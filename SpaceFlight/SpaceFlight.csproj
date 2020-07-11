@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameDto.cs" />
+    <Compile Include="Objects\ScreenObjectCollection.cs" />
     <Compile Include="Objects\Rocket\RocketDto.cs" />
     <Compile Include="Objects\Terrain\TerrainDto.cs" />
     <Compile Include="Physics\Calculator\AtmosphereCalculator.cs" />

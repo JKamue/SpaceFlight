@@ -17,8 +17,8 @@ namespace SpaceFlight.Physics
         public Speed Speed;
         public DragProperties Drag;
         public double Diameter;
-        public Force LastDrag;
-        public Force LastGravity;
+        public List<Force> DragForces;
+        public List<Force> GravityForces;
 
         private TimeSpan _lastRecalculation;
 
@@ -42,6 +42,8 @@ namespace SpaceFlight.Physics
             Acceleration = acceleration;
             Speed = speed;
             ExternalForces = new List<Force>();
+            GravityForces = new List<Force>();
+            DragForces = new List<Force>();
             Drag = drag;
             Diameter = 0;
 

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using SpaceFlight.Objects;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
@@ -16,31 +17,34 @@ namespace SpaceFlight.Game
     class Game
     {
         private readonly ScreenController _closeDistanceScreen;
+        private readonly ScreenController _orbitScreenController;
         private readonly PhysicsController _physicsController;
         private readonly InfoScreen _infoScreen;
         private readonly OrbitScreen _orbitScreen;
 
-        private List<Rocket> _rockets = new List<Rocket>();
-        private List<Terrain> _planets = new List<Terrain>();
+        private ScreenObjectCollection _objects = new ScreenObjectCollection();
 
         public Game(Panel simulationPanel, string levelName)
         {
-            // Load controllers
-            _closeDistanceScreen = new ScreenController(simulationPanel, Color.NavajoWhite, 3);
-            _physicsController = new PhysicsController(10);
-
             // Load Level
             var level = LoadFromName(levelName);
             LoadPlanets(level.Planets);
             LoadRockets(level.Rockets);
 
+            // Load controllers
+            _closeDistanceScreen = new ScreenController(simulationPanel, _objects, Color.NavajoWhite, 3);
+            _physicsController = new PhysicsController(_objects, 10);
+
             // Show info Screen
-            _infoScreen = new InfoScreen(_rockets, _planets, _closeDistanceScreen);
+            _infoScreen = new InfoScreen(_objects, _closeDistanceScreen);
             _infoScreen.Show();
 
             // Show orbit Screen
             _orbitScreen = new OrbitScreen();
             _orbitScreen.Show();
+
+            // Create orbit controller
+            _orbitScreenController = new ScreenController(_orbitScreen.GetPanel(), _objects, Color.FromArgb(0, 0, 128), 5);
         }
 
         private void LoadRockets(List<RocketDto> rockets)
@@ -49,9 +53,7 @@ namespace SpaceFlight.Game
             {
                 var inf = RocketInformation.LoadFromName(rDto.Type);
                 var rocket = new Rocket(rDto.Location, rDto.Force, rDto.Acceleration, rDto.Speed, rDto.Angle, rDto.ThrustPercentage, inf);
-                _closeDistanceScreen.SetMainObject(rocket);
-                _physicsController.AddMovingObject(rocket);
-                _rockets.Add(rocket);
+                _objects.Add(rocket);
             }
         }
 
@@ -60,9 +62,7 @@ namespace SpaceFlight.Game
             foreach (var pDto in planets)
             {
                 var planet = new Terrain(pDto.Position, pDto.Radius, pDto.Color, new Mass(pDto.Mass));
-                _closeDistanceScreen.AddPanelObject(planet);
-                _physicsController.AddGravityObject(planet);
-                _planets.Add(planet);
+                _objects.Add(planet);
             }
         }
 

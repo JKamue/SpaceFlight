@@ -23,5 +23,7 @@ namespace SpaceFlight.Screen.Forms
         {
             System.Windows.Forms.Application.ExitThread();
         }
+
+        public Panel GetPanel() => pnlOrbitScreen;
     }
 }
