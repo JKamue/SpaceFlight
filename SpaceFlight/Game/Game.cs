@@ -11,13 +11,14 @@ using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
 using SpaceFlight.Screen.Forms;
+using SpaceFlight.Screen.Orbit;
 
 namespace SpaceFlight.Game
 {
     class Game
     {
         private readonly ScreenController _closeDistanceScreen;
-        private readonly ScreenController _orbitScreenController;
+        private readonly OrbitScreenController _orbitScreenController;
         private readonly PhysicsController _physicsController;
         private readonly InfoScreen _infoScreen;
         private readonly OrbitScreen _orbitScreen;
@@ -44,7 +45,7 @@ namespace SpaceFlight.Game
             _orbitScreen.Show();
 
             // Create orbit controller
-            _orbitScreenController = new ScreenController(_orbitScreen.GetPanel(), _objects, Color.FromArgb(0, 0, 128), 5);
+            _orbitScreenController = new OrbitScreenController(_orbitScreen.GetPanel(), _objects);
         }
 
         private void LoadRockets(List<RocketDto> rockets)

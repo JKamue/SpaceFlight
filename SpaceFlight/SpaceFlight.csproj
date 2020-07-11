@@ -90,6 +90,7 @@
       <DependentUpon>OrbitScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\IScreenObject.cs" />
+    <Compile Include="Screen\Orbit\OrbitScreenController.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Objects\Rocket\Rocket.cs" />
     <Compile Include="Objects\Rocket\RocketInformation.cs" />

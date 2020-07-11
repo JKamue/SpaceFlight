@@ -46,6 +46,14 @@ namespace SpaceFlight.Objects.Terrain
             }
         }
 
+        public void DrawSimple(Graphics g, ProjectedPositionCalculator ppCalc)
+        {
+            var start = ppCalc.ProjectPoint(new PointF(Location.X - radius, Location.Y - radius));
+            var end = ppCalc.ProjectPoint(new PointF(Location.X + radius, Location.Y + radius));
+            var rect = new RectangleF(start.X, start.Y, end.X - start.X, end.Y - start.Y);
+            g.FillEllipse(new SolidBrush(color), rect);
+        }
+
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
             var points = new List<PointF>();
