@@ -9,6 +9,7 @@ using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
+using SpaceFlight.Screen.Forms;
 
 namespace SpaceFlight.Game
 {
@@ -17,6 +18,7 @@ namespace SpaceFlight.Game
         private readonly ScreenController _closeDistanceScreen;
         private readonly PhysicsController _physicsController;
         private readonly InfoScreen _infoScreen;
+        private readonly OrbitScreen _orbitScreen;
 
         private List<Rocket> _rockets = new List<Rocket>();
         private List<Terrain> _planets = new List<Terrain>();
@@ -35,6 +37,10 @@ namespace SpaceFlight.Game
             // Show info Screen
             _infoScreen = new InfoScreen(_rockets, _planets, _closeDistanceScreen);
             _infoScreen.Show();
+
+            // Show orbit Screen
+            _orbitScreen = new OrbitScreen();
+            _orbitScreen.Show();
         }
 
         private void LoadRockets(List<RocketDto> rockets)
