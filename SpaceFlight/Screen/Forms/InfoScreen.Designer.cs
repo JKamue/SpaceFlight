@@ -454,7 +454,7 @@
             // cbxSelectRocket
             // 
             this.cbxSelectRocket.FormattingEnabled = true;
-            this.cbxSelectRocket.Location = new System.Drawing.Point(118, 12);
+            this.cbxSelectRocket.Location = new System.Drawing.Point(52, 12);
             this.cbxSelectRocket.Name = "cbxSelectRocket";
             this.cbxSelectRocket.Size = new System.Drawing.Size(190, 21);
             this.cbxSelectRocket.TabIndex = 17;
@@ -479,18 +479,20 @@
             // lblTimeFlow
             // 
             this.lblTimeFlow.AutoSize = true;
-            this.lblTimeFlow.Location = new System.Drawing.Point(358, 20);
+            this.lblTimeFlow.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeFlow.Location = new System.Drawing.Point(304, 9);
             this.lblTimeFlow.Name = "lblTimeFlow";
-            this.lblTimeFlow.Size = new System.Drawing.Size(56, 13);
+            this.lblTimeFlow.Size = new System.Drawing.Size(98, 24);
             this.lblTimeFlow.TabIndex = 19;
             this.lblTimeFlow.Text = "TimeWarp";
             // 
             // lblPause
             // 
             this.lblPause.AutoSize = true;
-            this.lblPause.Location = new System.Drawing.Point(324, 20);
+            this.lblPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPause.Location = new System.Drawing.Point(279, 9);
             this.lblPause.Name = "lblPause";
-            this.lblPause.Size = new System.Drawing.Size(37, 13);
+            this.lblPause.Size = new System.Drawing.Size(63, 24);
             this.lblPause.TabIndex = 20;
             this.lblPause.Text = "Pause";
             this.lblPause.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblPause_MouseClick);
@@ -498,9 +500,10 @@
             // lblTimeFlowvalue
             // 
             this.lblTimeFlowvalue.AutoSize = true;
-            this.lblTimeFlowvalue.Location = new System.Drawing.Point(420, 20);
+            this.lblTimeFlowvalue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeFlowvalue.Location = new System.Drawing.Point(394, 13);
             this.lblTimeFlowvalue.Name = "lblTimeFlowvalue";
-            this.lblTimeFlowvalue.Size = new System.Drawing.Size(36, 13);
+            this.lblTimeFlowvalue.Size = new System.Drawing.Size(54, 20);
             this.lblTimeFlowvalue.TabIndex = 21;
             this.lblTimeFlowvalue.Text = "xtimes";
             // 
@@ -533,7 +536,6 @@
             this.MinimizeBox = false;
             this.Name = "InfoScreen";
             this.Text = "InfoScreen";
-            this.TopMost = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfoScreen_FormClosing);
             this.gbxStatus.ResumeLayout(false);
             this.gbxStatus.PerformLayout();

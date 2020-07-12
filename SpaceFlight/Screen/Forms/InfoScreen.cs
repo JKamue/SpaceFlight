@@ -47,11 +47,10 @@ namespace SpaceFlight.Screen
 
             cbxSelectRocket.DataSource = _objects.Rockets;
 
-            lblTimeFlowvalue.Text = ""; //iwo muss ich es ja machen
             lblTimeFlow.MouseClick += lblTimeFlow_Click;
             DisplayTimeflowlabel(1);
             DisplayPause();
-            lblTimeFlowvalue.Location = new Point(lblTimeFlow.Width + lblTimeFlow.Location.X, lblTimeFlow.Location.Y);
+            lblTimeFlowvalue.Location = new Point(lblTimeFlow.Width + lblTimeFlow.Location.X, lblTimeFlow.Location.Y + 2);
         }
 
         public void UpdateDisplay(object sender, EventArgs e)
@@ -242,24 +241,18 @@ namespace SpaceFlight.Screen
                     break;
             }
 
-
             DisplayTimeflowlabel((int)x);
         }
         private void DisplayTimeflowlabel(int x)
         {
             string text = "";
-            var triangle = '\x25B6';
-            var triangleblank = '\x25B7';
+
             for (int i = 0; i < x; i++)
-            {
-                text += triangle;
-                text += " ";
-            }
+                text += '\x25B6' + " ";
+
             for (int i = 0; i < (number - x); i++)
-            {
-                text += triangleblank;
-                text += " ";
-            }
+                text += '\x25B7' + " ";
+
             lblTimeFlow.Text = text;
             lblTimeFlow.ForeColor = Color.DarkGreen;
         }
@@ -268,24 +261,21 @@ namespace SpaceFlight.Screen
         {
             DisplayPause();
         }
+
         private void DisplayPause()
         {
-            var text = "";
-            var pausecharacter = '\u23F8';
-            var playcharacter = '\x25B6';
             if (ongoing == false)
             {
                 ongoing = true;
-                text += pausecharacter;
+                lblPause.Text = '\u23F8'.ToString();
                 MatchTimeflow(0);
             }
             else
             {
                 ongoing = false;
-                text += playcharacter;
+                lblPause.Text = '\x25B6'.ToString();
                 MatchTimeflow(1);
             }
-            lblPause.Text = text;
         }
     }
 }
