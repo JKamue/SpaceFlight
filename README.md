@@ -14,7 +14,7 @@
 </p>
 
 <h1 align="center">
-<img src="https://jkamue.de/logos/spaceflight.pmg" width="1000">
+<img src="https://i.ibb.co/8K0jnSt/Anmerkung-2020-07-12-192459.png" width="1000">
 </h1>
 
 ## Key Features
@@ -28,9 +28,14 @@
 * Great controls
   - Easily change thrust or angle
   - (More complex controls like stage seperation will be added in future updates)
+* Multitude of information
+  - Information screen shows a lot of useful information as well as all forces
+  - Orbit screen shows the calculated path of the rocket
 * Scaleable
   - Easily add your own rockets by adding them to the Data/Rockets folder
   - Easily add your own levels by copying it to the Data/Level folder
+* Great [wiki](https://github.com/JKamue/SpaceFlight/wiki)
+* Open Source - everybody can contribute
   
   
 ## How To Use
@@ -39,49 +44,11 @@ You can [download](https://github.com/JKamue/SpaceFlight/releases) the latest ve
 
 At the moment only one Level is loaded by default, future updates will include a menu screen to select different levels and rockets.
 
-Currently there are only 3 rockets avalible, more are under development.
+All launchable rockets are liste here [Rockets](https://github.com/JKamue/SpaceFlight/wiki), there is a subpage showing the properties of each rocket.
 
-You can already change the main level in the Data/Rockets folder or change the different statistics of the rockets.
-Rockets are encoded in json:
-```json
-{
-  "Model": "Atlas V",
-  "Variant": "401",
-  "Manufacturer": "ULA",
-  "Names": [
-    "AV-078",
-    ...
-  ],
-  "Height": 56,
-  "Width": 4,
-  "Thrust": 3830000,
-  "Weight": 330388,
-  "FuelWeight": 304919,
-  "BurnTime": 240,
-  "DragProperties": {
-    "CdUp": 0.25,
-    "CdSide": 0.42,
-    "AreaUp": 13.8544236,
-    "AreaSide": 218.313
-  },
-  "ThrustAreas": [
-    {
-      "Start": {
-        "IsEmpty": false,
-        "X": 0.1,
-        "Y": -28
-      },
-      "Stop": {
-        "IsEmpty": false,
-        "X": 1.5,
-        "Y": -28
-      }
-    },
-    ...
-  ],
-  "Sprite": [...]
-}
-```
+There is also a [Guide](https://github.com/JKamue/SpaceFlight/wiki/UI) on the different user interfaces and their purpose and functionality.
+
+This guide explains how to create your own rockets and levels [Modding Guide](https://github.com/JKamue/SpaceFlight/wiki/Modding).
 
 ## Credits
 
@@ -90,12 +57,20 @@ This software uses the following open source packages:
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 - This readme is inspired by the [Markdownify](https://github.com/amitmerchant1990/electron-markdownify) readme
 
-Special thanks:
+Contributors:
 
-- [PhilHawk03](https://github.com/PhilHawk03) for a near infinite knowledge of rocket science and a lot of motivation
+- [PhilHawk03](https://github.com/PhilHawk03)
+- [Nalsai](https://github.com/Nalsai)
+- [simselchen](https://github.com/simselchen) 
 
-<br><br>
+## Open Source
 
+This software is open source. You are encouraged to contribute! If you have any problems or want to add a rocket just open a new issue. 
 
+If you already made changes to the game you are more than welcome to open a pull request.
+
+<br>
+
+---
 > [JKamue.de](https://www.jkamue.de) &nbsp;&middot;&nbsp;
 > Twitter [@JKamue_dev](https://twitter.com/JKamue_dev)
