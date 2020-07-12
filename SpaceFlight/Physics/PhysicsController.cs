@@ -42,8 +42,8 @@ namespace SpaceFlight.Physics
                     if (altitude < 100000)
                     {
                         // Drag Relevant
-                        var rocketForceAngle = ((Rocket)movingObject)._angle;
-                        var dragAngle = Angle.FromDegrees(rocketForceAngle.Degree + 180);
+                        var rocketForceAngle = movingObject._angle;
+                        var dragAngle = Angle.FromDegrees(movingObject.Speed.Angle.Degree + 180);
                         var speedDirectionDiff =
                             Angle.FromDegrees(rocketForceAngle.Degree - movingObject.Speed.Angle.Degree);
                         var cd = movingObject.Drag.GetDragCoefficient(speedDirectionDiff);
