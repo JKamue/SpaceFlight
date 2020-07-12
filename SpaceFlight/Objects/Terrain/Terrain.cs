@@ -107,21 +107,6 @@ namespace SpaceFlight.Objects.Terrain
             if (points.Count == 0)
                 return;
 
-            if (realPoints == 0)
-            {
-                var rect = new RectangleF(position.X - radius,position.Y - radius, radius * 2, radius * 2);
-                if (rect.Contains(screen))
-                {
-                    points = new List<PointF>();
-                    var a = 100;
-                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X - a, screen.Y - a)));
-                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X - a, screen.Y + screen.Width * 2 + a)));
-                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Height * 2 + a, screen.Y + screen.Width * 2 + a)));
-                    points.Add(ppCalc.ProjectPoint(new PointF(screen.X + screen.Height * 2 + a, screen.Y - a)));
-
-                }
-            }
-
             g.FillPolygon(b, points.ToArray());
         }
 
