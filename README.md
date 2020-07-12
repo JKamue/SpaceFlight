@@ -10,7 +10,8 @@
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#credits">Credits</a>
+  <a href="#credits">Credits</a> •
+  <a href="#open-source">Open Source</a>
 </p>
 
 <h1 align="center">
@@ -65,7 +66,8 @@ Contributors:
 
 ## Open Source
 
-This software is open source. You are encouraged to contribute! If you have any problems or want to add a rocket just open a new issue. 
+This software is open source. You are encouraged to contribute! If you have any problems or want to add a rocket just open a new issue.
+There are multiple issue templates for different ideas / problems.
 
 If you already made changes to the game you are more than welcome to open a pull request.
 
