@@ -24,10 +24,10 @@ namespace SpaceFlight.Screen
         private readonly ForceDrawer _forceDrawer;
         private Timer Ticker = new Timer();
 
-        private int playBackSpeed = 1;
         private int lastSelected = -1;
 
         private int number = 7;
+        private bool ongoing = true;
 
         public InfoScreen(ScreenObjectCollection objects, ScreenController screen)
         {
@@ -47,8 +47,11 @@ namespace SpaceFlight.Screen
 
             cbxSelectRocket.DataSource = _objects.Rockets;
 
+            lblTimeFlowvalue.Text = ""; //iwo muss ich es ja machen
             lblTimeFlow.MouseClick += lblTimeFlow_Click;
             DisplayTimeflowlabel(1);
+            DisplayPause();
+            lblTimeFlowvalue.Location = new Point(lblTimeFlow.Width + lblTimeFlow.Location.X, lblTimeFlow.Location.Y);
         }
 
         public void UpdateDisplay(object sender, EventArgs e)
@@ -191,32 +194,51 @@ namespace SpaceFlight.Screen
 
         private void lblTimeFlow_Click(object sender, MouseEventArgs e)
         {
-            var spaceofeachtriangle = lblTimeFlow.Width / number;
-            var x = Math.Round((decimal)(e.Location.X / spaceofeachtriangle));
-            x++;
+            if (ongoing == false)
+            {
+                var spaceofeachtriangle = lblTimeFlow.Width / number;
+                var x = Math.Round((decimal)(e.Location.X / spaceofeachtriangle));
+                x++;
+                MatchTimeflow((int)x);
+            }
+        }
+
+        private void MatchTimeflow(int x)
+        {
             lblTimeFlow.Text = "";
             switch (x)
             {
+                case 0:
+                    TimeKeeper.TimeConstant = 0;
+                    lblTimeFlowvalue.Text = "x0";
+                    break;
                 case 1:
                     TimeKeeper.TimeConstant = 1;
+                    lblTimeFlowvalue.Text = "x1";
                     break;
                 case 2:
                     TimeKeeper.TimeConstant = 2;
+                    lblTimeFlowvalue.Text = "x2";
                     break;
                 case 3:
                     TimeKeeper.TimeConstant = 5;
+                    lblTimeFlowvalue.Text = "x5";
                     break;
                 case 4:
                     TimeKeeper.TimeConstant = 10;
+                    lblTimeFlowvalue.Text = "x10";
                     break;
                 case 5:
                     TimeKeeper.TimeConstant = 25;
+                    lblTimeFlowvalue.Text = "x25";
                     break;
                 case 6:
                     TimeKeeper.TimeConstant = 50;
+                    lblTimeFlowvalue.Text = "x50";
                     break;
                 case 7:
                     TimeKeeper.TimeConstant = 100;
+                    lblTimeFlowvalue.Text = "x100";
                     break;
             }
 
@@ -240,6 +262,30 @@ namespace SpaceFlight.Screen
             }
             lblTimeFlow.Text = text;
             lblTimeFlow.ForeColor = Color.DarkGreen;
+        }
+
+        private void lblPause_MouseClick(object sender, MouseEventArgs e)
+        {
+            DisplayPause();
+        }
+        private void DisplayPause()
+        {
+            var text = "";
+            var pausecharacter = '\u23F8';
+            var playcharacter = '\x25B6';
+            if (ongoing == false)
+            {
+                ongoing = true;
+                text += pausecharacter;
+                MatchTimeflow(0);
+            }
+            else
+            {
+                ongoing = false;
+                text += playcharacter;
+                MatchTimeflow(1);
+            }
+            lblPause.Text = text;
         }
     }
 }

@@ -71,6 +71,8 @@
             this.pnlForcesScreen = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTimeFlow = new System.Windows.Forms.Label();
+            this.lblPause = new System.Windows.Forms.Label();
+            this.lblTimeFlowvalue = new System.Windows.Forms.Label();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -477,17 +479,38 @@
             // lblTimeFlow
             // 
             this.lblTimeFlow.AutoSize = true;
-            this.lblTimeFlow.Location = new System.Drawing.Point(324, 15);
+            this.lblTimeFlow.Location = new System.Drawing.Point(358, 20);
             this.lblTimeFlow.Name = "lblTimeFlow";
             this.lblTimeFlow.Size = new System.Drawing.Size(56, 13);
             this.lblTimeFlow.TabIndex = 19;
             this.lblTimeFlow.Text = "TimeWarp";
+            // 
+            // lblPause
+            // 
+            this.lblPause.AutoSize = true;
+            this.lblPause.Location = new System.Drawing.Point(324, 20);
+            this.lblPause.Name = "lblPause";
+            this.lblPause.Size = new System.Drawing.Size(37, 13);
+            this.lblPause.TabIndex = 20;
+            this.lblPause.Text = "Pause";
+            this.lblPause.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lblPause_MouseClick);
+            // 
+            // lblTimeFlowvalue
+            // 
+            this.lblTimeFlowvalue.AutoSize = true;
+            this.lblTimeFlowvalue.Location = new System.Drawing.Point(420, 20);
+            this.lblTimeFlowvalue.Name = "lblTimeFlowvalue";
+            this.lblTimeFlowvalue.Size = new System.Drawing.Size(36, 13);
+            this.lblTimeFlowvalue.TabIndex = 21;
+            this.lblTimeFlowvalue.Text = "xtimes";
             // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 523);
+            this.Controls.Add(this.lblTimeFlowvalue);
+            this.Controls.Add(this.lblPause);
             this.Controls.Add(this.lblTimeFlow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlForcesScreen);
@@ -510,7 +533,7 @@
             this.MinimizeBox = false;
             this.Name = "InfoScreen";
             this.Text = "InfoScreen";
-            this.TopMost = true;
+            this.TopMost = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfoScreen_FormClosing);
             this.gbxStatus.ResumeLayout(false);
             this.gbxStatus.PerformLayout();
@@ -569,5 +592,7 @@
         private System.Windows.Forms.Panel pnlForcesScreen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTimeFlow;
+        private System.Windows.Forms.Label lblPause;
+        private System.Windows.Forms.Label lblTimeFlowvalue;
     }
 }
