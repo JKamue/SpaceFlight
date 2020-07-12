@@ -70,7 +70,7 @@
             this.cbxSelectRocket = new System.Windows.Forms.ComboBox();
             this.pnlForcesScreen = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSetPlaybackSpeed = new System.Windows.Forms.Button();
+            this.lblTimeFlow = new System.Windows.Forms.Label();
             this.gbxStatus.SuspendLayout();
             this.gbxInformation.SuspendLayout();
             this.gbxLocation.SuspendLayout();
@@ -474,22 +474,21 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Forcedial";
             // 
-            // btnSetPlaybackSpeed
+            // lblTimeFlow
             // 
-            this.btnSetPlaybackSpeed.Location = new System.Drawing.Point(320, 12);
-            this.btnSetPlaybackSpeed.Name = "btnSetPlaybackSpeed";
-            this.btnSetPlaybackSpeed.Size = new System.Drawing.Size(75, 23);
-            this.btnSetPlaybackSpeed.TabIndex = 19;
-            this.btnSetPlaybackSpeed.Text = "1X";
-            this.btnSetPlaybackSpeed.UseVisualStyleBackColor = true;
-            this.btnSetPlaybackSpeed.Click += new System.EventHandler(this.btnSetPlaybackSpeed_Click);
+            this.lblTimeFlow.AutoSize = true;
+            this.lblTimeFlow.Location = new System.Drawing.Point(324, 15);
+            this.lblTimeFlow.Name = "lblTimeFlow";
+            this.lblTimeFlow.Size = new System.Drawing.Size(56, 13);
+            this.lblTimeFlow.TabIndex = 19;
+            this.lblTimeFlow.Text = "TimeWarp";
             // 
             // InfoScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 523);
-            this.Controls.Add(this.btnSetPlaybackSpeed);
+            this.Controls.Add(this.lblTimeFlow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlForcesScreen);
             this.Controls.Add(this.cbxSelectRocket);
@@ -569,6 +568,6 @@
         private System.Windows.Forms.ComboBox cbxSelectRocket;
         private System.Windows.Forms.Panel pnlForcesScreen;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSetPlaybackSpeed;
+        private System.Windows.Forms.Label lblTimeFlow;
     }
 }

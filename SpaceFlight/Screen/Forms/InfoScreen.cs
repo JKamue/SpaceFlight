@@ -27,6 +27,8 @@ namespace SpaceFlight.Screen
         private int playBackSpeed = 1;
         private int lastSelected = -1;
 
+        private int number = 7;
+
         public InfoScreen(ScreenObjectCollection objects, ScreenController screen)
         {
             InitializeComponent();
@@ -44,6 +46,9 @@ namespace SpaceFlight.Screen
             Ticker.Start();
 
             cbxSelectRocket.DataSource = _objects.Rockets;
+
+            lblTimeFlow.MouseClick += lblTimeFlow_Click;
+            DisplayTimeflowlabel(1);
         }
 
         public void UpdateDisplay(object sender, EventArgs e)
@@ -184,37 +189,57 @@ namespace SpaceFlight.Screen
             System.Windows.Forms.Application.ExitThread();
         }
 
-        private void btnSetPlaybackSpeed_Click(object sender, EventArgs e)
+        private void lblTimeFlow_Click(object sender, MouseEventArgs e)
         {
-            switch (playBackSpeed)
+            var spaceofeachtriangle = lblTimeFlow.Width / number;
+            var x = Math.Round((decimal)(e.Location.X / spaceofeachtriangle));
+            x++;
+            lblTimeFlow.Text = "";
+            switch (x)
             {
                 case 1:
-                    TimeKeeper.TimeConstant = 2;
+                    TimeKeeper.TimeConstant = 1;
                     break;
                 case 2:
-                    TimeKeeper.TimeConstant = 5;
+                    TimeKeeper.TimeConstant = 2;
                     break;
                 case 3:
-                    TimeKeeper.TimeConstant = 10;
+                    TimeKeeper.TimeConstant = 5;
                     break;
                 case 4:
-                    TimeKeeper.TimeConstant = 25;
+                    TimeKeeper.TimeConstant = 10;
                     break;
                 case 5:
-                    TimeKeeper.TimeConstant = 50;
+                    TimeKeeper.TimeConstant = 25;
                     break;
                 case 6:
-                    TimeKeeper.TimeConstant = 100;
+                    TimeKeeper.TimeConstant = 50;
                     break;
                 case 7:
-                    playBackSpeed = -1;
-                    TimeKeeper.TimeConstant = 0;
+                    TimeKeeper.TimeConstant = 100;
                     break;
             }
 
-            playBackSpeed++;
 
-            btnSetPlaybackSpeed.Text = TimeKeeper.TimeConstant + "X";
+            DisplayTimeflowlabel((int)x);
+        }
+        private void DisplayTimeflowlabel(int x)
+        {
+            string text = "";
+            var triangle = '\x25B6';
+            var triangleblank = '\x25B7';
+            for (int i = 0; i < x; i++)
+            {
+                text += triangle;
+                text += " ";
+            }
+            for (int i = 0; i < (number - x); i++)
+            {
+                text += triangleblank;
+                text += " ";
+            }
+            lblTimeFlow.Text = text;
+            lblTimeFlow.ForeColor = Color.DarkGreen;
         }
     }
 }
