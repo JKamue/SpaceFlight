@@ -119,11 +119,14 @@ namespace SpaceFlight.Objects.Rocket
             var target = targetAngle.Degree - (targetAngle.Degree > 180 ? 360 : 0);
             var angle = _angle.Degree - (_angle.Degree > 180 ? 360 : 0);
 
-            if (angle - 0.1 >= target)
-                _angle = new Angle(_angle.Degree - 0.1);
-            else if (angle + 0.1 <= target)
-                _angle = new Angle(_angle.Degree + 0.1);
+            var factor = 0.1 * TimeKeeper.TimeConstant;
 
+            if (angle - factor >= target)
+                _angle = new Angle(_angle.Degree - factor);
+            else if (angle + factor <= target)
+                _angle = new Angle(_angle.Degree + factor);
+            else
+                _angle = targetAngle;
         }
 
         public override string ToString()
