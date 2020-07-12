@@ -11,30 +11,21 @@ using SpaceFlight.Screen.Calculator;
 
 namespace SpaceFlight.Screen
 {
-    class ForceDrawer
+    class ForceDrawer : BufferedScreen
     {
-        private readonly Panel _panel;
-        private readonly BufferedGraphicsContext _context;
-        private readonly BufferedGraphics _graphicsBuffer;
-        private readonly Graphics _panelGraphics;
 
-        public Force Drag;
+        public List<Force> Drag;
         public Force Thrust;
-        public Force Gravity;
+        public List<Force> Gravity;
         public Force ResultingForce;
         public Speed Speed;
 
-        public ForceDrawer(Panel panel)
+        public ForceDrawer(Panel panel) : base(panel)
         {
-            _panel = panel;
-
-            // Setup graphics
-            _context = BufferedGraphicsManager.Current;
-            _panelGraphics = _panel.CreateGraphics();
-            _graphicsBuffer = _context.Allocate(_panelGraphics, panel.DisplayRectangle);
-
+            _drawTimer.Enabled = false;
             // Setup forces
-            Drag = Thrust = Gravity = ResultingForce = new Force(Angle.Zero, 0);
+            Thrust = new Force(Angle.Zero, 0);
+            Gravity = Drag = new List<Force>();
         }
 
         public void Redraw()
@@ -44,9 +35,13 @@ namespace SpaceFlight.Screen
             var factor = CalcForceScalingFactor();
             var center = (float ) _panel.Height / 2;
 
-            DrawForce(g, Drag, Color.Red, factor, center);
+            foreach (var dragForce in Drag)
+                DrawForce(g, dragForce, Color.Red, factor, center);
+
+            foreach (var gravityForce in Gravity)
+                DrawForce(g, gravityForce, Color.Blue, factor, center);
+
             DrawForce(g, Thrust, Color.Green, factor, center);
-            DrawForce(g, Gravity, Color.Blue, factor, center);
             DrawForce(g, ResultingForce, Color.Black, factor, center);
             g.DrawEllipse(new Pen(Color.Black, 1), new Rectangle(1,1, _panel.Height - 2, _panel.Height - 2));
             DrawSpeed(g, Speed, Color.OrangeRed, center);
@@ -96,10 +91,11 @@ namespace SpaceFlight.Screen
 
         private float CalcForceScalingFactor()
         {
-            var forces = new List<Force>{ Drag, Thrust, Gravity, ResultingForce };
+            var forces = new List<Force>{Thrust, ResultingForce};
+            var allForces = forces.Concat(Drag).Concat(Gravity);
             double biggest = -1;
 
-            foreach (var force in forces)
+            foreach (var force in allForces)
                 biggest = force.Value > biggest ? force.Value : biggest;
 
             return (float) (biggest / (((float)_panel.Height -2) / 2));

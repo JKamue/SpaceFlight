@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameDto.cs" />
+    <Compile Include="Objects\ScreenObjectCollection.cs" />
     <Compile Include="Objects\Rocket\RocketDto.cs" />
     <Compile Include="Objects\Terrain\TerrainDto.cs" />
     <Compile Include="Physics\Calculator\AtmosphereCalculator.cs" />
@@ -70,18 +71,26 @@
     <Compile Include="Physics\Units\Mass.cs" />
     <Compile Include="Physics\Units\Speed.cs" />
     <Compile Include="Physics\Units\Vector.cs" />
+    <Compile Include="Screen\BufferedScreen.cs" />
     <Compile Include="Screen\Calculator\FrameRateCounter.cs" />
     <Compile Include="Screen\Calculator\AngularCalculator.cs" />
     <Compile Include="Screen\Calculator\BoundsCalculator.cs" />
     <Compile Include="Physics\Calculator\PointCalculator.cs" />
     <Compile Include="Screen\ForceDrawer.cs" />
-    <Compile Include="Screen\InfoScreen.cs">
+    <Compile Include="Screen\Forms\InfoScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Screen\InfoScreen.Designer.cs">
+    <Compile Include="Screen\Forms\InfoScreen.Designer.cs">
       <DependentUpon>InfoScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\Forms\OrbitScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\Forms\OrbitScreen.Designer.cs">
+      <DependentUpon>OrbitScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screen\IScreenObject.cs" />
+    <Compile Include="Screen\Orbit\OrbitScreenController.cs" />
     <Compile Include="Screen\ScreenController.cs" />
     <Compile Include="Objects\Rocket\Rocket.cs" />
     <Compile Include="Objects\Rocket\RocketInformation.cs" />
@@ -109,8 +118,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Screen\InfoScreen.resx">
+    <EmbeddedResource Include="Screen\Forms\InfoScreen.resx">
       <DependentUpon>InfoScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\Forms\OrbitScreen.resx">
+      <DependentUpon>OrbitScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SimulationScreen.resx">
       <DependentUpon>SimulationScreen.cs</DependentUpon>

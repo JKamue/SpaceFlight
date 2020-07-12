@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SpaceFlight.Objects;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
@@ -18,8 +19,7 @@ namespace SpaceFlight.Screen
 {
     partial class InfoScreen : Form
     {
-        private readonly List<Rocket> _rockets;
-        private readonly List<Terrain> _planets;
+        private readonly ScreenObjectCollection _objects;
         private readonly ScreenController _screen;
         private readonly ForceDrawer _forceDrawer;
         private Timer Ticker = new Timer();
@@ -27,11 +27,10 @@ namespace SpaceFlight.Screen
         private int playBackSpeed = 1;
         private int lastSelected = -1;
 
-        public InfoScreen(List<Rocket> rockets, List<Terrain> planets, ScreenController screen)
+        public InfoScreen(ScreenObjectCollection objects, ScreenController screen)
         {
             InitializeComponent();
-            _rockets = rockets;
-            _planets = planets;
+            _objects = objects;
             _screen = screen;
 
             _forceDrawer = new ForceDrawer(pnlForcesScreen);
@@ -44,13 +43,14 @@ namespace SpaceFlight.Screen
             Ticker.Tick += UpdateDisplay;
             Ticker.Start();
 
-            cbxSelectRocket.DataSource = _rockets;
+            cbxSelectRocket.DataSource = _objects.Rockets;
         }
 
         public void UpdateDisplay(object sender, EventArgs e)
         {
+            cbxSelectRocket.DataSource = _objects.Rockets;
             SelectRightRocket();
-            var rocket = GetMainObject();
+            var rocket = _objects.MainObject;
             if (rocket is null)
                 return;
 
@@ -62,20 +62,10 @@ namespace SpaceFlight.Screen
             lblDebugFps.Text = _screen.GetActualFramerate() + " fps";
         }
 
-        public Rocket GetMainObject()
-        {
-            var screenObject = _screen.GetMainObject();
-
-            if (screenObject.GetType() != _rockets[0].GetType())
-                return null;
-
-            return (Rocket) screenObject;
-        }
-
         public void UpdateForceDrawer(Rocket rocket)
         {
-            _forceDrawer.Drag = rocket.LastDrag;
-            _forceDrawer.Gravity = rocket.LastGravity;
+            _forceDrawer.Drag = rocket.DragForces;
+            _forceDrawer.Gravity = rocket.GravityForces;
             var thrust = new Force(rocket._angle, rocket._engineRunning ? rocket._rocketInf.Thrust * rocket._thrustPercentage : 0);
             _forceDrawer.Thrust = thrust;
             _forceDrawer.ResultingForce = rocket.ResutlingForce;
@@ -101,7 +91,7 @@ namespace SpaceFlight.Screen
             {
                 lastSelected = cbxSelectRocket.SelectedIndex;
                 var rocket = (Rocket) cbxSelectRocket.SelectedItem;
-                _screen.SetMainObject(rocket);
+                _objects.MainObject = rocket;
                 sldCtrlThrust.Value = (int) Math.Round(rocket._thrustPercentage * 100);
                 sldCtrlAngle.Value = (int) Math.Round(rocket.targetAngle.Degree - (rocket.targetAngle.Degree > 180 ? 360 : 0));
             }
@@ -110,7 +100,17 @@ namespace SpaceFlight.Screen
         public void DisplayStats(Rocket rocket)
         {
             var thrust = rocket._engineRunning ? rocket._rocketInf.Thrust * rocket._thrustPercentage : 0;
-            var forcesWithoutGravity = rocket.LastDrag + new Force(rocket._angle, thrust);
+
+            var resultingDrag = new Force(Angle.Zero, 0);
+            foreach (var drag in rocket.DragForces)
+                resultingDrag = drag + resultingDrag;
+
+
+            var resultingGravity = new Force(Angle.Zero, 0);
+            foreach (var garvity in rocket.GravityForces)
+                resultingGravity = garvity + resultingGravity;
+
+            var forcesWithoutGravity = resultingDrag + new Force(rocket._angle, thrust);
             var g = Math.Round(forcesWithoutGravity.GetAcceleration(rocket.Mass).Value / 9.80665, 1);
 
             lblStatThrustVal.Text = Math.Round(thrust / 1000,4) + " kN";
@@ -121,14 +121,14 @@ namespace SpaceFlight.Screen
             var fuelPercent = Math.Round(rocket._restFuelWeight / rocket._rocketInf.FuelWeight * 100);
             lblStatFuelWeightVal.Text = Math.Round(rocket._restFuelWeight, 2) + " kg (" + fuelPercent + "%)";
 
-            lblStatGravityVal.Text = Math.Round(rocket.LastGravity.Value / 1000,4) + " kN";
-            lblStatDragVal.Text = Math.Round(rocket.LastDrag.Value / 1000, 4) + " kN";
+            lblStatGravityVal.Text = Math.Round(resultingGravity.Value / 1000,4) + " kN";
+            lblStatDragVal.Text = Math.Round(resultingDrag.Value / 1000, 4) + " kN";
         }
 
         public void DisplayLocation(Rocket rocket)
         {
             var distance = 0F;
-            foreach (var planet in _planets)
+            foreach (var planet in _objects.Terrains)
             {
                 var newDistance = PointCalculator.Distance(rocket.Location, planet.Location);
                 if (newDistance > distance)
