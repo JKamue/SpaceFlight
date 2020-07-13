@@ -24,6 +24,13 @@ namespace SpaceFlight
             Left = 550;
             Top = 5;
             new Game.Game(SimulationPanel, "all-rockets-earth");
+
+            // Make the other screens owned by the SimulationScreen
+            FormCollection openForms = Application.OpenForms;
+            foreach (Form f in openForms)
+            {
+                this.AddOwnedForm(f);
+            }
         }
     }
 }

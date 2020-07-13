@@ -52,7 +52,6 @@
             this.MinimizeBox = false;
             this.Name = "OrbitScreen";
             this.Text = "OrbitScreen";
-            this.TopMost = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrbitScreen_FormClosing);
             this.ResumeLayout(false);
 
