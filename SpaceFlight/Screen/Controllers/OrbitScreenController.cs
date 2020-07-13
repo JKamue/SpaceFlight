@@ -14,7 +14,7 @@ using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen.Calculator;
 
-namespace SpaceFlight.Screen.Orbit
+namespace SpaceFlight.Screen.Controllers
 {
     class OrbitScreenController : BufferedScreen
     {

@@ -76,7 +76,7 @@
     <Compile Include="Screen\Calculator\AngularCalculator.cs" />
     <Compile Include="Screen\Calculator\BoundsCalculator.cs" />
     <Compile Include="Physics\Calculator\PointCalculator.cs" />
-    <Compile Include="Screen\ForceDrawer.cs" />
+    <Compile Include="Screen\Controllers\ForceDrawer.cs" />
     <Compile Include="Screen\Forms\InfoScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,8 +90,8 @@
       <DependentUpon>OrbitScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\IScreenObject.cs" />
-    <Compile Include="Screen\Orbit\OrbitScreenController.cs" />
-    <Compile Include="Screen\ScreenController.cs" />
+    <Compile Include="Screen\Controllers\OrbitScreenController.cs" />
+    <Compile Include="Screen\Controllers\ScreenController.cs" />
     <Compile Include="Objects\Rocket\Rocket.cs" />
     <Compile Include="Objects\Rocket\RocketInformation.cs" />
     <Compile Include="Objects\Rocket\Sprites\RocketSprite.cs" />

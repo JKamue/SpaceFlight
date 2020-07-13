@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using SpaceFlight.Objects;
 using SpaceFlight.Physics.Units;
 
-namespace SpaceFlight.Screen
+namespace SpaceFlight.Screen.Controllers
 {
     class ScreenController : BufferedScreen
     {

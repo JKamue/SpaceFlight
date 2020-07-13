@@ -9,7 +9,7 @@ using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen.Calculator;
 
-namespace SpaceFlight.Screen
+namespace SpaceFlight.Screen.Controllers
 {
     class ForceDrawer : BufferedScreen
     {
