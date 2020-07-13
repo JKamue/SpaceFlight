@@ -55,7 +55,7 @@ namespace SpaceFlight
             this.MinimizeBox = false;
             this.Name = "SimulationScreen";
             this.Text = "SpaceFlight";
-            this.TopMost = true;
+            this.Activated += new System.EventHandler(this.SimulationScreen_Activated);
             this.ResumeLayout(false);
 
         }

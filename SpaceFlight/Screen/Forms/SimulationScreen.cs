@@ -25,5 +25,13 @@ namespace SpaceFlight
             Top = 5;
             new Game.Game(SimulationPanel, "all-rockets-earth");
         }
+
+        private void SimulationScreen_Activated(object sender, EventArgs e)
+        {
+            foreach(Form f in Application.OpenForms)
+            {
+                f.BringToFront();
+            }
+        }
     }
 }

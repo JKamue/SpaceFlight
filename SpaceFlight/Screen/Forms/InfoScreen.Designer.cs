@@ -536,6 +536,7 @@
             this.MinimizeBox = false;
             this.Name = "InfoScreen";
             this.Text = "InfoScreen";
+            this.Activated += new System.EventHandler(this.InfoScreen_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InfoScreen_FormClosing);
             this.gbxStatus.ResumeLayout(false);
             this.gbxStatus.PerformLayout();

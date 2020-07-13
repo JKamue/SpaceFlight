@@ -277,5 +277,13 @@ namespace SpaceFlight.Screen
                 MatchTimeflow(1);
             }
         }
+
+        private void InfoScreen_Activated(object sender, EventArgs e)
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                f.BringToFront();
+            }
+        }
     }
 }

@@ -25,5 +25,13 @@ namespace SpaceFlight.Screen.Forms
         }
 
         public Panel GetPanel() => pnlOrbitScreen;
+
+        private void OrbitScreen_Activated(object sender, EventArgs e)
+        {
+            foreach (Form f in Application.OpenForms)
+            {
+                f.BringToFront();
+            }
+        }
     }
 }
