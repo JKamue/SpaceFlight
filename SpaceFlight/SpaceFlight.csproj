@@ -100,10 +100,10 @@
     <Compile Include="Objects\Terrain\Noise.cs" />
     <Compile Include="Objects\Terrain\Terrain.cs" />
     <Compile Include="Screen\Calculator\ProjectedPositionCalculator.cs" />
-    <Compile Include="SimulationScreen.cs">
+    <Compile Include="Screen\Forms\SimulationScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SimulationScreen.Designer.cs">
+    <Compile Include="Screen\Forms\SimulationScreen.Designer.cs">
       <DependentUpon>SimulationScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -124,7 +124,7 @@
     <EmbeddedResource Include="Screen\Forms\OrbitScreen.resx">
       <DependentUpon>OrbitScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SimulationScreen.resx">
+    <EmbeddedResource Include="Screen\Forms\SimulationScreen.resx">
       <DependentUpon>SimulationScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\Levels\all-rockets-earth.json">
