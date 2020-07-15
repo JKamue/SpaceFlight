@@ -21,20 +21,30 @@ namespace SpaceFlight.Screen.Controllers
         private ScreenObjectCollection _objects;
 
         private int zoom = 4;
-
+        private bool fixOnMouse = false;
+        private Point mouse = Point.Empty;
+        private PointF mouseCenter = PointF.Empty;
+        private ProjectedPositionCalculator lastPpCalc;
         public OrbitScreenController(Panel panel, ScreenObjectCollection objects) : base(panel)
         {
             _objects = objects;
             _drawTimer.Interval = 100;
 
             _panel.MouseWheel += Scroll_Event;
+            _panel.Click += Click_Event;
+            _panel.MouseMove += Mouse_Move;
+        }
+
+        public void Mouse_Move(object sender, MouseEventArgs e)
+        {
+            mouse = new Point(e.X, e.Y);
         }
 
         public override void Redraw(object sender, EventArgs e)
         {
             _graphicsBuffer.Graphics.Clear(Color.FromArgb(0, 0, 160));
 
-            var ppCalc = getProjectedPositionCalculator();
+            var ppCalc = GetProjectedPositionCalculator();
             DrawMainObjectPath(ppCalc);
             DrawAllObjects(ppCalc);
 
@@ -42,15 +52,17 @@ namespace SpaceFlight.Screen.Controllers
             _graphicsBuffer.Render(_panelGraphics);
         }
 
-        private ProjectedPositionCalculator getProjectedPositionCalculator()
+        private ProjectedPositionCalculator GetProjectedPositionCalculator()
         {
-            var calculatedZoom = CalculateZoom();
+            var calculatedZoom = CalculateZoom(zoom);
             var percent = 1 / calculatedZoom;
-            var realCenter = _objects.MainObject.GetMiddle();
-            var projectedCenter = new Point((int) Math.Round((double) _panel.Width * percent / 2),
-                (int) Math.Round((double) _panel.Height * percent / 2));
+            
+            var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2),
+                (int)Math.Round((double)_panel.Height * percent / 2));
 
-            return new ProjectedPositionCalculator(realCenter, projectedCenter, calculatedZoom);
+            var center = fixOnMouse ? mouseCenter : _objects.MainObject.GetMiddle();
+
+            return lastPpCalc = new ProjectedPositionCalculator(center, projectedCenter, calculatedZoom);
         }
 
         private void DrawAllObjects(ProjectedPositionCalculator ppCalc)
@@ -61,11 +73,11 @@ namespace SpaceFlight.Screen.Controllers
             var mainObject = _objects.MainObject;
             var loc = mainObject.Location;
             var point1 = ppCalc.ProjectPoint(loc);
-            var aCalc = new AngularCalculator((float) mainObject._angle.Degree, point1);
+            var aCalc = new AngularCalculator((float)mainObject._angle.Degree, point1);
             var point2 = aCalc.Turn(new PointF(point1.X, point1.Y - 10));
             var point3 = aCalc.Turn(new PointF(point1.X + 5, point1.Y + 5));
             var point4 = aCalc.Turn(new PointF(point1.X - 5, point1.Y + 5));
-            var polygon = new List<PointF> {point2, point3, point4};
+            var polygon = new List<PointF> { point2, point3, point4 };
             _graphicsBuffer.Graphics.FillPolygon(new SolidBrush(Color.LightGray), polygon.ToArray());
         }
 
@@ -91,26 +103,30 @@ namespace SpaceFlight.Screen.Controllers
                     break;
 
                 var flownDistance = speed.GetDistance(new TimeSpan(0, 0, 0, 10)).CalculateXAndY();
-                position.X += (float) flownDistance.X;
-                position.Y += (float) flownDistance.Y;
+                position.X += (float)flownDistance.X;
+                position.Y += (float)flownDistance.Y;
                 var projectedPosition = ppCalc.ProjectPoint(position);
                 _graphicsBuffer.Graphics.FillRectangle(new SolidBrush(Color.White), projectedPosition.X,
                     projectedPosition.Y, 1, 1);
             }
         }
 
-        private float CalculateZoom() => (float) (31 * Math.Pow(zoom, 2) / 5000000 + 1 / 200000);
+        private float CalculateZoom(int zoom) => (float)(31 * Math.Pow(zoom, 2) / 5000000 + 1 / 200000);
 
         private void Scroll_Event(object sender, MouseEventArgs e)
         {
             if (e.Delta > 0 && zoom + 1 <= 7)
             {
+                mouseCenter = lastPpCalc.ReversPoint(mouse);
                 zoom++;
             }
             else if (e.Delta < 0 && zoom - 1 > 0)
             {
+                mouseCenter = lastPpCalc.ReversPoint(mouse);
                 zoom--;
             }
         }
+
+        private void Click_Event(object sender, EventArgs e) => fixOnMouse = !fixOnMouse;
     }
 }
