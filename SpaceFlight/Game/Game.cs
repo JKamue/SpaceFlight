@@ -53,7 +53,7 @@ namespace SpaceFlight.Game
             foreach (var rDto in rockets)
             {
                 var inf = RocketInformation.LoadFromName(rDto.Type);
-                var rocket = new Rocket(rDto.Location, rDto.Force, rDto.Acceleration, rDto.Speed, rDto.Angle, rDto.ThrustPercentage, inf);
+                var rocket = new Rocket(rDto.Location, new Force(Angle.Zero, 0), new Acceleration(Angle.Zero, 0), rDto.Speed, rDto.Angle, rDto.ThrustPercentage, inf);
                 _objects.Add(rocket);
             }
         }

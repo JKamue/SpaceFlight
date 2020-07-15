@@ -4,7 +4,6 @@ namespace SpaceFlight.Physics.Units
 {
     public class Distance : Vector
     {
-        public Distance() : base() { }
         public Distance (Angle angle, double meter) : base(angle, meter) { }
         public Distance (Vector v) : base(v.Angle, v.Value) { }
 
