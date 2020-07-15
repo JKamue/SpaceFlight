@@ -1,0 +1,22 @@
+﻿{
+  "Model": "",
+  "Variant": "",
+  "Manufacturer": "",
+  "Names": [
+    ""
+  ],
+  "Height": 0,
+  "Width": 0,
+  "Thrust": 0,
+  "Weight": 1,
+  "FuelWeight": 0,
+  "BurnTime": 0,
+  "DragProperties": {
+    "CdUp": 0,
+    "CdSide": 0,
+    "AreaUp": 0,
+    "AreaSide": 0
+  },
+  "ThrustAreas": [],
+  "Sprite": []
+}

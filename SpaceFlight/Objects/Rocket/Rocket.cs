@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms.VisualStyles;
 using SpaceFlight.Objects.Rocket.Sprites;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Other;
@@ -28,6 +29,12 @@ namespace SpaceFlight.Objects.Rocket
         public readonly RocketInformation _rocketInf;
 
         private TimeSpan lastCheck;
+
+        public static Rocket getEmptyRocket()
+        {
+            var angle = Angle.Zero;
+            return new Rocket(new PointF(0,0), new Force(angle, 0), new Acceleration(angle, 0), new Speed(angle, 0), angle, 0, RocketInformation.LoadFromName("empty-rocket"));
+        }
 
         public Rocket(PointF location, Force force, Acceleration acceleration, Speed speed,
             Angle angle, float thrustPercentage, RocketInformation rocketInf) : base(location, new Mass(rocketInf.Weight), force, acceleration, speed, rocketInf.DragProperties)
@@ -135,6 +142,8 @@ namespace SpaceFlight.Objects.Rocket
         }
 
         public RectangleF GetBounds() => _sprite.GetBounds(Location, new AngularCalculator((float)_angle.Degree * -1, Location));
+
+        public List<PointF> GetBoundPointsList() => _sprite.GetBoundPointsList(Location, new AngularCalculator((float)_angle.Degree * -1, Location));
 
         public PointF GetMiddle() => Location;
 

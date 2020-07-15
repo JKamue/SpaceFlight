@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameDto.cs" />
+    <Compile Include="Objects\Calculator\CollisionDetector.cs" />
     <Compile Include="Objects\ScreenObjectCollection.cs" />
     <Compile Include="Objects\Rocket\RocketDto.cs" />
     <Compile Include="Objects\Terrain\TerrainDto.cs" />
@@ -131,6 +132,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Data\Rockets\antares-230+.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\Rockets\empty-rocket.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Data\Rockets\unidentified-flying-object.json">

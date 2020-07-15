@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using SpaceFlight.Objects;
+using SpaceFlight.Objects.Calculator;
 using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
@@ -20,6 +21,8 @@ namespace SpaceFlight.Game
         private readonly ScreenController _closeDistanceScreen;
         private readonly OrbitScreenController _orbitScreenController;
         private readonly PhysicsController _physicsController;
+        private readonly CollisionDetector _collisionDetector;
+
         private readonly InfoScreen _infoScreen;
         private readonly OrbitScreen _orbitScreen;
 
@@ -35,6 +38,7 @@ namespace SpaceFlight.Game
             // Load controllers
             _closeDistanceScreen = new ScreenController(simulationPanel, _objects, Color.NavajoWhite, 3);
             _physicsController = new PhysicsController(_objects, 10);
+            _collisionDetector = new CollisionDetector(_objects);
 
             // Show info Screen
             _infoScreen = new InfoScreen(_objects, _closeDistanceScreen);

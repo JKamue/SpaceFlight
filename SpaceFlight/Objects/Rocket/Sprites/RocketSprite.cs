@@ -37,6 +37,12 @@ namespace SpaceFlight.Objects.Rocket.Sprites
 
         public RectangleF GetBounds(PointF pos, AngularCalculator aCalc)
         {
+            var points = GetBoundPointsList(pos, aCalc);
+            return BoundsCalculator.CalculateBounds(points);
+        }
+
+        public List<PointF> GetBoundPointsList(PointF pos, AngularCalculator aCalc)
+        {
             var hWidth = _width / 2;
             var hHeight = _height / 2;
 
@@ -48,7 +54,7 @@ namespace SpaceFlight.Objects.Rocket.Sprites
                 aCalc.Turn(new PointF(pos.X - hWidth, pos.Y + hHeight))
             };
 
-            return BoundsCalculator.CalculateBounds(points);
+            return points;
         }
 
         private static PointF TurnAndProject(float x, float y, ProjectedPositionCalculator p, AngularCalculator aCalc)

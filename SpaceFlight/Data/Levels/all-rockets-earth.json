@@ -4,7 +4,7 @@
       "Location": {
         "IsEmpty": true,
         "X": 30.0,
-        "Y": 0.0
+        "Y": 50.0
       },
       "Speed": {
         "Angle": {
@@ -24,7 +24,7 @@
       "Location": {
         "IsEmpty": true,
         "X": 10.0,
-        "Y": 0.0
+        "Y": 50.0
       },
       "Speed": {
         "Angle": {
@@ -44,7 +44,7 @@
       "Location": {
         "IsEmpty": true,
         "X": -10.0,
-        "Y": 0.0
+        "Y": 50.0
       },
       "Speed": {
         "Angle": {
@@ -64,7 +64,7 @@
       "Location": {
         "IsEmpty": true,
         "X": -30.0,
-        "Y": 0.0
+        "Y": 50.0
       },
       "Speed": {
         "Angle": {
@@ -84,7 +84,7 @@
       "Location": {
         "IsEmpty": true,
         "X": -100.0,
-        "Y": 0.0
+        "Y": 10.0
       },
       "Speed": {
         "Angle": {
