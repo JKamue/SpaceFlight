@@ -11,7 +11,11 @@ namespace SpaceFlight.Physics.Calculator
         {
             double densityAtAltitude = 0;
 
-            if (altitude > 0 && altitude < 10000)  
+            if (altitude < 0)
+            {
+                densityAtAltitude = 0;
+            }
+            else if (altitude >= 0 && altitude < 10000)  
             {
                 densityAtAltitude = 1.24958083 * Math.Pow(0.99989155, altitude);
             }

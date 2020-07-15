@@ -19,37 +19,37 @@ namespace PhysicsTests.Calculators
         [TestMethod]
         public void AirDensityCalculatedCorrectly2()
         {
-            Assert.AreEqual(1.225, AtmosphereCalculator.CalculateAirDensityAtAltitude(0));
+            Assert.AreEqual(1.2496, AtmosphereCalculator.CalculateAirDensityAtAltitude(0), 0.001);
         }
 
         [TestMethod]
         public void AirDensityCalculatedCorrectly3()
         {
-            Assert.AreEqual(1.112, AtmosphereCalculator.CalculateAirDensityAtAltitude(1000));
+            Assert.AreEqual(1.121, AtmosphereCalculator.CalculateAirDensityAtAltitude(1000), 0.001);
         }
 
         [TestMethod]
         public void AirDensityCalculatedCorrectly4()
         {
-            Assert.AreEqual(1.007, AtmosphereCalculator.CalculateAirDensityAtAltitude(2500));
+            Assert.AreEqual(0.9528, AtmosphereCalculator.CalculateAirDensityAtAltitude(2500), 0.001);
         }
 
         [TestMethod]
         public void AirDensityCalculatedCorrectly5()
         {
-            Assert.AreEqual(0.4135, AtmosphereCalculator.CalculateAirDensityAtAltitude(12500));
+            Assert.AreEqual(0.283, AtmosphereCalculator.CalculateAirDensityAtAltitude(12500), 0.001);
         }
 
         [TestMethod]
         public void AirDensityCalculatedCorrectly6()
         {
-            Assert.AreEqual(0.01841, AtmosphereCalculator.CalculateAirDensityAtAltitude(35000));
+            Assert.AreEqual(0.00859, AtmosphereCalculator.CalculateAirDensityAtAltitude(35000), 0.00001);
         }
 
         [TestMethod]
         public void AirDensityCalculatedCorrectly7()
         {
-            Assert.AreEqual(0.0003097, AtmosphereCalculator.CalculateAirDensityAtAltitude(62100.12312312));
+            Assert.AreEqual(0.00022, AtmosphereCalculator.CalculateAirDensityAtAltitude(62100.12312312), 0.00001);
         }
 
         [TestMethod]
