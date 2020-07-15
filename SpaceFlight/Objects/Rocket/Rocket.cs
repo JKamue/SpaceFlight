@@ -70,7 +70,7 @@ namespace SpaceFlight.Objects.Rocket
             if (_restFuelWeight <= 0)
                 _engineRunning = false;
 
-            OwnForce = _engineRunning ? new Force(_angle, _rocketInf.Thrust * _thrustPercentage) : new Force();
+            OwnForce = _engineRunning ? new Force(_angle, _rocketInf.Thrust * _thrustPercentage) : new Force(Angle.Zero, 0);
 
             Mass = new Mass(_restFuelWeight + _rocketInf.Weight - _rocketInf.FuelWeight);
         }

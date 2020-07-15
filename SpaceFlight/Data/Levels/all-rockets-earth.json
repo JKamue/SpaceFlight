@@ -6,20 +6,6 @@
         "X": 30.0,
         "Y": 0.0
       },
-      "Force": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
-      "Acceleration": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
       "Speed": {
         "Angle": {
           "Degree": 0.0,
@@ -39,20 +25,6 @@
         "IsEmpty": true,
         "X": 10.0,
         "Y": 0.0
-      },
-      "Force": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
-      "Acceleration": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
       },
       "Speed": {
         "Angle": {
@@ -74,20 +46,6 @@
         "X": -10.0,
         "Y": 0.0
       },
-      "Force": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
-      "Acceleration": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
       "Speed": {
         "Angle": {
           "Degree": 0.0,
@@ -108,20 +66,6 @@
         "X": -30.0,
         "Y": 0.0
       },
-      "Force": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
-      "Acceleration": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
       "Speed": {
         "Angle": {
           "Degree": 0.0,
@@ -141,20 +85,6 @@
         "IsEmpty": true,
         "X": -100.0,
         "Y": 0.0
-      },
-      "Force": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
-      },
-      "Acceleration": {
-        "Angle": {
-          "Degree": 0.0,
-          "Radian": 0.0
-        },
-        "Value": 0.0
       },
       "Speed": {
         "Angle": {

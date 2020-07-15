@@ -4,7 +4,6 @@ namespace SpaceFlight.Physics.Units
 {
     public class Speed : Vector
     {
-        public Speed() : base() { }
         public Speed(Angle angle, double mPerSec) : base(angle, mPerSec) { }
         public Speed(Vector v) : base(v.Angle, v.Value) { }
 
