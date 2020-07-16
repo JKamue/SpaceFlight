@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpaceFlight.Screen.Calculator
 {
-    public class Decimalpoints
+    public class DecimalPoints
     {
         public static string Add(float x)
         {
