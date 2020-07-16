@@ -28,6 +28,9 @@ namespace SpaceFlight.Objects.Calculator
             var rockets = _objects.Rockets;
             for (int i = rockets.Count - 1; i >= 0; i--)
             {
+                if (rockets.ElementAtOrDefault(i) == null)
+                    return;
+
                 var rocket = rockets[i];
                 var corners = rocket.GetBoundPointsList();
 
