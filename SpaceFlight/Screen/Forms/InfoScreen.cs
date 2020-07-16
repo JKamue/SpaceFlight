@@ -14,6 +14,7 @@ using SpaceFlight.Physics;
 using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
+using SpaceFlight.Screen.Calculator;
 using SpaceFlight.Screen.Controllers;
 
 namespace SpaceFlight.Screen
@@ -90,7 +91,7 @@ namespace SpaceFlight.Screen
             lblRocketName.Text = rocket._name;
             lblInfModelVal.Text = rocket._rocketInf.Model + " " + rocket._rocketInf.Variant;
             lblInfManufacturerVal.Text = rocket._rocketInf.Manufacturer;
-            lblInfHeightVal.Text = rocket._rocketInf.Height + "m";
+            lblInfHeightVal.Text = Decimalpoints.Add(rocket._rocketInf.Height) + "m";
         }
 
         public void SelectRightRocket()
@@ -121,16 +122,16 @@ namespace SpaceFlight.Screen
             var forcesWithoutGravity = resultingDrag + new Force(rocket._angle, thrust);
             var g = Math.Round(forcesWithoutGravity.GetAcceleration(rocket.Mass).Value / 9.80665, 1);
 
-            lblStatThrustVal.Text = Math.Round(thrust / 1000,4) + " kN";
-            lblStatAccelerationVal.Text = Math.Round(rocket.Acceleration.Value, 4) + " m/s²  (" + g + "g)";
-            lblStatSpeedVal.Text = Math.Round(rocket.Speed.Value, 8) + " m/s";
-            lblStatWeightVal.Text = Math.Round(rocket.Mass.Value, 2 ) + " kg";
+            lblStatThrustVal.Text = Decimalpoints.Add(Math.Round(thrust / 1000,4)) + " kN";
+            lblStatAccelerationVal.Text = Decimalpoints.Add(Math.Round(rocket.Acceleration.Value, 4)) + " m/s²  (" + g + "g)";
+            lblStatSpeedVal.Text = Decimalpoints.Add(Math.Round(rocket.Speed.Value, 8)) + " m/s";
+            lblStatWeightVal.Text = Decimalpoints.Add(Math.Round(rocket.Mass.Value, 2 )) + " kg";
 
             var fuelPercent = Math.Round(rocket._restFuelWeight / rocket._rocketInf.FuelWeight * 100);
-            lblStatFuelWeightVal.Text = Math.Round(rocket._restFuelWeight, 2) + " kg (" + fuelPercent + "%)";
+            lblStatFuelWeightVal.Text = Decimalpoints.Add(Math.Round(rocket._restFuelWeight, 2)) + " kg (" + fuelPercent + "%)";
 
-            lblStatGravityVal.Text = Math.Round(resultingGravity.Value / 1000,4) + " kN";
-            lblStatDragVal.Text = Math.Round(resultingDrag.Value / 1000, 4) + " kN";
+            lblStatGravityVal.Text = Decimalpoints.Add(Math.Round(resultingGravity.Value / 1000,4)) + " kN";
+            lblStatDragVal.Text = Decimalpoints.Add(Math.Round(resultingDrag.Value / 1000, 4)) + " kN";
         }
 
         public void DisplayLocation(Rocket rocket)
@@ -143,9 +144,9 @@ namespace SpaceFlight.Screen
                     distance = newDistance - (float) planet.Diameter;
             }
 
-            lblLocClosestVal.Text = Math.Round(distance) + " m";
+            lblLocClosestVal.Text = Decimalpoints.Add(Math.Round(distance)) + " m";
             lblLocAngleVal.Text = Math.Round(rocket._angle.Degree - ((rocket._angle.Degree > 180) ? 360 : 0), 1) + "°";
-            lblLocCoordsVal.Text = Math.Round(rocket.Location.X) + " | " + Math.Round(rocket.Location.Y);
+            lblLocCoordsVal.Text = Decimalpoints.Add(Math.Round(rocket.Location.X)) + " | " + Decimalpoints.Add(Math.Round(rocket.Location.Y));
 
             _screen.Color = CalcColor(distance);
         }
