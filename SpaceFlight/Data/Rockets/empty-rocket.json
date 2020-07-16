@@ -9,7 +9,7 @@
   "Width": 0,
   "Thrust": 0,
   "Weight": 1,
-  "FuelWeight": 0,
+  "FuelWeight": 1,
   "BurnTime": 0,
   "DragProperties": {
     "CdUp": 0,
