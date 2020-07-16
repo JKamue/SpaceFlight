@@ -9,11 +9,6 @@ namespace SpaceFlight.Physics.Units
         public Angle Angle { get; }
         public double Value { get; }
 
-        public Vector()
-        {
-            Angle = Angle.Zero;
-            Value = 0;
-        }
         public Vector(Angle angle, double value)
         {
             Angle = angle;
@@ -25,7 +20,7 @@ namespace SpaceFlight.Physics.Units
             var x = PointCalculator.GetVectorX(v1) + PointCalculator.GetVectorX(v2);
             var y = PointCalculator.GetVectorY(v1) + PointCalculator.GetVectorY(v2);
 
-            var point = new PointF((float) x , (float) y);
+            var point = new PointF((float) x, (float) y);
 
             var resultingValue = PointCalculator.Distance(new PointF(0, 0), point);
             var resultingAngle = PointCalculator.CalculateAngle(new PointF(0, 0), point);
