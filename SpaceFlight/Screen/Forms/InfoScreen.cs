@@ -59,8 +59,6 @@ namespace SpaceFlight.Screen
             cbxSelectRocket.DataSource = _objects.Rockets;
             SelectRightRocket();
             var rocket = _objects.MainObject;
-            if (rocket is null)
-                return;
 
             DisplayInformation(rocket);
             DisplayStats(rocket);
