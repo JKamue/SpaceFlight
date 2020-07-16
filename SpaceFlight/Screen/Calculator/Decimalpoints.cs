@@ -13,22 +13,16 @@ namespace SpaceFlight.Screen.Calculator
             string theoneandonly = Convert.ToString(x);
             return AddDecimalpoints(theoneandonly);
         }
-        public static string Add(float x, int round)
-        {
-            string theoneandonly = Convert.ToString(Math.Round(x, round));
-            return AddDecimalpoints(theoneandonly);
-        }
+        public static string Add(float x, int round) => Add(Math.Round(x, round));
+
         public static string Add(double x)
         {
             string theoneandonly = Convert.ToString(x);
             return AddDecimalpoints(theoneandonly);
         }
 
-        public static string Add(double x, int round)
-        {
-            string theoneandonly = Convert.ToString(Math.Round(x, round));
-            return AddDecimalpoints(theoneandonly);
-        }
+        public static string Add(double x, int round) => Add(Math.Round(x, round));
+
         public static string Add(int x)
         {
             string theoneandonly = Convert.ToString(x);
