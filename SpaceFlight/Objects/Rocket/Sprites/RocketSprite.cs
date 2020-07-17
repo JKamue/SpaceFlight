@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using SpaceFlight.Screen;
 using SpaceFlight.Screen.Calculator;
 using SpaceFlight.Screen.Other;
@@ -19,12 +20,25 @@ namespace SpaceFlight.Objects.Rocket.Sprites
             this._spritePieces = spritePieces;
         }
 
+        public static PointF[] SpritePieceToArray(RocketSpritePiece piece)
+        {
+            var array = new PointF[piece.Points.Count];
+            var i = 0;
+            foreach (var point in piece.Points)
+            {
+                array[i] = point.Round();
+                i++;
+            }
+
+            return array;
+        }
+
         public List<RocketSpritePiece> CalculatePolygons(PointM pos, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
         {
             var spritePieces = new List<RocketSpritePiece>();
             foreach (var spritePiece in _spritePieces)
             {
-                var calculatedSpritePieces = new List<Point>();
+                var calculatedSpritePieces = new List<PointM>();
                 foreach (var spritePiecePoint in spritePiece.Points)
                 {
                     var x = pos.X + spritePiecePoint.X;
@@ -59,9 +73,9 @@ namespace SpaceFlight.Objects.Rocket.Sprites
             return points;
         }
 
-        private static Point TurnAndProject(decimal x, decimal y, ProjectedPositionCalculator p, AngularCalculator aCalc)
+        private static PointM TurnAndProject(decimal x, decimal y, ProjectedPositionCalculator p, AngularCalculator aCalc)
         {
-            return aCalc.Turn(p.ProjectPoint(new PointM(x, y))).Round();
+            return aCalc.Turn(p.ProjectPoint(new PointM(x, y)));
         }
     }
 }

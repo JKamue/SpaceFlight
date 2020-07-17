@@ -91,7 +91,7 @@ namespace SpaceFlight.Objects.Rocket
 
             foreach (var piece in spritePieces)
             {
-                g.FillPolygon(piece.Brush, piece.Points.ToArray());
+                g.FillPolygon(piece.Brush, RocketSprite.SpritePieceToArray(piece));
             }
             
             if (_engineRunning)

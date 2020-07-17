@@ -61,9 +61,6 @@ namespace SpaceFlight.Screen.Controllers
         {
             var objectBounds = o.GetBounds();
 
-            if (!panelBounds.IntersectsWith(objectBounds) && !panelBounds.Contains(objectBounds) &&
-                !objectBounds.Contains(panelBounds))
-                return;
 
             o.Draw(_graphicsBuffer.Graphics, positionCalculator, panelBounds);
         }

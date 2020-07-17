@@ -7,8 +7,10 @@ using Newtonsoft.Json;
 using SpaceFlight.Objects;
 using SpaceFlight.Objects.Calculator;
 using SpaceFlight.Objects.Rocket;
+using SpaceFlight.Objects.Rocket.Sprites;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics;
+using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
 using SpaceFlight.Screen;
 using SpaceFlight.Screen.Controllers;
@@ -31,9 +33,25 @@ namespace SpaceFlight.Game
         public Game(Panel simulationPanel, string levelName)
         {
             // Load Level
-            var level = LoadFromName(levelName);
-            LoadPlanets(level.Planets);
-            LoadRockets(level.Rockets);
+            //var level = LoadFromName(levelName);
+            //LoadPlanets(planets);
+            //LoadRockets(level.Rockets);
+
+            var test = new RocketSpritePiece(
+                new List<PointM>
+                {
+                    new PointM(20,20),
+                    new PointM(20,-20),
+                    new PointM(-20,-20),
+                    new PointM(-20,20)
+                }, new SolidBrush(Color.Black));
+
+        var tes2t = JsonConvert.SerializeObject(test, Formatting.Indented);
+
+            _objects.Add(new Terrain(new PointM(0, 0), 6371000m, Color.Green, new Mass(5.972E+12m)));
+            _objects.Add(new Rocket(new PointM(0, 6371050m), new Force(Angle.Zero, 0), new Acceleration(Angle.Zero, 0), new Speed(Angle.Zero, 0), Angle.Zero, 0, RocketInformation.LoadFromName("unidentified-flying-object") ));
+
+            
 
             // Load controllers
             _closeDistanceScreen = new ScreenController(simulationPanel, _objects, Color.NavajoWhite, 3);
@@ -45,11 +63,11 @@ namespace SpaceFlight.Game
             _infoScreen.Show();
 
             // Show orbit Screen
-            _orbitScreen = new OrbitScreen();
-            _orbitScreen.Show();
+            //_orbitScreen = new OrbitScreen();
+            //_orbitScreen.Show();
 
             // Create orbit controller
-            _orbitScreenController = new OrbitScreenController(_orbitScreen.GetPanel(), _objects);
+            //_orbitScreenController = new OrbitScreenController(_orbitScreen.GetPanel(), _objects);
         }
 
         private void LoadRockets(List<RocketDto> rockets)
