@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using SpaceFlight.Screen.Other;
 
 namespace SpaceFlight.Screen.Calculator
 {
     class BoundsCalculator
     {
-        public static RectangleF CalculateBounds(List<PointF> points)
+        public static RectangleM CalculateBounds(List<PointM> points)
         {
-            var min = new PointF(Int16.MaxValue,Int16.MaxValue);
-            var max = new PointF(Int16.MinValue, Int16.MinValue);
+            var min = new PointM(Int64.MaxValue,Int64.MaxValue);
+            var max = new PointM(Int64.MinValue, Int64.MinValue);
 
             foreach (var point in points)
             {
@@ -26,7 +27,7 @@ namespace SpaceFlight.Screen.Calculator
                     min.Y = point.Y;
             }
 
-            return new RectangleF(min, new SizeF(max.X - min.X, max.Y - min.Y));
+            return new RectangleM(min, new SizeM(max.X - min.X, max.Y - min.Y));
         }
     }
 }

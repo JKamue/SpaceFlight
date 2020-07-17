@@ -8,26 +8,13 @@ namespace SpaceFlight.Screen.Calculator
 {
     public class DecimalPoints
     {
-        public static string Add(float x)
+        public static string Add(decimal x)
         {
-            string theoneandonly = Convert.ToString(x);
-            return AddDecimalpoints(theoneandonly);
+            string decimalAsString = Convert.ToString(x);
+            return AddDecimalpoints(decimalAsString);
         }
-        public static string Add(float x, int round) => Add(Math.Round(x, round));
+        public static string Add(decimal x, int round) => Add(Math.Round(x, round));
 
-        public static string Add(double x)
-        {
-            string theoneandonly = Convert.ToString(x);
-            return AddDecimalpoints(theoneandonly);
-        }
-
-        public static string Add(double x, int round) => Add(Math.Round(x, round));
-
-        public static string Add(int x)
-        {
-            string theoneandonly = Convert.ToString(x);
-            return AddDecimalpoints(theoneandonly);
-        }
         private static string AddDecimalpoints(string theoneandonly)
         {
             string[] strings = theoneandonly.Split(',');
