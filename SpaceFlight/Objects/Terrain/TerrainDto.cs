@@ -1,15 +1,16 @@
 ﻿using System.Drawing;
+using SpaceFlight.Screen;
 
 namespace SpaceFlight.Objects.Terrain
 {
     class TerrainDto
     {
-        public PointF Position;
-        public float Radius;
+        public PointM Position;
+        public decimal Radius;
         public Color Color;
-        public float Mass;
+        public decimal Mass;
 
-        public TerrainDto(PointF position, float radius, Color color, float mass)
+        public TerrainDto(PointM position, decimal radius, Color color, decimal mass)
         {
             Position = position;
             Radius = radius;
