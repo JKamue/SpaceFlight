@@ -5,12 +5,12 @@ namespace SpaceFlight.Physics.Other
 {
     public class DragProperties
     {
-        public readonly double CdUp;
-        public readonly double CdSide;
-        public readonly double AreaUp;
-        public readonly double AreaSide;
+        public readonly decimal CdUp;
+        public readonly decimal CdSide;
+        public readonly decimal AreaUp;
+        public readonly decimal AreaSide;
 
-        public DragProperties(double CdUp, double CdSide, double AreaUp, double AreaSide)
+        public DragProperties(decimal CdUp, decimal CdSide, decimal AreaUp, decimal AreaSide)
         {
             this.CdUp = CdUp;
             this.CdSide = CdSide;
@@ -18,20 +18,20 @@ namespace SpaceFlight.Physics.Other
             this.AreaSide = AreaSide;
         }
 
-        private static double MapAngle(Angle a) => Math.Cos(2 * a.Radian);
+        private static decimal MapAngle(Angle a) => (decimal) Math.Cos(2 * a.Radian);
 
-        private static double Map(double value, double from1, double to1, double from2, double to2)
+        private static decimal Map(decimal value, decimal from1, decimal to1, decimal from2, decimal to2)
         {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
 
-        public double GetArea(Angle a)
+        public decimal GetArea(Angle a)
         {
             var value = MapAngle(a);
             return Map(value, 1, -1, AreaUp, AreaSide);
         }
 
-        public double GetDragCoefficient(Angle a)
+        public decimal GetDragCoefficient(Angle a)
         {
             var value = MapAngle(a);
             return Map(value, 1, -1, CdUp, CdSide);

@@ -4,12 +4,13 @@ using System.Drawing;
 using System.Linq;
 using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
+using SpaceFlight.Screen;
 
 namespace SpaceFlight.Physics
 {
     public class PhysicsObject
     {
-        public PointF Location;
+        public PointM Location;
         public Mass Mass;
         public Force OwnForce;
         public Force ResutlingForce;
@@ -17,13 +18,13 @@ namespace SpaceFlight.Physics
         public Acceleration Acceleration;
         public Speed Speed;
         public DragProperties Drag;
-        public double Diameter;
+        public decimal Diameter;
         public List<Force> DragForces;
         public List<Force> GravityForces;
 
         private TimeSpan _lastRecalculation;
 
-        public PhysicsObject(PointF location, Mass mass, double diameter)
+        public PhysicsObject(PointM location, Mass mass, decimal diameter)
         {
             Location = location;
             Mass = mass;
@@ -34,7 +35,7 @@ namespace SpaceFlight.Physics
             Diameter = diameter;
         }
 
-        public PhysicsObject(PointF location, Mass mass, Force ownForce, Acceleration acceleration, Speed speed, DragProperties drag)
+        public PhysicsObject(PointM location, Mass mass, Force ownForce, Acceleration acceleration, Speed speed, DragProperties drag)
         {
             Location = location;
             Mass = mass;
@@ -73,8 +74,8 @@ namespace SpaceFlight.Physics
             var distance = Speed.GetDistance(timeSpan).CalculateXAndY();
 
             // Move it
-            Location.X += (float) distance.X;
-            Location.Y += (float) distance.Y;
+            Location.X += distance.X;
+            Location.Y += distance.Y;
         }
     }
 }
