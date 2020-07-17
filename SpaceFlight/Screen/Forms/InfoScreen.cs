@@ -41,7 +41,7 @@ namespace SpaceFlight.Screen
             Ticker.Start();	
             cbxSelectRocket.DataSource = _objects.Rockets;	
             lblTimeFlow.MouseClick += lblTimeFlow_Click;	
-            DisplayTimeflowlabel(y1);	
+            DisplayTimeflowlabel(1);	
             DisplayPause();	
             lblTimeFlowvalue.Location = new Point(lblTimeFlow.Width + lblTimeFlow.Location.X, lblTimeFlow.Location.Y + 2);	
         }	
