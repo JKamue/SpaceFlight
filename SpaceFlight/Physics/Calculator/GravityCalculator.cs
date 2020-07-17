@@ -7,7 +7,7 @@ namespace SpaceFlight.Physics.Calculator
     {
         public static readonly decimal GravitationalConstant = 6.67330E-11m;
 
-        public static Force CalculateGravity(Mass p1, Mass p2, double r, Angle angle) =>
-            new Force(angle, GravitationalConstant * (p1.Value * p2.Value) / (decimal) Math.Pow(r, 2));
+        public static Force CalculateGravity(Mass p1, Mass p2, decimal r, Angle angle) =>
+            new Force(angle, GravitationalConstant * (p1.Value * p2.Value) / (decimal) Math.Pow((double) r, 2));
     }
 }

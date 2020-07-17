@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using SpaceFlight.Physics.Calculator;
 using SpaceFlight.Physics.Other;
+using SpaceFlight.Screen;
 
 namespace SpaceFlight.Objects.Calculator
 {

@@ -33,7 +33,7 @@ namespace SpaceFlight.Physics.Calculator
                     var burnedFuelPerSec = rocket._rocketInf.FuelWeight / rocket._rocketInf.BurnTime;
                     var burnedFuel = 10 * burnedFuelPerSec * rocket._thrustPercentage;
 
-                    fuelWeight -= (float)burnedFuel;
+                    fuelWeight -= burnedFuel;
                     var massValue = fuelWeight + rocket._rocketInf.Weight - rocket._rocketInf.FuelWeight;
                     if (massValue <= 0 || rocket._thrustPercentage == 0 || fuelWeight < 0)
                     {

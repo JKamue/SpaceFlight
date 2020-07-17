@@ -7,10 +7,10 @@ namespace SpaceFlight.Physics.Calculator
     public class AtmosphereCalculator
     {
         // Using U.S. Standard Atmosphere Air Properties https://www.engineeringtoolbox.com/standard-atmosphere-d_604.html
-        public static decimal CalculateAirDensityAtAltitude(double altitude)
+        public static decimal CalculateAirDensityAtAltitude(decimal alt)
         {
             double densityAtAltitude = 0;
-
+            var altitude = (double) alt;
             if (altitude < 0)
             {
                 densityAtAltitude = 0;
