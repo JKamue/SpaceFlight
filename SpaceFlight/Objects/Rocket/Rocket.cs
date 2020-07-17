@@ -104,11 +104,11 @@ namespace SpaceFlight.Objects.Rocket
             {
                 var width = (thrustArea.Stop.X - Math.Abs(thrustArea.Start.X));
 
-                var points = new List<PointM>
+                var points = new List<Point>
                 {
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointM(Location.X + thrustArea.Start.X, Location.Y + thrustArea.Stop.Y))),
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointM(Location.X + thrustArea.Stop.X, Location.Y + thrustArea.Stop.Y))),
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointM(Location.X + width / 2, Location.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * _thrustPercentage * (float)GetRandomNumber(3.5, 6))))
+                    aCalc.Turn(ppCalc.ProjectPoint(new PointM(Location.X + thrustArea.Start.X, Location.Y + thrustArea.Stop.Y))).Round(),
+                    aCalc.Turn(ppCalc.ProjectPoint(new PointM(Location.X + thrustArea.Stop.X, Location.Y + thrustArea.Stop.Y))).Round(),
+                    aCalc.Turn(ppCalc.ProjectPoint(new PointM(Location.X + width / 2, Location.Y + thrustArea.Stop.Y - (decimal) Math.Abs((double) (thrustArea.Stop.X - thrustArea.Start.X)) * _thrustPercentage * GetRandomNumber(3.5m, 6m)))).Round()
                 };
 
 
@@ -116,10 +116,10 @@ namespace SpaceFlight.Objects.Rocket
             }
         }
 
-        private double GetRandomNumber(double minimum, double maximum)
+        private decimal GetRandomNumber(decimal minimum, decimal maximum)
         {
             Random random = new Random();
-            return random.NextDouble() * (maximum - minimum) + minimum;
+            return (decimal) random.NextDouble() * (maximum - minimum) + minimum;
         }
 
         public void NearAngleToTargetAngle()

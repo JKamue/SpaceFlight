@@ -52,12 +52,12 @@ namespace SpaceFlight.Screen.Controllers
         private void DrawSpeed(Graphics g, Speed speed, Color c, decimal center)
         {
             var aCalc = new AngularCalculator((float)Speed.Angle.Degree, new PointM(center, center));
-            var points = new List<PointM>
+            var points = new List<Point>
             {
-                aCalc.Turn(new PointM(center - 1, 0)),
-                aCalc.Turn(new PointM(center - 1, 15)),
-                aCalc.Turn(new PointM(center + 1, 15)),
-                aCalc.Turn(new PointM(center + 1, 0))
+                aCalc.Turn(new PointM(center - 1, 0)).Round(),
+                aCalc.Turn(new PointM(center - 1, 15)).Round(),
+                aCalc.Turn(new PointM(center + 1, 15)).Round(),
+                aCalc.Turn(new PointM(center + 1, 0)).Round()
             };
 
             var b = new SolidBrush(c);
@@ -73,15 +73,15 @@ namespace SpaceFlight.Screen.Controllers
             if (force.Value / factor < 15)
                 return;
 
-            var points = new List<PointM>
+            var points = new List<Point>
             {
-                aCalc.Turn(new PointM(center-5, height+15)),
-                aCalc.Turn(new PointM(center-1, height+15)),
-                aCalc.Turn(new PointM(center-1, center)),
-                aCalc.Turn(new PointM(center+1, center)),
-                aCalc.Turn(new PointM(center+1, height+15)),
-                aCalc.Turn(new PointM(center+5, height+15)),
-                aCalc.Turn(new PointM(center, height+1)),
+                aCalc.Turn(new PointM(center-5, height+15)).Round(),
+                aCalc.Turn(new PointM(center-1, height+15)).Round(),
+                aCalc.Turn(new PointM(center-1, center)).Round(),
+                aCalc.Turn(new PointM(center+1, center)).Round(),
+                aCalc.Turn(new PointM(center+1, height+15)).Round(),
+                aCalc.Turn(new PointM(center+5, height+15)).Round(),
+                aCalc.Turn(new PointM(center, height+1)).Round(),
             };
 
             var b = new SolidBrush(c);

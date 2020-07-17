@@ -24,7 +24,7 @@ namespace SpaceFlight.Objects.Rocket.Sprites
             var spritePieces = new List<RocketSpritePiece>();
             foreach (var spritePiece in _spritePieces)
             {
-                var calculatedSpritePieces = new List<PointM>();
+                var calculatedSpritePieces = new List<Point>();
                 foreach (var spritePiecePoint in spritePiece.Points)
                 {
                     var x = pos.X + spritePiecePoint.X;
@@ -59,9 +59,9 @@ namespace SpaceFlight.Objects.Rocket.Sprites
             return points;
         }
 
-        private static PointM TurnAndProject(decimal x, decimal y, ProjectedPositionCalculator p, AngularCalculator aCalc)
+        private static Point TurnAndProject(decimal x, decimal y, ProjectedPositionCalculator p, AngularCalculator aCalc)
         {
-            return p.ProjectPoint(aCalc.Turn(new PointM(x, y)));
+            return aCalc.Turn(p.ProjectPoint(new PointM(x, y))).Round();
         }
     }
 }

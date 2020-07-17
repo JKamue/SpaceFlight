@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Numerics;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml.Serialization;
 
 namespace SpaceFlight.Screen
 {
@@ -32,6 +33,14 @@ namespace SpaceFlight.Screen
         {
             X = p.X;
             Y = p.Y;
+        }
+
+        public Point Round()
+        {
+            return new Point(
+                (int) Math.Round(X, 0),
+                (int)Math.Round(Y, 0)
+                );
         }
     }
 }

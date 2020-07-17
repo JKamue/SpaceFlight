@@ -6,10 +6,10 @@ namespace SpaceFlight.Objects.Rocket.Sprites
 {
     class RocketSpritePiece
     {
-        public readonly List<PointM> Points;
+        public readonly List<Point> Points;
         public readonly SolidBrush Brush;
 
-        public RocketSpritePiece(List<PointM> points, SolidBrush brush)
+        public RocketSpritePiece(List<Point> points, SolidBrush brush)
         {
             Points = points;
             Brush = brush;

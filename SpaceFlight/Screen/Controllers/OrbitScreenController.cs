@@ -73,11 +73,11 @@ namespace SpaceFlight.Screen.Controllers
             var mainObject = _objects.MainObject;
             var loc = mainObject.Location;
             var point1 = ppCalc.ProjectPoint(loc);
-            var aCalc = new AngularCalculator(mainObject._angle.Degree, new PointM(point1));
-            var point2 = aCalc.Turn(new PointM(point1.X, point1.Y - 10));
-            var point3 = aCalc.Turn(new PointM(point1.X + 5, point1.Y + 5));
-            var point4 = aCalc.Turn(new PointM(point1.X - 5, point1.Y + 5));
-            var polygon = new List<PointM> { point2, point3, point4 };
+            var aCalc = new AngularCalculator(mainObject._angle.Degree, point1);
+            var point2 = aCalc.Turn(new PointM(point1.X, point1.Y - 10)).Round();
+            var point3 = aCalc.Turn(new PointM(point1.X + 5, point1.Y + 5)).Round();
+            var point4 = aCalc.Turn(new PointM(point1.X - 5, point1.Y + 5)).Round();
+            var polygon = new List<Point> { point2, point3, point4 };
             _graphicsBuffer.Graphics.FillPolygon(new SolidBrush(Color.LightGray), polygon.ToArray());
         }
 
@@ -90,14 +90,14 @@ namespace SpaceFlight.Screen.Controllers
 
             foreach (var point in points)
             {
-                var projectedPosition = ppCalc.ProjectPoint(point);
+                var projectedPosition = ppCalc.ProjectPoint(point).Round();
                 _graphicsBuffer.Graphics.FillRectangle(new SolidBrush(Color.White), projectedPosition.X,
                     projectedPosition.Y, 1, 1);
             }
 
             foreach (var point in point2s)
             {
-                var projectedPosition = ppCalc.ProjectPoint(point);
+                var projectedPosition = ppCalc.ProjectPoint(point).Round();
                 _graphicsBuffer.Graphics.FillRectangle(new SolidBrush(Color.Orange), projectedPosition.X,
                     projectedPosition.Y, 1, 1);
             }

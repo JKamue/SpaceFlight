@@ -49,8 +49,8 @@ namespace SpaceFlight.Objects.Terrain
 
         public void DrawSimple(Graphics g, ProjectedPositionCalculator ppCalc)
         {
-            var start = ppCalc.ProjectPoint(new PointM(Location.X - radius, Location.Y - radius));
-            var end = ppCalc.ProjectPoint(new PointM(Location.X + radius, Location.Y + radius));
+            var start = ppCalc.ProjectPoint(new PointM(Location.X - radius, Location.Y - radius)).Round();
+            var end = ppCalc.ProjectPoint(new PointM(Location.X + radius, Location.Y + radius)).Round();
             var rect = new Rectangle(start.X, start.Y, end.X - start.X, end.Y - start.Y);
             g.FillEllipse(new SolidBrush(color), rect);
         }
@@ -75,12 +75,12 @@ namespace SpaceFlight.Objects.Terrain
                     if (pointOutside)
                     {
                         pointOutside = false;
-                        points.Add(ppCalc.ProjectPoint(lastPoint));
+                        points.Add(ppCalc.ProjectPoint(lastPoint).Round());
                         realPoints++;
                     }
                     else
                     {
-                        points.Add(ppCalc.ProjectPoint(point));
+                        points.Add(ppCalc.ProjectPoint(point).Round());
                     }
                 }
                 else
@@ -88,12 +88,12 @@ namespace SpaceFlight.Objects.Terrain
                     if (!pointOutside)
                     {
                         pointOutside = true;
-                        points.Add(ppCalc.ProjectPoint(point));
+                        points.Add(ppCalc.ProjectPoint(point).Round());
                     }
 
                     if (distanceCounter > pointDistance)
                     {
-                        points.Add(ppCalc.ProjectPoint(point));
+                        points.Add(ppCalc.ProjectPoint(point).Round());
                         distanceCounter = 0;
                     }
 
