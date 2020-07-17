@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SpaceFlight.Objects;
 using SpaceFlight.Physics.Units;
+using SpaceFlight.Screen.Other;
 
 namespace SpaceFlight.Screen.Controllers
 {
@@ -13,13 +14,13 @@ namespace SpaceFlight.Screen.Controllers
     {
         private readonly ScreenObjectCollection _objects;
 
-        private float zoom;
+        private decimal zoom;
 
         private Point staticCenter;
 
         public Color Color;
 
-        public ScreenController(Panel panel, ScreenObjectCollection objects, Color color, float zoom) : base(panel)
+        public ScreenController(Panel panel, ScreenObjectCollection objects, Color color, decimal zoom) : base(panel)
         {
             _objects = objects;
             this.Color = color;
@@ -36,8 +37,8 @@ namespace SpaceFlight.Screen.Controllers
             var calculatedZoom = CalculateZoom();
             var percent = 1 / calculatedZoom;
 
-            var projectedCenter = new Point((int) Math.Round((double) _panel.Width * percent / 2),
-                 (int) Math.Round((double) _panel.Height * percent / 2));
+            var projectedCenter = new Point((int) Math.Round(_panel.Width * percent / 2),
+                 (int) Math.Round(_panel.Height * percent / 2));
             var drawRectangle = CalculateDisplayRectangle(_objects.MainObject.GetMiddle(), projectedCenter, percent);
             var positionCalculator =
                 new ProjectedPositionCalculator(_objects.MainObject.GetMiddle(), projectedCenter, calculatedZoom);
@@ -48,15 +49,15 @@ namespace SpaceFlight.Screen.Controllers
             _graphicsBuffer.Render(_panelGraphics);
         }
 
-        private float CalculateZoom() => (14.95F / 225F) * (float) Math.Pow(zoom, 2) + 0.05F;
+        private decimal CalculateZoom() => (14.95m / 225m) * (decimal) Math.Pow((double) zoom, 2) + 0.05m;
 
-        private RectangleF CalculateDisplayRectangle(PointF realCenter, Point projectedCenter, float percent)
+        private RectangleM CalculateDisplayRectangle(PointM realCenter, Point projectedCenter, decimal percent)
         {
-            return new RectangleF(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y,
+            return new RectangleM(realCenter.X - projectedCenter.X, realCenter.Y - projectedCenter.Y,
                 (int) Math.Round(_panel.Width * percent), (int) Math.Round(_panel.Height * percent));
         }
 
-        private void DrawObject(IScreenObject o, RectangleF panelBounds, ProjectedPositionCalculator positionCalculator)
+        private void DrawObject(IScreenObject o, RectangleM panelBounds, ProjectedPositionCalculator positionCalculator)
         {
             var objectBounds = o.GetBounds();
 

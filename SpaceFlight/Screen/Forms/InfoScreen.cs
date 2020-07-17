@@ -69,7 +69,7 @@ namespace SpaceFlight.Screen
             {
                 cbxSelectRocket.SelectedItem = i;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 cbxSelectRocket.SelectedIndex = -1;
             }
@@ -117,7 +117,7 @@ namespace SpaceFlight.Screen
             foreach (var garvity in rocket.GravityForces)	
                 resultingGravity = garvity + resultingGravity;	
             var forcesWithoutGravity = resultingDrag + new Force(rocket._angle, thrust);	
-            var g = Math.Round(forcesWithoutGravity.GetAcceleration(rocket.Mass).Value / 9.80665, 1);	
+            var g = Math.Round(forcesWithoutGravity.GetAcceleration(rocket.Mass).Value / 9.80665m, 1);	
             lblStatThrustVal.Text = DecimalPoints.Add(thrust / 1000,2) + " kN";	
             lblStatAccelerationVal.Text = DecimalPoints.Add(rocket.Acceleration.Value, 4) + " m/s²  (" + g + "g)";	
             lblStatSpeedVal.Text = DecimalPoints.Add(rocket.Speed.Value, 8) + " m/s";	
@@ -129,28 +129,28 @@ namespace SpaceFlight.Screen
         }	
         public void DisplayLocation(Rocket rocket)	
         {	
-            var distance = 0F;	
+            var distance = 0m;	
             foreach (var planet in _objects.Terrains)	
             {	
                 var newDistance = PointCalculator.Distance(rocket.Location, planet.Location);	
                 if (newDistance > distance)	
-                    distance = newDistance - (float) planet.Diameter;	
+                    distance = newDistance - planet.Diameter;	
             }	
             lblLocClosestVal.Text = DecimalPoints.Add(distance,0) + " m";	
             lblLocAngleVal.Text = Math.Round(rocket._angle.Degree - ((rocket._angle.Degree > 180) ? 360 : 0), 1) + "°";	
             lblLocCoordsVal.Text = DecimalPoints.Add(rocket.Location.X,0) + " | " + DecimalPoints.Add(rocket.Location.Y,0);	
             _screen.Color = CalcColor(distance);	
         }	
-        public Color CalcColor(float altitude)	
+        public Color CalcColor(decimal altitude)	
         {	
-            var factor = 0f;	
+            var factor = 0m;	
             if (altitude < 80000 && altitude > 0)	
             {	
                 factor = (altitude - 0) / (80000 - 0) * (0 - 1) + 1;	
             }	
             else if (altitude <= 0)	
             {	
-                factor = 1f;	
+                factor = 1m;	
             }	
             // https://stackoverflow.com/a/2011839	
             var max = Color.NavajoWhite;	
@@ -163,7 +163,7 @@ namespace SpaceFlight.Screen
         public void QuerySliders(Rocket rocket)	
         {	
             rocket.targetAngle = Angle.FromDegrees(sldCtrlAngle.Value);	
-            rocket.SetThrustPercentage(((float) sldCtrlThrust.Value) / 100F);	
+            rocket.SetThrustPercentage((sldCtrlThrust.Value) / 100m);	
             lblSldAngleVal.Text = sldCtrlAngle.Value + "°";	
             lblSldThrustVal.Text = sldCtrlThrust.Value + "%";	
         }	

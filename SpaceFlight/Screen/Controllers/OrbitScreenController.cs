@@ -23,7 +23,7 @@ namespace SpaceFlight.Screen.Controllers
         private int zoom = 4;
         private bool fixOnMouse = false;
         private Point mouse = Point.Empty;
-        private PointF mouseCenter = PointF.Empty;
+        private PointM mouseCenter = PointM.Empty;
         private ProjectedPositionCalculator lastPpCalc;
         public OrbitScreenController(Panel panel, ScreenObjectCollection objects) : base(panel)
         {
@@ -57,8 +57,8 @@ namespace SpaceFlight.Screen.Controllers
             var calculatedZoom = CalculateZoom(zoom);
             var percent = 1 / calculatedZoom;
             
-            var projectedCenter = new Point((int)Math.Round((double)_panel.Width * percent / 2),
-                (int)Math.Round((double)_panel.Height * percent / 2));
+            var projectedCenter = new Point((int)Math.Round(_panel.Width * percent / 2),
+                (int)Math.Round(_panel.Height * percent / 2));
 
             var center = fixOnMouse ? mouseCenter : _objects.MainObject.GetMiddle();
 
@@ -73,11 +73,11 @@ namespace SpaceFlight.Screen.Controllers
             var mainObject = _objects.MainObject;
             var loc = mainObject.Location;
             var point1 = ppCalc.ProjectPoint(loc);
-            var aCalc = new AngularCalculator((float)mainObject._angle.Degree, point1);
-            var point2 = aCalc.Turn(new PointF(point1.X, point1.Y - 10));
-            var point3 = aCalc.Turn(new PointF(point1.X + 5, point1.Y + 5));
-            var point4 = aCalc.Turn(new PointF(point1.X - 5, point1.Y + 5));
-            var polygon = new List<PointF> { point2, point3, point4 };
+            var aCalc = new AngularCalculator(mainObject._angle.Degree, new PointM(point1));
+            var point2 = aCalc.Turn(new PointM(point1.X, point1.Y - 10));
+            var point3 = aCalc.Turn(new PointM(point1.X + 5, point1.Y + 5));
+            var point4 = aCalc.Turn(new PointM(point1.X - 5, point1.Y + 5));
+            var polygon = new List<PointM> { point2, point3, point4 };
             _graphicsBuffer.Graphics.FillPolygon(new SolidBrush(Color.LightGray), polygon.ToArray());
         }
 
@@ -103,7 +103,7 @@ namespace SpaceFlight.Screen.Controllers
             }
         }
 
-        private float CalculateZoom(int zoom) => (float)(31 * Math.Pow(zoom, 2) / 5000000 + 1 / 200000);
+        private decimal CalculateZoom(int zoom) => (decimal)(31 * Math.Pow(zoom, 2) / 5000000 + 1 / 200000);
 
         private void Scroll_Event(object sender, MouseEventArgs e)
         {

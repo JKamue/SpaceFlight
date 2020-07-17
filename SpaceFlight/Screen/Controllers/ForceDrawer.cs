@@ -33,7 +33,7 @@ namespace SpaceFlight.Screen.Controllers
             _graphicsBuffer.Graphics.Clear(Color.FromArgb(240, 240, 240));
             var g = _graphicsBuffer.Graphics;
             var factor = CalcForceScalingFactor();
-            var center = (float ) _panel.Height / 2;
+            var center = _panel.Height / 2;
 
             foreach (var dragForce in Drag)
                 DrawForce(g, dragForce, Color.Red, factor, center);
@@ -49,15 +49,15 @@ namespace SpaceFlight.Screen.Controllers
             _graphicsBuffer.Render(_panelGraphics);
         }
 
-        private void DrawSpeed(Graphics g, Speed speed, Color c, float center)
+        private void DrawSpeed(Graphics g, Speed speed, Color c, decimal center)
         {
-            var aCalc = new AngularCalculator((float)Speed.Angle.Degree, new PointF(center, center));
-            var points = new List<PointF>
+            var aCalc = new AngularCalculator((float)Speed.Angle.Degree, new PointM(center, center));
+            var points = new List<PointM>
             {
-                aCalc.Turn(new PointF(center - 1, 0)),
-                aCalc.Turn(new PointF(center - 1, 15)),
-                aCalc.Turn(new PointF(center + 1, 15)),
-                aCalc.Turn(new PointF(center + 1, 0))
+                aCalc.Turn(new PointM(center - 1, 0)),
+                aCalc.Turn(new PointM(center - 1, 15)),
+                aCalc.Turn(new PointM(center + 1, 15)),
+                aCalc.Turn(new PointM(center + 1, 0))
             };
 
             var b = new SolidBrush(c);
@@ -65,23 +65,23 @@ namespace SpaceFlight.Screen.Controllers
             g.FillPolygon(b, array);
         }
 
-        private void DrawForce(Graphics g, Force force, Color c, float factor, float center)
+        private void DrawForce(Graphics g, Force force, Color c, decimal factor, decimal center)
         {
-            var aCalc = new AngularCalculator((float) force.Angle.Degree, new PointF(center, center));
-            var height = (float) Math.Round(center - (float) force.Value / factor);
+            var aCalc = new AngularCalculator(force.Angle.Degree, new PointM(center, center));
+            var height = Math.Round(center - force.Value / factor);
 
             if (force.Value / factor < 15)
                 return;
 
-            var points = new List<PointF>
+            var points = new List<PointM>
             {
-                aCalc.Turn(new PointF(center-5, height+15)),
-                aCalc.Turn(new PointF(center-1, height+15)),
-                aCalc.Turn(new PointF(center-1, center)),
-                aCalc.Turn(new PointF(center+1, center)),
-                aCalc.Turn(new PointF(center+1, height+15)),
-                aCalc.Turn(new PointF(center+5, height+15)),
-                aCalc.Turn(new PointF(center, height+1)),
+                aCalc.Turn(new PointM(center-5, height+15)),
+                aCalc.Turn(new PointM(center-1, height+15)),
+                aCalc.Turn(new PointM(center-1, center)),
+                aCalc.Turn(new PointM(center+1, center)),
+                aCalc.Turn(new PointM(center+1, height+15)),
+                aCalc.Turn(new PointM(center+5, height+15)),
+                aCalc.Turn(new PointM(center, height+1)),
             };
 
             var b = new SolidBrush(c);
@@ -89,16 +89,16 @@ namespace SpaceFlight.Screen.Controllers
             g.FillPolygon(b, array);
         }
 
-        private float CalcForceScalingFactor()
+        private decimal CalcForceScalingFactor()
         {
             var forces = new List<Force>{Thrust, ResultingForce};
             var allForces = forces.Concat(Drag).Concat(Gravity);
-            double biggest = -1;
+            var biggest = -1m;
 
             foreach (var force in allForces)
                 biggest = force.Value > biggest ? force.Value : biggest;
 
-            return (float) (biggest / (((float)_panel.Height -2) / 2));
+            return biggest / ((decimal) (_panel.Height - 2) / 2);
         }
     }
 }

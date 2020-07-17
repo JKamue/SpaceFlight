@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace SpaceFlight.Screen
 {
@@ -14,6 +15,7 @@ namespace SpaceFlight.Screen
         public decimal X;
         public decimal Y;
 
+        public static PointM Empty = new PointM(0,0);
         public PointM(decimal x, decimal y)
         {
             X = x;
