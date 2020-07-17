@@ -36,27 +36,12 @@ namespace SpaceFlight.Screen.Controllers
             var calculatedZoom = CalculateZoom();
             var percent = 1 / calculatedZoom;
 
-            ProjectedPositionCalculator positionCalculator;
-            RectangleF drawRectangle;
-
-            if (_objects.MainObject != null)
-            {
-                var realCenter = _objects.MainObject.GetMiddle();
-                var projectedCenter = new Point((int) Math.Round((double) _panel.Width * percent / 2),
-                    (int) Math.Round((double) _panel.Height * percent / 2));
-                drawRectangle = CalculateDisplayRectangle(realCenter, projectedCenter, percent);
-                positionCalculator =
-                    new ProjectedPositionCalculator(_objects.MainObject.GetMiddle(), projectedCenter, calculatedZoom);
-            }
-            else
-            {
-                var projectedCenter = new Point((int) Math.Round((double) _panel.Width * percent / 2),
-                    (int) Math.Round((double) _panel.Height * percent / 2));
-                drawRectangle = CalculateDisplayRectangle(staticCenter, projectedCenter, percent);
-                positionCalculator = new ProjectedPositionCalculator(staticCenter, projectedCenter, calculatedZoom);
-            }
-
-
+            var projectedCenter = new Point((int) Math.Round((double) _panel.Width * percent / 2),
+                 (int) Math.Round((double) _panel.Height * percent / 2));
+            var drawRectangle = CalculateDisplayRectangle(_objects.MainObject.GetMiddle(), projectedCenter, percent);
+            var positionCalculator =
+                new ProjectedPositionCalculator(_objects.MainObject.GetMiddle(), projectedCenter, calculatedZoom);
+            
             _graphicsBuffer.Graphics.Clear(Color);
             _objects.ScreenObjects.ForEach(x => DrawObject(x, drawRectangle, positionCalculator));
             actualFramerate.FrameDrawn();

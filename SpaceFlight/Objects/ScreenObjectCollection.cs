@@ -10,7 +10,7 @@ namespace SpaceFlight.Objects
         public List<Rocket.Rocket> Rockets { get; private set; }
         public List<Terrain.Terrain> Terrains { get; private set; }
         public List<IScreenObject> ScreenObjects { get; private set; }
-        public Rocket.Rocket MainObject = null;
+        public Rocket.Rocket MainObject = Rocket.Rocket.getEmptyRocket();
 
         public ScreenObjectCollection()
         {
@@ -36,6 +36,11 @@ namespace SpaceFlight.Objects
         {
             ScreenObjects.Remove(rocket);
             Rockets.Remove(rocket);
+
+            if (rocket == MainObject)
+            {
+                MainObject = Rocket.Rocket.getEmptyRocket();
+            }
         }
 
         public void Remove(Terrain.Terrain terrain)

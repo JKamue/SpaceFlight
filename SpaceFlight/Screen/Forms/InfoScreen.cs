@@ -45,13 +45,13 @@ namespace SpaceFlight.Screen
             DisplayPause();	
             lblTimeFlowvalue.Location = new Point(lblTimeFlow.Width + lblTimeFlow.Location.X, lblTimeFlow.Location.Y + 2);	
         }	
-        public void UpdateDisplay(object sender, EventArgs e)	
-        {	
+        public void UpdateDisplay(object sender, EventArgs e)
+        {
+            cbxSelectRocket.DataSource = new List<Rocket>();
             cbxSelectRocket.DataSource = _objects.Rockets;	
             SelectRightRocket();	
             var rocket = _objects.MainObject;	
-            if (rocket is null)	
-                return;	
+            
             DisplayInformation(rocket);	
             DisplayStats(rocket);	
             DisplayLocation(rocket);	
