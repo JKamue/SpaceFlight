@@ -101,7 +101,7 @@ namespace SpaceFlight.Screen
             if (cbxSelectRocket.SelectedIndex != lastSelected)	
             {	
                 lastSelected = cbxSelectRocket.SelectedIndex;	
-                var rocket = (Rocket) cbxSelectRocket.SelectedItem;	
+                var rocket = (Rocket) cbxSelectRocket.SelectedItem ?? Rocket.getEmptyRocket();	
                 _objects.MainObject = rocket;	
                 sldCtrlThrust.Value = (int) Math.Round(rocket._thrustPercentage * 100);	
                 sldCtrlAngle.Value = (int) Math.Round(rocket.targetAngle.Degree - (rocket.targetAngle.Degree > 180 ? 360 : 0));	
