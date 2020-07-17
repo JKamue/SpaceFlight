@@ -83,30 +83,22 @@ namespace SpaceFlight.Screen.Controllers
 
         private void DrawMainObjectPath(ProjectedPositionCalculator ppCalc)
         {
-            var position = _objects.MainObject.Location;
-            var speed = _objects.MainObject.Speed;
-            var mass = _objects.MainObject.Mass;
-            for (var i = 0; i < 300; i++)
+            var points = OrbitPredictionCalculator.GetPredictedPointList(_objects.MainObject, _objects.Terrains,
+                new TimeSpan(0, 60,0), false);
+            var point2s = OrbitPredictionCalculator.GetPredictedPointList(_objects.MainObject, _objects.Terrains,
+                new TimeSpan(0, 60, 0), true);
+
+            foreach (var point in points)
             {
-                var forces = new Force(Angle.Zero, 0);
-                foreach (var planet in _objects.Terrains)
-                {
-                    var distance = PointCalculator.Distance(position, planet.Location);
-                    var angle = PointCalculator.CalculateAngle(position, planet.Location);
-                    forces += GravityCalculator.CalculateGravity(mass, planet.Mass, distance, angle);
-                }
-
-                var acceleration = forces.GetAcceleration(mass);
-                speed += acceleration.GetSpeed(new TimeSpan(0, 0, 0, 10));
-
-                if (speed.Value > 50000)
-                    break;
-
-                var flownDistance = speed.GetDistance(new TimeSpan(0, 0, 0, 10)).CalculateXAndY();
-                position.X += (float)flownDistance.X;
-                position.Y += (float)flownDistance.Y;
-                var projectedPosition = ppCalc.ProjectPoint(position);
+                var projectedPosition = ppCalc.ProjectPoint(point);
                 _graphicsBuffer.Graphics.FillRectangle(new SolidBrush(Color.White), projectedPosition.X,
+                    projectedPosition.Y, 1, 1);
+            }
+
+            foreach (var point in point2s)
+            {
+                var projectedPosition = ppCalc.ProjectPoint(point);
+                _graphicsBuffer.Graphics.FillRectangle(new SolidBrush(Color.Orange), projectedPosition.X,
                     projectedPosition.Y, 1, 1);
             }
         }
