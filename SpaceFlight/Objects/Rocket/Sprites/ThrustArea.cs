@@ -1,13 +1,14 @@
 ﻿using System.Drawing;
+using SpaceFlight.Screen;
 
 namespace SpaceFlight.Objects.Rocket.Sprites
 {
     public class ThrustArea
     {
-        public PointF Start;
-        public PointF Stop;
+        public PointM Start;
+        public PointM Stop;
 
-        public ThrustArea(PointF start, PointF stop)
+        public ThrustArea(PointM start, PointM stop)
         {
             Start = start;
             Stop = stop;

@@ -46,7 +46,7 @@ namespace SpaceFlight.Objects.Calculator
             }
         }
 
-        private bool RocketCollidedWithPlanet(Terrain.Terrain planet, List<PointF> corners)
+        private bool RocketCollidedWithPlanet(Terrain.Terrain planet, List<PointM> corners)
         {
             foreach (var corner in corners)
                 if (PointCalculator.Distance(corner, planet.Location) < planet.Diameter)

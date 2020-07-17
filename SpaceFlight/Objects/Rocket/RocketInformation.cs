@@ -12,12 +12,12 @@ namespace SpaceFlight.Objects.Rocket
         public string Variant { get;  }
         public string Manufacturer { get; }
         public List<string> Names { get; }
-        public float Height { get; }
-        public float Width { get; }
-        public float Thrust { get; }
-        public float Weight { get; }
-        public float FuelWeight { get; }
-        public float BurnTime { get; }
+        public decimal Height { get; }
+        public decimal Width { get; }
+        public decimal Thrust { get; }
+        public decimal Weight { get; }
+        public decimal FuelWeight { get; }
+        public decimal BurnTime { get; }
         public DragProperties DragProperties { get; }
         public List<RocketSpritePiece> Sprite { get; }
 
@@ -33,8 +33,8 @@ namespace SpaceFlight.Objects.Rocket
             return JsonConvert.DeserializeObject<RocketInformation>(File.ReadAllText(path));
         }
 
-        public RocketInformation(string model, string variant, string manufacturer, List<string> names, float height, float width,
-            float thrust, float weight, float fuelWeight, float burnTime, DragProperties dragProperties, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
+        public RocketInformation(string model, string variant, string manufacturer, List<string> names, decimal height, decimal width,
+            decimal thrust, decimal weight, decimal fuelWeight, decimal burnTime, DragProperties dragProperties, List<RocketSpritePiece> sprite, List<ThrustArea> thrustAreas)
         {
             Model = model;
             Variant = variant;

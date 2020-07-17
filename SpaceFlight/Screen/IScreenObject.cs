@@ -10,6 +10,6 @@ namespace SpaceFlight.Screen
         void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleM screen);
         PointM GetMiddle();
         int GetPriority();
-        void ChangeAngle(float change);
+        void ChangeAngle(double change);
     }
 }

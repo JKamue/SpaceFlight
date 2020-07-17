@@ -2,18 +2,19 @@
 using System.Security;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Units;
+using SpaceFlight.Screen;
 
 namespace SpaceFlight.Objects.Rocket
 {
     class RocketDto
     {
-        public PointF Location;
+        public PointM Location;
         public Speed Speed;
         public Angle Angle;
-        public float ThrustPercentage;
+        public decimal ThrustPercentage;
         public string Type;
 
-        public RocketDto(PointF location, Vector speed, Angle angle, float thrustPercentage, string type)
+        public RocketDto(PointM location, Vector speed, Angle angle, decimal thrustPercentage, string type)
         {
             Location = location;
             Speed = new Speed(speed.Angle, speed.Value);

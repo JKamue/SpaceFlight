@@ -1,28 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using SpaceFlight.Screen;
 using SpaceFlight.Screen.Calculator;
+using SpaceFlight.Screen.Other;
 
 namespace SpaceFlight.Objects.Rocket.Sprites
 {
     class RocketSprite
     {
-        private readonly float _height;
-        private readonly float _width;
+        private readonly decimal _height;
+        private readonly decimal _width;
         private readonly List<RocketSpritePiece> _spritePieces;
 
-        public RocketSprite(float height, float width, List<RocketSpritePiece> spritePieces)
+        public RocketSprite(decimal height, decimal width, List<RocketSpritePiece> spritePieces)
         {
             this._height = height;
             this._width = width;
             this._spritePieces = spritePieces;
         }
 
-        public List<RocketSpritePiece> CalculatePolygons(PointF pos, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
+        public List<RocketSpritePiece> CalculatePolygons(PointM pos, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
         {
             var spritePieces = new List<RocketSpritePiece>();
             foreach (var spritePiece in _spritePieces)
             {
-                var calculatedSpritePieces = new List<PointF>();
+                var calculatedSpritePieces = new List<PointM>();
                 foreach (var spritePiecePoint in spritePiece.Points)
                 {
                     var x = pos.X + spritePiecePoint.X;
@@ -35,31 +37,31 @@ namespace SpaceFlight.Objects.Rocket.Sprites
             return spritePieces;
         }
 
-        public RectangleF GetBounds(PointF pos, AngularCalculator aCalc)
+        public RectangleM GetBounds(PointM pos, AngularCalculator aCalc)
         {
             var points = GetBoundPointsList(pos, aCalc);
             return BoundsCalculator.CalculateBounds(points);
         }
 
-        public List<PointF> GetBoundPointsList(PointF pos, AngularCalculator aCalc)
+        public List<PointM> GetBoundPointsList(PointM pos, AngularCalculator aCalc)
         {
             var hWidth = _width / 2;
             var hHeight = _height / 2;
 
-            var points = new List<PointF>
+            var points = new List<PointM>
             {
-                aCalc.Turn(new PointF(pos.X - hWidth, pos.Y - hHeight)),
-                aCalc.Turn(new PointF(pos.X + hWidth, pos.Y - hHeight)),
-                aCalc.Turn(new PointF(pos.X + hWidth, pos.Y + hHeight)),
-                aCalc.Turn(new PointF(pos.X - hWidth, pos.Y + hHeight))
+                aCalc.Turn(new PointM(pos.X - hWidth, pos.Y - hHeight)),
+                aCalc.Turn(new PointM(pos.X + hWidth, pos.Y - hHeight)),
+                aCalc.Turn(new PointM(pos.X + hWidth, pos.Y + hHeight)),
+                aCalc.Turn(new PointM(pos.X - hWidth, pos.Y + hHeight))
             };
 
             return points;
         }
 
-        private static PointF TurnAndProject(float x, float y, ProjectedPositionCalculator p, AngularCalculator aCalc)
+        private static PointM TurnAndProject(decimal x, decimal y, ProjectedPositionCalculator p, AngularCalculator aCalc)
         {
-            return p.ProjectPoint(aCalc.Turn(new PointF(x, y)));
+            return p.ProjectPoint(aCalc.Turn(new PointM(x, y)));
         }
     }
 }

@@ -8,9 +8,9 @@ namespace SpaceFlight.Screen.Calculator
         private readonly double _angle;
         private readonly PointM _center;
 
-        public AngularCalculator(decimal angle, PointM center)
+        public AngularCalculator(double angle, PointM center)
         {
-            _angle = (double) angle * Math.PI / 180;
+            _angle = angle * Math.PI / 180;
             _center = center;
         }
 
