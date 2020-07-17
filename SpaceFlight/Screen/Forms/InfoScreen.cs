@@ -47,8 +47,7 @@ namespace SpaceFlight.Screen
         }	
         public void UpdateDisplay(object sender, EventArgs e)
         {
-            cbxSelectRocket.DataSource = new List<Rocket>();
-            cbxSelectRocket.DataSource = _objects.Rockets;	
+            UpdateRocketList();
             SelectRightRocket();	
             var rocket = _objects.MainObject;	
             
@@ -58,7 +57,24 @@ namespace SpaceFlight.Screen
             QuerySliders(rocket);	
             UpdateForceDrawer(rocket);	
             lblDebugFps.Text = _screen.GetActualFramerate() + " fps";	
-        }	
+        }
+
+        public void UpdateRocketList()
+        {
+            var i = cbxSelectRocket.SelectedItem;
+            cbxSelectRocket.DataSource = new List<Rocket>();
+            cbxSelectRocket.DataSource = _objects.Rockets;
+
+            try
+            {
+                cbxSelectRocket.SelectedItem = i;
+            }
+            catch (Exception e)
+            {
+                cbxSelectRocket.SelectedIndex = -1;
+            }
+        }
+
         public void UpdateForceDrawer(Rocket rocket)	
         {	
             _forceDrawer.Drag = rocket.DragForces;	
