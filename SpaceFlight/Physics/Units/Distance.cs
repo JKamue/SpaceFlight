@@ -4,15 +4,15 @@ namespace SpaceFlight.Physics.Units
 {
     public class Distance : Vector
     {
-        public Distance (Angle angle, double meter) : base(angle, meter) { }
+        public Distance (Angle angle, decimal meter) : base(angle, meter) { }
         public Distance (Vector v) : base(v.Angle, v.Value) { }
 
         public static Distance operator +(Distance acc1, Distance acc2) => new Distance((Vector)acc1 + (Vector)acc2);
 
         public DistanceXAndY CalculateXAndY()
         {
-            var distY = Math.Cos(Angle.Radian) * Value;
-            var distX = Math.Sin(Angle.Radian) * Value;
+            var distY = (decimal) Math.Cos(Angle.Radian) * Value;
+            var distX = (decimal) Math.Sin(Angle.Radian) * Value;
 
             return new DistanceXAndY(distX, distY);
         }
@@ -20,13 +20,13 @@ namespace SpaceFlight.Physics.Units
 
     public readonly struct DistanceXAndY
     {
-        public DistanceXAndY(double x, double y)
+        public DistanceXAndY(decimal x, decimal y)
         {
             X = x;
             Y = y;
         }
 
-        public double X { get; }
-        public double Y { get; }
+        public decimal X { get; }
+        public decimal Y { get; }
     }
 }

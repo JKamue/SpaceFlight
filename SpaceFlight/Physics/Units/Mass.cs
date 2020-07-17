@@ -4,9 +4,9 @@ namespace SpaceFlight.Physics.Units
 {
     public class Mass
     {
-        public double Value { get; }
+        public decimal Value { get; }
         public Mass() : base() { }
-        public Mass(double value)
+        public Mass(decimal value)
         {
             if (value <= 0)
                 throw new ArgumentOutOfRangeException(nameof(value), "Mass must be positive and bigger than zero");

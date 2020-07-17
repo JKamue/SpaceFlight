@@ -5,7 +5,7 @@ namespace SpaceFlight.Physics
 
     public class Force : Vector
     {
-        public Force(Angle angle, double newton) : base(angle, newton) { }
+        public Force(Angle angle, decimal newton) : base(angle, newton) { }
         public Force(Vector v) : base(v.Angle, v.Value) { }
 
         public Acceleration GetAcceleration(Mass mass) => new Acceleration(Angle,Value / mass.Value);

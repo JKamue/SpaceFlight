@@ -8,7 +8,7 @@ using System.Numerics;
 
 namespace SpaceFlight.Screen
 {
-    struct PointM
+    public struct PointM
     {
         public decimal X;
         public decimal Y;

@@ -8,7 +8,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace SpaceFlight.Screen.Other
 {
-    class RectangleM
+    public class RectangleM
     {
         public SizeM Size;
         public PointM Location;

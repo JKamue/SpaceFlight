@@ -8,14 +8,15 @@ using SpaceFlight.Objects.Rocket;
 using SpaceFlight.Objects.Terrain;
 using SpaceFlight.Physics.Other;
 using SpaceFlight.Physics.Units;
+using SpaceFlight.Screen;
 
 namespace SpaceFlight.Physics.Calculator
 {
     class OrbitPredictionCalculator
     {
-        public static List<PointF> GetPredictedPointList(Rocket rocket, List<Terrain> planets, TimeSpan predictionLength, bool thrust)
+        public static List<PointM> GetPredictedPointList(Rocket rocket, List<Terrain> planets, TimeSpan predictionLength, bool thrust)
         {
-            var pointList = new List<PointF>();
+            var pointList = new List<PointM>();
             var position = rocket.Location;
             var speed = rocket.Speed;
             var mass = rocket.Mass;
@@ -62,8 +63,8 @@ namespace SpaceFlight.Physics.Calculator
                     break;
 
                 var flownDistance = speed.GetDistance(new TimeSpan(0, 0, 0, 10)).CalculateXAndY();
-                position.X += (float)flownDistance.X;
-                position.Y += (float)flownDistance.Y;
+                position.X += flownDistance.X;
+                position.Y += flownDistance.Y;
 
                 pointList.Add(position);
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpaceFlight.Screen.Other
 {
-    struct SizeM
+    public struct SizeM
     {
         public decimal Height;
         public decimal Width;

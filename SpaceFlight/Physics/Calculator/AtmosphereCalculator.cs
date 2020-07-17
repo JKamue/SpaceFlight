@@ -7,7 +7,7 @@ namespace SpaceFlight.Physics.Calculator
     public class AtmosphereCalculator
     {
         // Using U.S. Standard Atmosphere Air Properties https://www.engineeringtoolbox.com/standard-atmosphere-d_604.html
-        public static double CalculateAirDensityAtAltitude(double altitude)
+        public static decimal CalculateAirDensityAtAltitude(double altitude)
         {
             double densityAtAltitude = 0;
 
@@ -28,7 +28,7 @@ namespace SpaceFlight.Physics.Calculator
                 densityAtAltitude = 0.97855729 * Math.Pow(0.99986472, altitude);
             }
 
-            return densityAtAltitude;
+            return (decimal) densityAtAltitude;
         }
     }
 }
