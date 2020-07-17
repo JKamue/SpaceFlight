@@ -37,5 +37,42 @@ namespace SpaceFlight.Screen.Other
             Location = new PointM(x, y);
         }
 
+        public List<PointM> GetCorners()
+        {
+            return new List<PointM>
+            {
+                new PointM(Top, Left),
+                new PointM(Top, Right),
+                new PointM(Bottom, Right),
+                new PointM(Bottom, Left)
+            };
+        }
+
+        public bool Contains(RectangleM rect)
+        {
+            foreach (var point in rect.GetCorners())
+            {
+                if (!Contains(point))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public bool IntersectsWith(RectangleM rect)
+        {
+            foreach (var point in rect.GetCorners())
+            {
+                if (Contains(point))
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool Contains(PointM p)
+        {
+            return (p.X > Left && p.X < Right && p.Y > Top && p.Y < Bottom);
+        }
     }
 }
