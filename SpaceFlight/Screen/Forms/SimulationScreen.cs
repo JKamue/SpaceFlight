@@ -23,7 +23,7 @@ namespace SpaceFlight
             StartPosition = FormStartPosition.Manual;
             Left = 550;
             Top = 5;
-            new Game.Game(SimulationPanel, "all-rockets-earth");
+            new Game.Game(SimulationPanel, "starship-lander");
 
             // Make the other screens owned by the SimulationScreen
             FormCollection openForms = Application.OpenForms;
