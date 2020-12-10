@@ -1,0 +1,36 @@
+﻿{
+  "Rockets": [
+    {
+      "Location": {
+        "IsEmpty": true,
+        "X": 0.0,
+        "Y": 12500.0
+      },
+      "Speed": {
+        "Angle": {
+          "Degree": 70.0,
+          "Radian": 0.0
+        },
+        "Value": 400.0
+      },
+      "Angle": {
+        "Degree": 90.0,
+        "Radian": 0.0
+      },
+      "ThrustPercentage": 0.0,
+      "Type": "starship-SN8"
+    }
+  ],
+  "Planets": [
+    {
+      "Position": {
+        "IsEmpty": false,
+        "X": 0.0,
+        "Y": -6371000.0
+      },
+      "Radius": 6371000.0,
+      "Color": "Green",
+      "Mass": 5.972E+24
+    }
+  ]
+}
