@@ -25,8 +25,8 @@ namespace SpaceFlight.Objects.Rocket.Sprites
                 var calculatedSpritePieces = new List<PointF>();
                 foreach (var spritePiecePoint in spritePiece.Points)
                 {
-                    var x = pos.X + spritePiecePoint.X;
-                    var y = pos.Y + spritePiecePoint.Y;
+                    var x = (decimal)pos.X + (decimal)spritePiecePoint.X;
+                    var y = (decimal)pos.Y + (decimal)spritePiecePoint.Y;
                     calculatedSpritePieces.Add(TurnAndProject(x, y, ppCalc, aCalc));
                 }
                 spritePieces.Add(new RocketSpritePiece(calculatedSpritePieces, spritePiece.Brush));
@@ -60,6 +60,11 @@ namespace SpaceFlight.Objects.Rocket.Sprites
         private static PointF TurnAndProject(float x, float y, ProjectedPositionCalculator p, AngularCalculator aCalc)
         {
             return p.ProjectPoint(aCalc.Turn(new PointF(x, y)));
+        }
+
+        private static PointF TurnAndProject(decimal x, decimal y, ProjectedPositionCalculator p, AngularCalculator aCalc)
+        {
+            return p.ProjectPoint(aCalc.Turn(x, y));
         }
     }
 }

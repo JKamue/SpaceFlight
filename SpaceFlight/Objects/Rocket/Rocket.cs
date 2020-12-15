@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms.VisualStyles;
 using SpaceFlight.Objects.Rocket.Sprites;
 using SpaceFlight.Physics;
 using SpaceFlight.Physics.Other;
@@ -33,7 +32,7 @@ namespace SpaceFlight.Objects.Rocket
         public static Rocket getEmptyRocket()
         {
             var angle = Angle.Zero;
-            return new Rocket(new PointF(0,0), new Force(angle, 0), new Acceleration(angle, 0), new Speed(angle, 0), angle, 0, RocketInformation.LoadFromName("empty-rocket"));
+            return new Rocket(new PointF(0, 0), new Force(angle, 0), new Acceleration(angle, 0), new Speed(angle, 0), angle, 0, RocketInformation.LoadFromName("empty-rocket"));
         }
 
         public Rocket(PointF location, Force force, Acceleration acceleration, Speed speed,
@@ -72,7 +71,7 @@ namespace SpaceFlight.Objects.Rocket
             var burnedFuel = (ms / 1000) * burnedFuelPerSec * _thrustPercentage;
             lastCheck = TimeKeeper.Now();
 
-            _restFuelWeight -= (_restFuelWeight - burnedFuel <= 0) ? _restFuelWeight : (float) burnedFuel;
+            _restFuelWeight -= (_restFuelWeight - burnedFuel <= 0) ? _restFuelWeight : (float)burnedFuel;
 
             if (_restFuelWeight <= 0)
                 _engineRunning = false;
@@ -84,7 +83,7 @@ namespace SpaceFlight.Objects.Rocket
 
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
-            var aCalc = new AngularCalculator((float) _angle.Degree * -1, Location);
+            var aCalc = new AngularCalculator((float)_angle.Degree * -1, Location);
             var spritePieces =
                 _sprite.CalculatePolygons(Location, ppCalc, aCalc);
 
@@ -92,7 +91,7 @@ namespace SpaceFlight.Objects.Rocket
             {
                 g.FillPolygon(piece.Brush, piece.Points.ToArray());
             }
-            
+
             if (_engineRunning)
                 DrawFlames(g, ppCalc, aCalc);
         }
@@ -105,9 +104,9 @@ namespace SpaceFlight.Objects.Rocket
 
                 var points = new List<PointF>
                 {
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointF(Location.X + thrustArea.Start.X, Location.Y + thrustArea.Stop.Y))),
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointF(Location.X + thrustArea.Stop.X, Location.Y + thrustArea.Stop.Y))),
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointF(Location.X + width / 2, Location.Y + thrustArea.Stop.Y - Math.Abs(thrustArea.Stop.X - thrustArea.Start.X) * _thrustPercentage * (float)GetRandomNumber(3.5, 6))))
+                    ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) thrustArea.Start.X, (decimal) Location.Y + (decimal) thrustArea.Stop.Y))),
+                    ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) thrustArea.Stop.X, (decimal) Location.Y + (decimal) thrustArea.Stop.Y))),
+                    ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) width / 2, (decimal) Location.Y + (decimal) thrustArea.Stop.Y - Math.Abs((decimal) thrustArea.Stop.X - (decimal) thrustArea.Start.X) * (decimal) _thrustPercentage * (decimal)GetRandomNumber(3.5, 6))))
                 };
 
 
