@@ -82,7 +82,9 @@ namespace SpaceFlight.Screen
             var thrust = new Force(rocket._angle, rocket._engineRunning ? rocket._rocketInf.Thrust * rocket._thrustPercentage : 0);	
             _forceDrawer.Thrust = thrust;	
             _forceDrawer.ResultingForce = rocket.ResutlingForce;	
-            _forceDrawer.Speed = rocket.Speed;	
+            _forceDrawer.Speed = rocket.Speed;
+            _forceDrawer.CurrentAngle = rocket._angle;
+            _forceDrawer.TargetAngle = rocket.targetAngle;
             _forceDrawer.Redraw();	
         }	
         public void DisplayInformation(Rocket rocket)	

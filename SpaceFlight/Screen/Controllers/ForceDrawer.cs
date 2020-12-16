@@ -19,6 +19,8 @@ namespace SpaceFlight.Screen.Controllers
         public List<Force> Gravity;
         public Force ResultingForce;
         public Speed Speed;
+        public Angle TargetAngle;
+        public Angle CurrentAngle;
 
         public ForceDrawer(Panel panel) : base(panel)
         {
@@ -44,14 +46,17 @@ namespace SpaceFlight.Screen.Controllers
             DrawForce(g, Thrust, Color.Green, factor, center);
             DrawForce(g, ResultingForce, Color.Black, factor, center);
             g.DrawEllipse(new Pen(Color.Black, 1), new Rectangle(1,1, _panel.Height - 2, _panel.Height - 2));
-            DrawSpeed(g, Speed, Color.OrangeRed, center);
+
+            DrawAngle(g, Speed.Angle, Color.OrangeRed, center);
+            DrawAngle(g, TargetAngle, Color.Chocolate, center);
+            DrawAngle(g, CurrentAngle, Color.Black, center);
 
             _graphicsBuffer.Render(_panelGraphics);
         }
 
-        private void DrawSpeed(Graphics g, Speed speed, Color c, float center)
+        private void DrawAngle(Graphics g, Angle angle, Color c, float center)
         {
-            var aCalc = new AngularCalculator((float)Speed.Angle.Degree, new PointF(center, center));
+            var aCalc = new AngularCalculator((float)angle.Degree, new PointF(center, center));
             var points = new List<PointF>
             {
                 aCalc.Turn(new PointF(center - 1, 0)),
