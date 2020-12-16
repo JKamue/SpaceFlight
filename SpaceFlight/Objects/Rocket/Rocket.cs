@@ -83,17 +83,30 @@ namespace SpaceFlight.Objects.Rocket
 
         public void Draw(Graphics g, ProjectedPositionCalculator ppCalc, RectangleF screen)
         {
-            var aCalc = new AngularCalculator((float)_angle.Degree * -1, Location);
-            var spritePieces =
-                _sprite.CalculatePolygons(Location, ppCalc, aCalc);
-
-            foreach (var piece in spritePieces)
+            if (Math.Abs(_angle.Degree - targetAngle.Degree) > 0.1)
             {
-                g.FillPolygon(piece.Brush, piece.Points.ToArray());
+                var aCalc2 = new AngularCalculator((float) targetAngle.Degree * -1, Location);
+                DrawRocketAtAngle(g, ppCalc, aCalc2, 100);
             }
+
+            var aCalc = new AngularCalculator((float)_angle.Degree * -1, Location);
+            DrawRocketAtAngle(g, ppCalc, aCalc);
 
             if (_engineRunning)
                 DrawFlames(g, ppCalc, aCalc);
+        }
+
+        private void DrawRocketAtAngle(Graphics g, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc,
+            int alpha = 255)
+        {
+            var spritePieces2 =
+                _sprite.CalculatePolygons(Location, ppCalc, aCalc);
+
+            foreach (var piece in spritePieces2)
+            {
+                var brush = new SolidBrush(Color.FromArgb(alpha, piece.Brush.Color.R, piece.Brush.Color.G, piece.Brush.Color.B));
+                g.FillPolygon(brush, piece.Points.ToArray());
+            }
         }
 
         private void DrawFlames(Graphics g, ProjectedPositionCalculator ppCalc, AngularCalculator aCalc)
