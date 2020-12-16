@@ -106,6 +106,16 @@
       "Position": {
         "IsEmpty": false,
         "X": 0.0,
+        "Y": 384400000
+      },
+      "Radius": 1737400,
+      "Color": "Gray",
+      "Mass": 7.347E+22
+    },
+    {
+      "Position": {
+        "IsEmpty": false,
+        "X": 0.0,
         "Y": -6371000.0
       },
       "Radius": 6371000.0,
