@@ -113,13 +113,14 @@ namespace SpaceFlight.Objects.Rocket
         {
             foreach (var thrustArea in _rocketInf.ThrustAreas)
             {
-                var width = (thrustArea.Stop.X - Math.Abs(thrustArea.Start.X));
+                var midX = thrustArea.Start.X + thrustArea.Stop.X - thrustArea.Start.X;
+                var mid = (decimal) Location.X + (decimal) midX / 2;
 
                 var points = new List<PointF>
                 {
                     ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) thrustArea.Start.X, (decimal) Location.Y + (decimal) thrustArea.Stop.Y))),
                     ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) thrustArea.Stop.X, (decimal) Location.Y + (decimal) thrustArea.Stop.Y))),
-                    ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) width / 2, (decimal) Location.Y + (decimal) thrustArea.Stop.Y - Math.Abs((decimal) thrustArea.Stop.X - (decimal) thrustArea.Start.X) * (decimal) _thrustPercentage * (decimal)GetRandomNumber(3.5, 6))))
+                    ppCalc.ProjectPoint(aCalc.Turn(new PointD((decimal) Location.X + (decimal) thrustArea.Middle.X, (decimal) Location.Y + (decimal) thrustArea.Stop.Y - Math.Abs((decimal) thrustArea.Stop.X - (decimal) thrustArea.Start.X) * (decimal) _thrustPercentage * (decimal)GetRandomNumber(3.5, 6))))
                 };
 
 

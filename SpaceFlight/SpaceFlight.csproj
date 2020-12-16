@@ -140,6 +140,9 @@
     <None Include="Data\Rockets\empty-rocket.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Data\Rockets\falcon-heavy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Data\Rockets\unidentified-flying-object.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
