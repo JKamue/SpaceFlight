@@ -66,7 +66,7 @@ namespace SpaceFlight.Game
         {
             foreach (var pDto in planets)
             {
-                var planet = new Terrain(pDto.Position, pDto.Radius, pDto.Color, new Mass(pDto.Mass));
+                var planet = new Terrain(pDto.Position, pDto.Radius, pDto.Color, new Mass(pDto.Mass), pDto.Name);
                 _objects.Add(planet);
             }
         }

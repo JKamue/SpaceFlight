@@ -15,12 +15,14 @@ namespace SpaceFlight.Objects.Terrain
         private float radius;
         private PointF position;
         private List<PointF> allPoints;
+        public readonly string Name;
 
-        public Terrain(PointF position, float radius, Color color, Mass mass): base(position, mass, radius)
+        public Terrain(PointF position, float radius, Color color, Mass mass, string name): base(position, mass, radius)
         {
             this.color = color;
             this.radius = radius;
             this.position = position;
+            Name = name;
 
             var rnd = new Random(DateTime.Now.Millisecond);
             Noise.Seed = rnd.Next(0, 3000);

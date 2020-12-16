@@ -129,14 +129,19 @@ namespace SpaceFlight.Screen
         }	
         public void DisplayLocation(Rocket rocket)	
         {	
-            var distance = 0F;	
+            var distance = float.MaxValue;
+            var name = "";
             foreach (var planet in _objects.Terrains)	
             {	
-                var newDistance = PointCalculator.Distance(rocket.Location, planet.Location);	
-                if (newDistance > distance)	
-                    distance = newDistance - (float) planet.Diameter;	
+                var newDistance = PointCalculator.Distance(rocket.Location, planet.Location);
+                if (newDistance < distance)
+                {
+                    distance = newDistance - (float) planet.Diameter;
+                    name = planet.Name;
+                }
             }	
-            lblLocClosestVal.Text = DecimalPoints.Add(distance,0) + " m";	
+            lblLocClosestVal.Text = DecimalPoints.Add(distance,0) + " m";
+            lblNameClosestVal.Text = name;
             lblLocAngleVal.Text = Math.Round(rocket._angle.Degree - ((rocket._angle.Degree > 180) ? 360 : 0), 1) + "°";	
             lblLocCoordsVal.Text = DecimalPoints.Add(rocket.Location.X,0) + " | " + DecimalPoints.Add(rocket.Location.Y,0);	
             _screen.Color = CalcColor(distance);	

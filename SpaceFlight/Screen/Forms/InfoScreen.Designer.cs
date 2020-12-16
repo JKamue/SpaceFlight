@@ -54,12 +54,14 @@
             this.lblInfManufacturer = new System.Windows.Forms.Label();
             this.lblInfModel = new System.Windows.Forms.Label();
             this.gbxLocation = new System.Windows.Forms.GroupBox();
+            this.lblNameClosestVal = new System.Windows.Forms.Label();
+            this.lblLocClosest = new System.Windows.Forms.Label();
             this.lblLocCoordsVal = new System.Windows.Forms.Label();
             this.lblLocAngleVal = new System.Windows.Forms.Label();
             this.lblLocClosestVal = new System.Windows.Forms.Label();
             this.lblLocCoords = new System.Windows.Forms.Label();
             this.lblLocAngle = new System.Windows.Forms.Label();
-            this.lblLocClosest = new System.Windows.Forms.Label();
+            this.lblNameClosest = new System.Windows.Forms.Label();
             this.sldCtrlAngle = new System.Windows.Forms.TrackBar();
             this.lblCtrlAngle = new System.Windows.Forms.Label();
             this.sldCtrlThrust = new System.Windows.Forms.TrackBar();
@@ -69,7 +71,6 @@
             this.lblSldThrustVal = new System.Windows.Forms.Label();
             this.cbxSelectRocket = new System.Windows.Forms.ComboBox();
             this.pnlForcesScreen = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblTimeFlow = new System.Windows.Forms.Label();
             this.lblPause = new System.Windows.Forms.Label();
             this.lblTimeFlowvalue = new System.Windows.Forms.Label();
@@ -118,7 +119,7 @@
             this.gbxStatus.Controls.Add(this.lblStatThrust);
             this.gbxStatus.Location = new System.Drawing.Point(248, 79);
             this.gbxStatus.Name = "gbxStatus";
-            this.gbxStatus.Size = new System.Drawing.Size(200, 213);
+            this.gbxStatus.Size = new System.Drawing.Size(200, 231);
             this.gbxStatus.TabIndex = 2;
             this.gbxStatus.TabStop = false;
             this.gbxStatus.Text = "Status";
@@ -320,23 +321,43 @@
             // 
             // gbxLocation
             // 
+            this.gbxLocation.Controls.Add(this.lblNameClosestVal);
+            this.gbxLocation.Controls.Add(this.lblLocClosest);
             this.gbxLocation.Controls.Add(this.lblLocCoordsVal);
             this.gbxLocation.Controls.Add(this.lblLocAngleVal);
             this.gbxLocation.Controls.Add(this.lblLocClosestVal);
             this.gbxLocation.Controls.Add(this.lblLocCoords);
             this.gbxLocation.Controls.Add(this.lblLocAngle);
-            this.gbxLocation.Controls.Add(this.lblLocClosest);
+            this.gbxLocation.Controls.Add(this.lblNameClosest);
             this.gbxLocation.Location = new System.Drawing.Point(42, 189);
             this.gbxLocation.Name = "gbxLocation";
-            this.gbxLocation.Size = new System.Drawing.Size(200, 103);
+            this.gbxLocation.Size = new System.Drawing.Size(200, 121);
             this.gbxLocation.TabIndex = 4;
             this.gbxLocation.TabStop = false;
             this.gbxLocation.Text = "Location";
             // 
+            // lblNameClosestVal
+            // 
+            this.lblNameClosestVal.AutoSize = true;
+            this.lblNameClosestVal.Location = new System.Drawing.Point(85, 26);
+            this.lblNameClosestVal.Name = "lblNameClosestVal";
+            this.lblNameClosestVal.Size = new System.Drawing.Size(62, 13);
+            this.lblNameClosestVal.TabIndex = 7;
+            this.lblNameClosestVal.Text = "Body Name";
+            // 
+            // lblLocClosest
+            // 
+            this.lblLocClosest.AutoSize = true;
+            this.lblLocClosest.Location = new System.Drawing.Point(25, 48);
+            this.lblLocClosest.Name = "lblLocClosest";
+            this.lblLocClosest.Size = new System.Drawing.Size(52, 13);
+            this.lblLocClosest.TabIndex = 6;
+            this.lblLocClosest.Text = "Distance:";
+            // 
             // lblLocCoordsVal
             // 
             this.lblLocCoordsVal.AutoSize = true;
-            this.lblLocCoordsVal.Location = new System.Drawing.Point(85, 74);
+            this.lblLocCoordsVal.Location = new System.Drawing.Point(85, 94);
             this.lblLocCoordsVal.Name = "lblLocCoordsVal";
             this.lblLocCoordsVal.Size = new System.Drawing.Size(25, 13);
             this.lblLocCoordsVal.TabIndex = 5;
@@ -345,7 +366,7 @@
             // lblLocAngleVal
             // 
             this.lblLocAngleVal.AutoSize = true;
-            this.lblLocAngleVal.Location = new System.Drawing.Point(85, 50);
+            this.lblLocAngleVal.Location = new System.Drawing.Point(85, 70);
             this.lblLocAngleVal.Name = "lblLocAngleVal";
             this.lblLocAngleVal.Size = new System.Drawing.Size(88, 13);
             this.lblLocAngleVal.TabIndex = 4;
@@ -354,7 +375,7 @@
             // lblLocClosestVal
             // 
             this.lblLocClosestVal.AutoSize = true;
-            this.lblLocClosestVal.Location = new System.Drawing.Point(85, 26);
+            this.lblLocClosestVal.Location = new System.Drawing.Point(85, 48);
             this.lblLocClosestVal.Name = "lblLocClosestVal";
             this.lblLocClosestVal.Size = new System.Drawing.Size(64, 13);
             this.lblLocClosestVal.TabIndex = 3;
@@ -363,7 +384,7 @@
             // lblLocCoords
             // 
             this.lblLocCoords.AutoSize = true;
-            this.lblLocCoords.Location = new System.Drawing.Point(13, 74);
+            this.lblLocCoords.Location = new System.Drawing.Point(13, 94);
             this.lblLocCoords.Name = "lblLocCoords";
             this.lblLocCoords.Size = new System.Drawing.Size(66, 13);
             this.lblLocCoords.TabIndex = 2;
@@ -372,20 +393,20 @@
             // lblLocAngle
             // 
             this.lblLocAngle.AutoSize = true;
-            this.lblLocAngle.Location = new System.Drawing.Point(42, 50);
+            this.lblLocAngle.Location = new System.Drawing.Point(42, 70);
             this.lblLocAngle.Name = "lblLocAngle";
             this.lblLocAngle.Size = new System.Drawing.Size(37, 13);
             this.lblLocAngle.TabIndex = 1;
             this.lblLocAngle.Text = "Angle:";
             // 
-            // lblLocClosest
+            // lblNameClosest
             // 
-            this.lblLocClosest.AutoSize = true;
-            this.lblLocClosest.Location = new System.Drawing.Point(2, 26);
-            this.lblLocClosest.Name = "lblLocClosest";
-            this.lblLocClosest.Size = new System.Drawing.Size(77, 13);
-            this.lblLocClosest.TabIndex = 0;
-            this.lblLocClosest.Text = "Closest Planet:";
+            this.lblNameClosest.AutoSize = true;
+            this.lblNameClosest.Location = new System.Drawing.Point(6, 26);
+            this.lblNameClosest.Name = "lblNameClosest";
+            this.lblNameClosest.Size = new System.Drawing.Size(71, 13);
+            this.lblNameClosest.TabIndex = 0;
+            this.lblNameClosest.Text = "Closest Body:";
             // 
             // sldCtrlAngle
             // 
@@ -461,20 +482,10 @@
             // 
             // pnlForcesScreen
             // 
-            this.pnlForcesScreen.Location = new System.Drawing.Point(47, 298);
+            this.pnlForcesScreen.Location = new System.Drawing.Point(47, 316);
             this.pnlForcesScreen.Name = "pnlForcesScreen";
             this.pnlForcesScreen.Size = new System.Drawing.Size(195, 195);
             this.pnlForcesScreen.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(115, 496);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Forcedial";
             // 
             // lblTimeFlow
             // 
@@ -515,7 +526,6 @@
             this.Controls.Add(this.lblTimeFlowvalue);
             this.Controls.Add(this.lblPause);
             this.Controls.Add(this.lblTimeFlow);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlForcesScreen);
             this.Controls.Add(this.cbxSelectRocket);
             this.Controls.Add(this.lblSldThrustVal);
@@ -568,7 +578,7 @@
         private System.Windows.Forms.GroupBox gbxLocation;
         private System.Windows.Forms.Label lblLocCoords;
         private System.Windows.Forms.Label lblLocAngle;
-        private System.Windows.Forms.Label lblLocClosest;
+        private System.Windows.Forms.Label lblNameClosest;
         private System.Windows.Forms.TrackBar sldCtrlAngle;
         private System.Windows.Forms.Label lblCtrlAngle;
         private System.Windows.Forms.TrackBar sldCtrlThrust;
@@ -591,9 +601,10 @@
         private System.Windows.Forms.Label lblSldThrustVal;
         private System.Windows.Forms.ComboBox cbxSelectRocket;
         private System.Windows.Forms.Panel pnlForcesScreen;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTimeFlow;
         private System.Windows.Forms.Label lblPause;
         private System.Windows.Forms.Label lblTimeFlowvalue;
+        private System.Windows.Forms.Label lblNameClosestVal;
+        private System.Windows.Forms.Label lblLocClosest;
     }
 }

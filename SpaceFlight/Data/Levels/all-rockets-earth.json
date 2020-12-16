@@ -110,7 +110,8 @@
       },
       "Radius": 1737400,
       "Color": "Gray",
-      "Mass": 7.347E+22
+      "Mass": 7.347E+22,
+      "Name": "Moon"
     },
     {
       "Position": {
@@ -120,7 +121,8 @@
       },
       "Radius": 6371000.0,
       "Color": "Green",
-      "Mass": 5.972E+24
+      "Mass": 5.972E+24,
+      "Name":  "Earth" 
     }
   ]
 }
