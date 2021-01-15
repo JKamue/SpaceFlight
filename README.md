@@ -1,7 +1,7 @@
 
 <h1 align="center">
   <br>
-  <a href="https://jkamue.de"><img src="https://jkamue.de/logos/spaceflight_logo.png" alt="Markdownify" width="400"></a>
+  <a href="https://jkamue.de"><img src="docs/images/spaceflight_logo.png" alt="Space Flihgt Simulator" width="400"></a>
 </h1>
 
 <h4 align="center">A small rocket simulator inspired by <a href="https://play.google.com/store/apps/details?id=com.StefMorojna.SpaceflightSimulator&hl=de" target="_blank">Spaceflight Simulator</a>.</h4>
@@ -15,7 +15,7 @@
 </p>
 
 <h1 align="center">
-<img src="https://i.ibb.co/8K0jnSt/Anmerkung-2020-07-12-192459.png" width="1000">
+<img src="docs/images/screenshot.png" width="1000">
 </h1>
 
 ## Key Features
